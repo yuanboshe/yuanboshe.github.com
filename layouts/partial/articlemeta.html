@@ -1,0 +1,5 @@
+<div class="meta">
+    <div class="date">Post: <%= item[:created_at].strftime("%Y %b, %d") %></div>
+    <div class="comments"> 0 comments </div>
+    <div class="tags">Tags: <%= tags_for_article(item).join(", ") %></div>
+</div>

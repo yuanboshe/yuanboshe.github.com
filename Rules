@@ -1,0 +1,79 @@
+#!/usr/bin/env ruby
+
+# A few helpful tips about the Rules file:
+#
+# * The string given to #compile and #route are matching patterns for
+#   identifiers--not for paths. Therefore, you can’t match on extension.
+#
+# * The order of rules is important: for each item, only the first matching
+#   rule is applied.
+#
+# * Item identifiers start and end with a slash (e.g. “/about/” for the file
+#   “content/about.html”). To select all children, grandchildren, … of an
+#   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
+#   because “*” matches zero or more characters.
+
+preprocess do
+  for tag in all_tags
+    @items << Nanoc::Item.new("", {:title => "Blog for tag \"#{tag.capitalize}\"", :tag => tag, :layout => "tag", :extension => 'html'}, "/blog/tags/#{tag}/")
+  end
+  all_dates.each do |yk,yv|
+    @items << Nanoc::Item.new("", {:title => "Blog posts from #{yk}", :menu_title => yk, :year => yk, :num => yv[:num], :layout => "date", :extension => "html"}, "/blog/#{yk}/")
+    yv.delete(:num)
+    yv.each do |mk,mv|
+      @items << Nanoc::Item.new("", {:title => "Blog posts from #{Date::MONTHNAMES[mk]} #{yk}", :menu_title => Date::MONTHNAMES[mk], :year => yk, :month => mk, :num => mv, :layout => "date", :extension => "html"}, "/blog/#{yk}/#{'%02d' % mk}/")
+    end
+  end
+end
+
+# For blog list
+compile '/blog/' do
+  filter :erb
+  layout 'blog'
+end
+
+# For blog articles
+compile /\/blog\/\d{4}\/\d{2}\/.+\// do
+  filter :kramdown
+  layout 'article'
+end
+
+# For blog months
+compile /\/blog\/\d{4}\/\d{2}\// do
+  filter :erb
+  layout 'date'
+end
+
+# For blog years
+compile /\/blog\/\d{4}\// do
+  filter :erb
+  layout 'date'
+end
+
+# For blog tags
+compile '/blog/tags/*' do
+  filter :erb
+  layout 'tag'
+end
+
+compile '*' do
+  if item.binary?
+    # don’t filter binary items
+  else
+    puts item.identifier
+    filter :erb
+    layout 'default'
+  end
+end
+
+
+
+
+
+route '/home/' do
+  '/index.html'
+end
+
+passthrough '*'
+
+layout '*', :erb

@@ -1,0 +1,8 @@
+<li class="article">
+    <article class="format-standard">
+        <h2 class="post-heading"><a href="<%= item.path %>"><%= @item[:title] %></a></h2>
+        <div class="excerpt"><%= get_post_start(item) %></div>
+        <a href="<%= item.path %>" class="read-more">continue &#8594;</a>
+        <%= render 'partial/articlemeta', :item => item %>
+    </article>
+</li>
