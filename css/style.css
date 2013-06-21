@@ -750,7 +750,7 @@ nav a{
 
 #posts-list article{
 	position: relative;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 #posts-list .feature-image,
@@ -783,6 +783,11 @@ nav a{
 	line-height: 1.0em;
 }
 
+article .post-heading a {
+	font-size: 150%;
+	text-shadow: rgba(135,145,135,0.65) 3px 3px 3px;
+}
+
 #posts-list .excerpt,
 #posts-list .read-more{
 	display: block;
@@ -791,28 +796,32 @@ nav a{
 article .meta div{
 	padding: 10px 10px 10px 30px;
 	float: left;
-	max-width: 170px;
 }
 
 article .meta .comments{
 	border-left: 1px solid #cecece;	
 	border-right: 1px solid #cecece;
 	background: url(../img/icon-comments.png) no-repeat;
+	max-width: 90px;
 }
 
-article .meta .date{
+article .meta .author{
 	background: url(../img/icon-user.png) no-repeat;
+	max-width: 180px;
 }
 
 article .meta .tags{
 	background: url(../img/icon-tags.png) no-repeat;
+	max-width: 300px;
 }
 
 article .meta .tags,
 article .meta .comments,
-article .meta .date{
+article .meta .author{
 	background-position: 5px 12px;	
 }
+
+#disqus_thread { padding-top: 20px; }
 
 /* SINGLE ------------------------------------------------------------*/
 
@@ -970,5 +979,3 @@ footer .wrapper,
 	width: 50%;
 	float: right;
 }
-
-
