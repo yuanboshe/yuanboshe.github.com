@@ -27,8 +27,8 @@
     <!-- ENDS superfish -->
 
     <!-- prettyPhoto -->
-    <script src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
     <link rel="stylesheet" href="js/prettyPhoto/css/prettyPhoto.css" media="screen" />
+    <script src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
     <!-- ENDS prettyPhoto -->
 
     <!-- poshytip -->
@@ -36,9 +36,6 @@
     <link rel="stylesheet" href="js/poshytip-1.1/src/tip-yellowsimple/tip-yellowsimple.css" />
     <script src="js/poshytip-1.1/src/jquery.poshytip.min.js"></script>
     <!-- ENDS poshytip -->
-
-    <!-- GOOGLE FONTS -->
-    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300' rel='stylesheet' type='text/css'>
 
     <!-- Flex Slider -->
     <link rel="stylesheet" href="css/flexslider.css">
@@ -55,6 +52,9 @@
     <link rel="stylesheet" media="all" href="css/skin.css" />
     <link rel="stylesheet" media="all" href="css/style.css" />
     <link rel="stylesheet" media="all" href="css/code.css" />
+
+    <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300' rel='stylesheet' type='text/css'>
 
     <!-- reply move form -->
     <script src="js/moveform.js"></script>
@@ -127,7 +127,7 @@
         </div>
 
         <div class="wrapper">
-            <div id="logo">
+            <div id="logo" class="clearfix">
                 <a href="index.html" id="name"><h1>Yuanbo She</h1></a>
                 <a href="http://blog.exbot.net"><img src="img/logo.png" alt="ExBot's Blog"></a>
                 <a href="http://lamda.nju.edu.cn"><img src="img/lamda.png" alt="Lamda Lab"></a>
@@ -174,7 +174,7 @@
         <div class="meta">
     <div class="author"> Yuanbo She @ 2013 Jun, 10</div>
     <div class="comments"> 0 comments </div>
-    <div class="tags"><a href="/blog/tags/Rovio.html">Rovio</a>, <a href="/blog/tags/Ros.html">Ros</a></div>
+    <div class="tags"><a href="blog/tags/Rovio.html">Rovio</a>, <a href="blog/tags/Ros.html">Ros</a></div>
 </div>
 
     </article>
@@ -192,9 +192,9 @@
             <h4>TAGS</h4>
             <ul>
                 
-                <li class="cat-item"><a href="/blog/tags/Rovio.html" title="Rovio">Rovio</a></li>
+                <li class="cat-item"><a href="blog/tags/Rovio.html" title="Rovio">Rovio</a></li>
                 
-                <li class="cat-item"><a href="/blog/tags/Ros.html" title="Ros">Ros</a></li>
+                <li class="cat-item"><a href="blog/tags/Ros.html" title="Ros">Ros</a></li>
                 
             </ul>
         </li>
@@ -202,11 +202,11 @@
             <h4>DATES</h4>
             <ul>
                 
-                <li><a href="/blog/2013.html" title="Blog posts from 2013">2013 (1)</a></li>
+                <li><a href="blog/2013.html" title="Blog posts from 2013">2013 (1)</a></li>
                     
                     <ul>
                     
-                        <li class="cat-item"><a href="/blog/2013/06.html" title="Blog posts from June 2013">06 (1)</a></li>
+                        <li class="cat-item"><a href="blog/2013/06.html" title="Blog posts from June 2013">06 (1)</a></li>
                     
                     </ul>
                 
@@ -278,8 +278,11 @@
             </div>
 
             <div class="footer-bottom">
-                <div class="left">Powered by Nanoc Luiszuno ...</div>
-                <div class="right" style="display:none">
+                <div class="left">
+                    <script src="http://s19.cnzz.com/stat.php?id=5460084&web_id=5460084&show=pic" language="JavaScript"></script>
+                    Powered by Nanoc Luiszuno ...
+                </div>
+                <div class="right" style="display: none">
                     <ul id="social-bar">
                         <li><a href="" title="Become a fan" class="poshytip">
                             <img src="img/social/facebook.png" alt="Facebook" /></a></li>

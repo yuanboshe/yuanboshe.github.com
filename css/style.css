@@ -74,11 +74,12 @@ body a{
   display: inline-block;
 	vertical-align: middle;
 	margin-right: 40px;
+	float: right;
 }
 
 #logo a:hover{ opacity: 0.8;}
 
-#logo #name{margin-right: 200px;}
+#logo #name{float: left;}
 
 #logo h1{
 	margin: 0px;
@@ -309,7 +310,7 @@ nav a{
 	width: 200px; /* 220 - 20 padding */
 	float: left;
 	padding: 45px 10px 20px 10px;
-	margin-top: -58px;
+	margin-top: -38px;
 	margin-bottom: 40px;
 	-webkit-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
 	-moz-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
@@ -466,7 +467,7 @@ nav a{
 /* MAIN ------------------------------------------------------------*/
 
 #main{
-	padding-top: 40px;
+	padding-top: 20px;
 	background: url(../img/oblique-lines.png) repeat-x;
 	margin-bottom: 60px;
 }
@@ -743,7 +744,8 @@ nav a{
 #posts-list .page-heading,
 .fullwidth-content .page-heading,
 .floated-content .page-heading{
-	margin-bottom: 20px;
+	margin-top: 0;
+	margin-bottom: 30px;
 	font-size: 35px;
 	font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
 }
@@ -919,7 +921,7 @@ article .meta .author{
 	float: right;
 	width: 260px; /* 300 - 40 padding */
 	min-height: 275px;
-	margin-top: -58px;
+	margin-top: -38px;
 	padding: 70px 20px 20px 20px;;
 	
 	-webkit-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
