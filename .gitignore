@@ -1,2 +1,7 @@
 /tmp
 /output
+/crash.log
+/static/img/2013
+/content/blog/*
+/lib/FencedCodeBlock.rb
+/demo.rb

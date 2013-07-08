@@ -2,13 +2,14 @@ include Nanoc::Helpers::Rendering
 include Nanoc::Helpers::Blogging
 include Nanoc::Helpers::Tagging
 include Nanoc::Helpers::LinkTo
+include Nanoc::Toolbox::Helpers::Disqus
 
 #dates helper
 def url_for_date(year, month)
   if month.nil?
-    "/blog/#{year}.html"
+    "blog/#{year}.html"
   else
-    "/blog/#{year}/#{'%02d' % month}.html"
+    "blog/#{year}/#{'%02d' % month}.html"
   end
 end
 
@@ -43,7 +44,7 @@ end
 
 #tags helper
 def url_for_tag(tag)
-  "/blog/tags/#{tag}.html"
+  "blog/tags/#{tag}.html"
 end
 
 def tags_for_article(article)

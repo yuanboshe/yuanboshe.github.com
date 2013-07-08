@@ -7,6 +7,27 @@
 
 /* GENERAL ------------------------------------------------------------*/
 
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
+	font-weight: 400;
+	line-height: 1em;
+	margin: 0.5em 0px;
+}
+
+h1{ font-size: 48px; }
+
+h2{ font-size: 36px; }
+
+h3{ font-size: 24px; }
+
+h4{ font-size: 21px; }
+
+h5{ font-size: 18px; }
+
+h6{ font-size: 14px; }
+
+p{ line-height: 1.3em; margin: 0.6em 0px; }
+
 article, aside, canvas, figure, figure img, figcaption, hgroup,
 footer, header, nav, section, audio, video {
 	display: block;
@@ -45,40 +66,28 @@ body a{
 
 #logo {
 	padding-top: 10px;
-	margin-bottom: -5px;
+	padding-left: 20px;
 }
 
 #logo a{
   display: inline-block;
 	vertical-align: middle;
 	margin-right: 40px;
+	float: right;
 }
 
 #logo a:hover{ opacity: 0.8;}
 
-#logo #name{margin-right: 220px;}
-#logo h1{	color: #aaa;}
+#logo #name{float: left;}
 
-h1,h2,h3,h4,h5,h6{
-	font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
-	font-weight: 400;
+#logo h1{
+	margin: 0px;
+	color: #aaa;
 }
-
-h1{ font-size: 48px;}
-
-h2{ font-size: 36px; }
-
-h3{ font-size: 24px; }
-
-h4{ font-size: 21px; }
-
-h5{ font-size: 18px; }
-
-h6{ font-size: 14px; }
 
 #main,
 footer,
-aside{ line-height: 1.5em; }
+aside{ line-height: 1.2em; }
 
 
 .wrapper {
@@ -192,11 +201,11 @@ nav{
 	height: 30px;
 }
 
-
 nav a{
 	text-decoration: none;
 }
 
+#nav{ padding-left: 20px; }
 #nav li{
 	margin-right: 20px;
 }
@@ -211,13 +220,10 @@ nav a{
 	text-shadow: 2px 2px 0px rgba(0, 0, 0, .6);
 }
 
-
 #nav>li.current-menu-item>a,
 #nav>li.current_page_item>a{
 	border-bottom: solid #ebebe8 5px;
 }
-
-
 
 /* sub navigation -----------------------------------------------------*/
 
@@ -303,7 +309,7 @@ nav a{
 	width: 200px; /* 220 - 20 padding */
 	float: left;
 	padding: 45px 10px 20px 10px;
-	margin-top: -58px;
+	margin-top: -38px;
 	margin-bottom: 40px;
 	-webkit-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
 	-moz-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
@@ -460,7 +466,7 @@ nav a{
 /* MAIN ------------------------------------------------------------*/
 
 #main{
-	padding-top: 40px;
+	padding-top: 20px;
 	background: url(../img/oblique-lines.png) repeat-x;
 	margin-bottom: 60px;
 }
@@ -737,22 +743,23 @@ nav a{
 #posts-list .page-heading,
 .fullwidth-content .page-heading,
 .floated-content .page-heading{
-	margin-bottom: 20px;
+	margin-top: 0;
+	margin-bottom: 30px;
 	font-size: 35px;
 	font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
 }
 
 #posts-list article{
 	position: relative;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 #posts-list .feature-image,
 #post-content .feature-image{
-	width: 540px;
-	margin-bottom: 21px;
+	float: left;
+	width: 180px;
+	margin: 0 10px 5px 0;
 	line-height: 0em;
-	
 	-webkit-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
 	-moz-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
 	-o-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
@@ -777,6 +784,11 @@ nav a{
 	line-height: 1.0em;
 }
 
+article .post-heading a {
+	font-size: 120%;
+	text-shadow: rgba(135,145,135,0.65) 3px 3px 3px;
+}
+
 #posts-list .excerpt,
 #posts-list .read-more{
 	display: block;
@@ -785,28 +797,32 @@ nav a{
 article .meta div{
 	padding: 10px 10px 10px 30px;
 	float: left;
-	max-width: 170px;
 }
 
 article .meta .comments{
 	border-left: 1px solid #cecece;	
 	border-right: 1px solid #cecece;
 	background: url(../img/icon-comments.png) no-repeat;
+	max-width: 90px;
 }
 
-article .meta .date{
+article .meta .author{
 	background: url(../img/icon-user.png) no-repeat;
+	max-width: 180px;
 }
 
 article .meta .tags{
 	background: url(../img/icon-tags.png) no-repeat;
+	max-width: 300px;
 }
 
 article .meta .tags,
 article .meta .comments,
-article .meta .date{
+article .meta .author{
 	background-position: 5px 12px;	
 }
+
+#disqus_thread { padding-top: 20px; }
 
 /* SINGLE ------------------------------------------------------------*/
 
@@ -818,6 +834,7 @@ article .meta .date{
 	margin-bottom: 50px;	
 }
 
+.post-content a{ color: blue; }
 /* PAGE NAVIGATION ------------------------------------------------------------*/
 
 .page-navigation{
@@ -904,7 +921,7 @@ article .meta .date{
 	float: right;
 	width: 260px; /* 300 - 40 padding */
 	min-height: 275px;
-	margin-top: -58px;
+	margin-top: -38px;
 	padding: 70px 20px 20px 20px;;
 	
 	-webkit-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
@@ -964,5 +981,3 @@ footer .wrapper,
 	width: 50%;
 	float: right;
 }
-
-

@@ -34,7 +34,12 @@ end
 
 # For blog articles
 compile /\/blog\/\d{4}\/\d{2}\/.+\// do
-  filter :kramdown
+  if !item[:filter].nil? && item[:filter] == "kramdown"
+    filter :erb
+    filter :kramdown 
+  else
+    filter :erb
+  end
   layout 'article'
 end
 
@@ -56,19 +61,20 @@ compile '/blog/tags/*' do
   layout 'tag'
 end
 
+# For about region
+compile '/about/*' do
+  filter :erb
+  layout 'about'
+end
+
 compile '*' do
   if item.binary?
     # don’t filter binary items
   else
-    puts item.identifier
     filter :erb
     layout 'default'
   end
 end
-
-
-
-
 
 route '/home/' do
   '/index.html'

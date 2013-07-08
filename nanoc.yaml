@@ -58,6 +58,7 @@ data_sources:
     # it will become “/about.html/” instead.
     allow_periods_in_identifiers: false
     
+    encoding: utf-8
   -
     type: static
 

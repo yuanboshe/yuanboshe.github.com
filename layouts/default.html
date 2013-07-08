@@ -2,27 +2,22 @@
 <html class="no-js">
 <head>
     <meta charset="utf-8" />
-    <title><%= @item[:title] %></title>
+    <title><%= @item[:title] %> | Yuanbo She</title>
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
-    <base href="http://yuanboshe.github.io/" />
+    <base href="<%= false ? "http://yuanboshe.github.io/" : "http://localhost:3000/" %>" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
     <!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-    <link rel="stylesheet" media="all" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 
     <!-- JS -->
-    <script src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/jquery-1.6.4.min.js"></script>
     <script src="js/css3-mediaqueries.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/tabs.js"></script>
-
-    <!-- Tweet -->
-    <link rel="stylesheet" href="css/jquery.tweet.css" media="all" />
-    <script src="js/tweet/jquery.tweet.js"></script>
-    <!-- ENDS Tweet -->
 
     <!-- superfish -->
     <link rel="stylesheet" media="screen" href="css/superfish.css" />
@@ -32,8 +27,8 @@
     <!-- ENDS superfish -->
 
     <!-- prettyPhoto -->
-    <script src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
     <link rel="stylesheet" href="js/prettyPhoto/css/prettyPhoto.css" media="screen" />
+    <script src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
     <!-- ENDS prettyPhoto -->
 
     <!-- poshytip -->
@@ -41,9 +36,6 @@
     <link rel="stylesheet" href="js/poshytip-1.1/src/tip-yellowsimple/tip-yellowsimple.css" />
     <script src="js/poshytip-1.1/src/jquery.poshytip.min.js"></script>
     <!-- ENDS poshytip -->
-
-    <!-- GOOGLE FONTS -->
-    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300' rel='stylesheet' type='text/css'>
 
     <!-- Flex Slider -->
     <link rel="stylesheet" href="css/flexslider.css">
@@ -58,6 +50,11 @@
 
     <!-- SKIN -->
     <link rel="stylesheet" media="all" href="css/skin.css" />
+    <link rel="stylesheet" media="all" href="css/style.css" />
+    <link rel="stylesheet" media="all" href="css/code.css" />
+
+    <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300' rel='stylesheet' type='text/css'>
 
     <!-- reply move form -->
     <script src="js/moveform.js"></script>
@@ -130,7 +127,7 @@
         </div>
 
         <div class="wrapper">
-            <div id="logo">
+            <div id="logo" class="clearfix">
                 <a href="index.html" id="name"><h1>Yuanbo She</h1></a>
                 <a href="http://blog.exbot.net"><img src="img/logo.png" alt="ExBot's Blog"></a>
                 <a href="http://lamda.nju.edu.cn"><img src="img/lamda.png" alt="Lamda Lab"></a>
@@ -166,7 +163,9 @@
     <!-- ENDS MAIN -->
 
     <footer>
-        <div class="wrapper" style="display:none">
+        <div class="wrapper">
+
+            <div style="display:none">
             <ul class="widget-cols clearfix">
                 <li class="first-col">
                     <div class="widget-block">
@@ -217,10 +216,14 @@
                     </div>
                 </li>
             </ul>
+            </div>
 
             <div class="footer-bottom">
-                <div class="left">Powered by Nanoc Luiszuno ...</div>
-                <div class="right">
+                <div class="left">
+                    <script src="http://s19.cnzz.com/stat.php?id=5460084&web_id=5460084&show=pic" language="JavaScript"></script>
+                    Powered by Nanoc Luiszuno ...
+                </div>
+                <div class="right" style="display: none">
                     <ul id="social-bar">
                         <li><a href="" title="Become a fan" class="poshytip">
                             <img src="img/social/facebook.png" alt="Facebook" /></a></li>
