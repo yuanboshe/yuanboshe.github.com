@@ -1,14 +1,13 @@
 /* Import other css */
 @import url('reset.css');
 @import url('social.css');
-@import url('comments.css');
 @import url('widgets.css');
 
 
 /* GENERAL ------------------------------------------------------------*/
 
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
+	font-family: 'Yanone Kaffeesatz', '\5FAE\8F6F\96C5\9ED1', Arial, sans-serif;
 	font-weight: 400;
 	line-height: 1em;
 	margin: 0.5em 0px;
@@ -51,7 +50,7 @@ footer, header, nav, section, audio, video {
 }
 
 body{
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: Helvetica, '\5FAE\8F6F\96C5\9ED1', Arial, sans-serif;
 	font-size: 13px;
 }
 
@@ -67,7 +66,6 @@ body a{
 #logo {
 	padding-top: 10px;
 	padding-left: 20px;
-	margin-bottom: -5px;
 }
 
 #logo a{
@@ -198,7 +196,6 @@ aside{
 
 
 nav{
-	margin-top: 0px;
 	height: 30px;
 }
 
@@ -212,7 +209,7 @@ nav a{
 }
 
 #nav>li>a{
-	font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
+	font-family: 'Yanone Kaffeesatz', '\5FAE\8F6F\96C5\9ED1', Arial, sans-serif;
 	font-size: 18px;
 	font-weight: 300;
 	display: block;
@@ -747,7 +744,7 @@ nav a{
 	margin-top: 0;
 	margin-bottom: 30px;
 	font-size: 35px;
-	font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
+	font-family: 'Yanone Kaffeesatz', '\5FAE\8F6F\96C5\9ED1', Arial, sans-serif;
 }
 
 #posts-list article{
@@ -757,10 +754,10 @@ nav a{
 
 #posts-list .feature-image,
 #post-content .feature-image{
-	width: 540px;
-	margin-bottom: 21px;
+	float: left;
+	width: 180px;
+	margin: 0 10px 5px 0;
 	line-height: 0em;
-	
 	-webkit-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
 	-moz-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
 	-o-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
@@ -786,7 +783,7 @@ nav a{
 }
 
 article .post-heading a {
-	font-size: 150%;
+	font-size: 120%;
 	text-shadow: rgba(135,145,135,0.65) 3px 3px 3px;
 }
 
@@ -834,7 +831,6 @@ article .meta .author{
 .single-post .meta{
 	margin-bottom: 50px;	
 }
-
 /* PAGE NAVIGATION ------------------------------------------------------------*/
 
 .page-navigation{
