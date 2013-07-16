@@ -2,9 +2,9 @@
 <html class="no-js">
 <head>
     <meta charset="utf-8" />
-    <title>合作项目：带深度摄像头的WIFI小车 | Yuanbo She</title>
+    <title>进度表 | Yuanbo She</title>
     <meta name="generator" content="nanoc 3.6.4">
-    <base href="http://yuanboshe.github.io" />
+    <base href="http://localhost:3000" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
     <!--[if lt IE 9]>
@@ -166,104 +166,107 @@
     
     <h2 class="page-heading"><span>Article</span></h2>
 <article class="format-standard">
-    <h2 class="post-heading"><a href="blog/2013/06/depth_wifi_project.html">合作项目：带深度摄像头的WIFI小车</a></h2>
+    <h2 class="post-heading"><a href="blog/2013/07/wifi_project_plan.html">进度表</a></h2>
     <div class="post-content markdown">
-        <h3 id="wifi">带深度摄像头的WIFI小车</h3>
-
-<p>Why WIFI？<br />
-可以让小车尽可能小，以及方便与外界通讯，用于远程访问。</p>
-
-<p>Why depth camera？<br />
-可以运行当前流行的视觉算法，用于识别物体，人物，手势等，Depth camera是未来camera产品的标配。</p>
+        <p>进度表实时更新，请再下方留言。</p>
 
 <!-- more -->
 
-<h3 id="section">项目范围，功能需求及初步规划</h3>
+<p>A1. DepthCamera信号录入，BaseDepth</p>
 
-<h4 id="section-1">初步框架</h4>
+<blockquote>
+  <p>任务描述：解决深度摄像头驱动问题<br />
+设备需求：pcDuino + 深度摄像头</p>
+</blockquote>
 
-<p>小车端搭载一块miniPC板（初定位PcDuino），加上WIFI模块与计算机通信。miniPC与深度摄像头（初定为SoftKinetic DS325小型近距离深度摄像头）连接，采集深度图像。miniPC直接或间接（连Arduino）读取传感器信息，连接4直流2舵机驱动板控制小车电机。PC端和小车的miniPC端运行ROS，作为ROS节点互相通信，在有能力处理相关图像语音算法的节点中运行对应的包。</p>
+<p>A2. 小车控制，BaseControl</p>
 
-<h4 id="section-2">计算机方面：</h4>
+<blockquote>
+  <p>任务描述：读取编码盘信息，PID协调好各个轮子速差，封装出控制函数。<br />
+设备需求：pcDuino or Arduino + 小车底盘。</p>
+</blockquote>
 
-<ol>
-  <li>基本通讯与控制：ROS。</li>
-  <li>语音控制及双向语音：讯飞语音，ROS语音包。</li>
-  <li>人脸识别：Opencv，ROS相关包，深度摄像头SDK。</li>
-  <li>行人跟踪：Opencv，ROS相关包，深度摄像头SDK。</li>
-  <li>智能避障：Opencv，ROS相关包。</li>
-</ol>
+<p>A3. 云台控制，BasePTZ</p>
 
-<h4 id="section-3">电子控制方面：</h4>
+<blockquote>
+  <p>任务描述：控制二自由度云台，均为180度舵机<br />
+设备需求：pcDuino or Arduino + 二自由度云台。</p>
+</blockquote>
 
-<ol>
-  <li>网络传输部分：PC能够与小车WIFI互联，从小车的深度摄像头得到带深度信息的视频。miniPC(PcDuino or MK802) + depth camera(SoftKinetic DS325 or Kinect)</li>
-  <li>小车控制部分：读取编码盘信息，PID协调好各个轮子速差，封装出控制函数p(linear, rotation), 参数为线速度和角速度。miniPC or Arduino</li>
-  <li>云台控制部分：控制二自由度云台。</li>
-  <li>传感器输入和预处理部分：5个超声波测距传感器（前，左前，右前，左，右），一个6轴陀螺仪加速度传感器，双向语音输入输出。</li>
-</ol>
+<p>A4. 超声波传感器，BaseSonar</p>
 
-<h4 id="section-4">机械方面：</h4>
+<blockquote>
+  <p>任务描述：5个超市波测距传感器（前，左前，右前，左，右）的检测<br />
+设备需求：pcDuino or Arduino + 超声波传感器。</p>
+</blockquote>
 
-<ol>
-  <li>结构加工和改装。</li>
-</ol>
+<p>A5. 6轴陀螺仪加速度传感器，BaseGyro</p>
 
-<h3 id="section-5">合作形式</h3>
+<blockquote>
+  <p>任务描述：6轴陀螺仪加速度传感器的信号获取<br />
+设备需求：pcDuino or Arduino + 6轴陀螺仪加速度传感器</p>
+</blockquote>
 
-<p>所有对该项目感兴趣的团体和个人均可以参与进来，所有成果（在作者同意的前提下）均会被开源，任何参与者均可将公开的成果用于任何目的。若因此项目而获利，建议给予有杰出贡献的参与者适当奖励。在项目结束时，会在项目的开源页面及相关介绍页面为贡献者建立荣誉榜。</p>
+<p>A6. 双向语音，BaseVoice</p>
 
-<p>ExBot对参与者提供全套技术支持，但不提供任何资金和物资支持；ExBot会保证最后成品的组装，以及编写详细教程，参与者可以自行购买配件自行组装。</p>
+<blockquote>
+  <p>任务描述：给出语音信号的输出和输入接口<br />
+设备需求：pcDuino + 声音检测模块 + 蜂鸣器模块</p>
+</blockquote>
 
-<h3 id="section-6">主物料清单</h3>
+<p>A7. ROS封装，…</p>
 
-<p>PcDuino 318元：MiniPC，可接WIFI模块，虽然贵，但接口比较全，不用自己折腾。
-http://item.taobao.com/item.htm?spm=a230r.1.14.3.7gbDgG&amp;id=19067455821&amp;_u=c10nmj00a13</p>
+<blockquote>
+  <p>任务描述：将上述所有类封装为ROS节点<br />
+设备需求：懂ROS</p>
+</blockquote>
 
-<p>pcDuino USB WIFI Dongle 90元：贵，没办法，不会自己山寨。
-http://item.taobao.com/item.htm?spm=a1z10.3.w17-17962994778.27.jtJAqK&amp;id=17401854256&amp;_u=c10nmj00737</p>
+<p>B1. 语音控制</p>
 
-<p>pcDuino Buzzer Module 14元：喇叭模块，贵，但是带个pcDuino的名字。
-http://item.taobao.com/item.htm?spm=a1z10.3.w1017-2517068736.48.FfBSJM&amp;id=18258169318&amp;</p>
+<blockquote>
+  <p>任务描述：处理语音输入，转换为对应控制信号（命令表待定）<br />
+需求：懂语音识别，能在Ubuntu内实现封装</p>
+</blockquote>
 
-<p>pcDuino 麦克风模块 28元：贵…
-http://item.taobao.com/item.htm?spm=a1z10.3.w1017-2517068736.17.Q60ImG&amp;id=18263073283&amp;</p>
+<p>B2. 行人跟踪</p>
 
-<p>Arduino 4WD 小车底盘 180元：载重好，配编码盘。
-http://item.taobao.com/item.htm?spm=a1z0k.1000775.2.93.79odHn&amp;id=16336994608&amp;_u=c10nmj0c799</p>
+<blockquote>
+  <p>任务描述：识别移动物体，跟踪人形物体<br />
+需求：懂机器视觉，会用Opencv或其他工具实现，有(深度)摄像头</p>
+</blockquote>
 
-<p>4直流2舵机驱动板 22元：L293D，允许电流不高，没试过不知道行不行。
-http://item.taobao.com/item.htm?spm=a1z10.3.w1017-2416603378.33.4gnehw&amp;id=18227255377&amp;</p>
+<p>B3. 智能避障</p>
 
-<p>LM2596S 超小 DC-DC 可调电源 降压模块 5元。
-http://item.taobao.com/item.htm?spm=a1z10.3.w1017-769202153.12.SDQElb&amp;id=17603188074&amp;</p>
+<blockquote>
+  <p>任务描述：识别可移动区域及障碍物<br />
+需求：懂机器视觉，会用Opencv或其他工具实现，有(深度)摄像头</p>
+</blockquote>
 
-<p>MPU-6050模块 三轴加速度 陀螺仪6DOF模块 15元：太便宜了吧，不知道靠谱不。
-http://item.taobao.com/item.htm?spm=a1z0d.1.1000638.298.K8Q87a&amp;id=19029796461</p>
+<p>B4. 人脸识别</p>
 
-<p>HC-SR04超声波模块 6元：又是便宜货。
-http://item.taobao.com/item.htm?spm=a1z0d.1.1000638.179.K8Q87a&amp;id=3125174163</p>
+<blockquote>
+  <p>任务描述：能够识别人脸，最好能从不同的人脸中区分人脸（要求有点高了）<br />
+需求：懂机器视觉，会用Opencv或其他工具实现，有(深度)摄像头</p>
+</blockquote>
 
-<p>二自由度云台+MG995舵机 80元。
-http://item.taobao.com/item.htm?spm=a1z10.5.w4002-2663785205.78.Oawbio&amp;id=16424041732</p>
+<p>B5. ROS通讯</p>
 
-<p>BG711 7.4V 4200MAH 25C 聚合物锂电池 95元。
-http://item.taobao.com/item.htm?spm=a1z10.3.w4002-2663783095.45.jvUPaq&amp;id=17085165043</p>
+<blockquote>
+  <p>任务描述：建立pcDuino与PC通讯的桥梁<br />
+需求：懂ROS</p>
+</blockquote>
 
-<p>7.4V-11.1V 2S/3S锂电池平衡充电器+适配器 38元。
-http://item.taobao.com/item.htm?spm=a1z10.3.w4002-2663783095.12.hNu6Sf&amp;id=15841360614</p>
-
-<p>贴出淘宝链接也许不妥，仅供参考吧…</p>
-
-<h3 id="section-7">最后</h3>
-
-<p>上面的一切都只是初步框架，任何地方都可以讨论修订，欢迎各位专家提出修改建议！</p>
+<p>所有代码请封装为C++类，先实现核心，接口再商量。
+A1~A6主要涉及底层，有pcDuino的尽量在pcDuino里面跑跑。
+A7涉及ROS标准sensor message及service-client，publisher-subscriber选择问题。
+B1~B4尽量用Opencv，mrpt等ROS里面有的工具包，或者能在ubuntu里面用的工具包。
+B5范围太大了，将A部分和B部分的工作结合。</p>
 					
     </div>
     <div class="meta">
-    <div class="author"> Yuanbo She @ 2013 Jul, 13</div>
+    <div class="author">  @ 2013 Jul, 16</div>
     <div class="comments"> 0 comments </div>
-    <div class="tags"><a href="blog/tags/合作项目.html">合作项目</a></div>
+    <div class="tags"><a href="blog/tags/wifi project.html">wifi project</a></div>
 </div>
 
 
@@ -390,11 +393,12 @@ http://item.taobao.com/item.htm?spm=a1z10.3.w4002-2663783095.12.hNu6Sf&amp;id=15
     </div>
 </article>
 
+<!--
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'yuanboshe'; // required: replace example with your forum shortname
-    var disqus_identifier = "/blog/2013/06/depth_wifi_project/";
+    var disqus_identifier = "/blog/2013/07/wifi_project_plan/";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function () {
@@ -405,6 +409,17 @@ http://item.taobao.com/item.htm?spm=a1z10.3.w4002-2663783095.12.hNu6Sf&amp;id=15
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    -->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript">
+    var uyan_config = {
+        'su': '/blog/2013/07/wifi_project_plan/'
+    };
+</script>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
+<!-- UY END -->
 
 
 </div>
@@ -417,7 +432,7 @@ http://item.taobao.com/item.htm?spm=a1z10.3.w4002-2663783095.12.hNu6Sf&amp;id=15
             <h4>TAGS</h4>
             <ul>
                 
-                <li class="cat-item"><a href="blog/tags/合作项目.html" title="合作项目">合作项目</a></li>
+                <li class="cat-item"><a href="blog/tags/wifi project.html" title="wifi project">Wifi project</a></li>
                 
                 <li class="cat-item"><a href="blog/tags/Rovio.html" title="Rovio">Rovio</a></li>
                 
@@ -429,11 +444,11 @@ http://item.taobao.com/item.htm?spm=a1z10.3.w4002-2663783095.12.hNu6Sf&amp;id=15
             <h4>DATES</h4>
             <ul>
                 
-                <li><a href="blog/2013.html" title="Blog posts from 2013">2013 (2)</a></li>
+                <li><a href="blog/2013.html" title="Blog posts from 2013">2013 (3)</a></li>
                     
                     <ul>
                     
-                        <li class="cat-item"><a href="blog/2013/07.html" title="Blog posts from July 2013">07 (1)</a></li>
+                        <li class="cat-item"><a href="blog/2013/07.html" title="Blog posts from July 2013">07 (2)</a></li>
                     
                         <li class="cat-item"><a href="blog/2013/06.html" title="Blog posts from June 2013">06 (1)</a></li>
                     
