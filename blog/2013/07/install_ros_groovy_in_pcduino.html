@@ -174,70 +174,7 @@
 
 <!-- more -->
 
-<h4 id="section">配置更新源</h4>
-
-<blockquote>
-  <p>sudo sh -c ‘echo “deb http://packages.ros.org/ahendrix-mirror/ubuntu precise main” &gt; /etc/apt/sources.list.d/ros-latest.list’</p>
-</blockquote>
-
-<h4 id="section-1">设置秘钥</h4>
-
-<pre><code>wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
-</code></pre>
-
-<h4 id="section-2">更新软件</h4>
-
-<blockquote>
-  <p>sudo apt-get update</p>
-</blockquote>
-
-<p>应该会出现一个错误（20130531版Lubuntu）：</p>
-
-<blockquote>
-  <p>W: Conflicting distribution: http://www.wiimu.com pcduino Release (expected pcduino but got )</p>
-</blockquote>
-
-<p>可以直接把对应源注释掉：
-用LeafPad编辑器打开/etc/apt/sources.list</p>
-
-<blockquote>
-  <p>sudo leafpad /etc/apt/sources.list</p>
-</blockquote>
-
-<p>注释掉http://www.wiimu.com对应的两行</p>
-
-<p>保存后再用<code>sudo apt-get update</code>更新。应该可以更新完毕</p>
-
-<h4 id="ros">安装ROS</h4>
-
-<p>安装适合自己的配置，我这里装基本包：</p>
-
-<blockquote>
-  <p>sudo apt-get install ros-groovy-ros-base</p>
-</blockquote>
-
-<p>可以用<code>apt-cache search ros-groovy</code>查看还有哪些包可以装。</p>
-
-<h4 id="rosdep">初始化rosdep</h4>
-
-<blockquote>
-  <p>sudo apt-get install python-rosdep
-sudo rosdep init
-rosdep update</p>
-</blockquote>
-
-<h4 id="rosterminal">设置ROS随Terminal启动运行</h4>
-
-<blockquote>
-  <p>echo “source /opt/ros/groovy/setup.bash” » ~/.bashrc
-source ~/.bashrc</p>
-</blockquote>
-
-<h4 id="section-3">授权</h4>
-
-<p>此时运行<code>roscore</code>应该能看到ROS正在运行。</p>
-
-<p>不授权则会出现如下错误：</p>
+<p>不要使用root用户，而是切换到Ubuntu用户执行以下过程。否则在普通用户下执行<code>roscore</code>可能会出现如下Error：</p>
 
 <pre><code>ubuntu@ubuntu:~$ roscore
 Traceback (most recent call last):
@@ -248,7 +185,83 @@ Traceback (most recent call last):
 IOError: [Errno 28] No space left on device
 </code></pre>
 
-<p>tobe continue …</p>
+<h4 id="section">配置更新源</h4>
+
+<pre><code>sudo sh -c 'echo "deb http://packages.ros.org/ahendrix-mirror/ubuntu precise main" &gt; /etc/apt/sources.list.d/ros-latest.list'
+</code></pre>
+
+<h4 id="section-1">设置秘钥</h4>
+
+<pre><code>wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+</code></pre>
+
+<h4 id="section-2">更新软件</h4>
+
+<pre><code>sudo apt-get update
+</code></pre>
+
+<p>应该会出现一个错误（20130531版Lubuntu）：</p>
+
+<blockquote>
+  <p>W: Conflicting distribution: http://www.wiimu.com pcduino Release (expected pcduino but got )</p>
+</blockquote>
+
+<p>可以直接把对应源注释掉：
+用LeafPad编辑器打开/etc/apt/sources.list</p>
+
+<pre><code>sudo leafpad /etc/apt/sources.list
+</code></pre>
+
+<p>注释掉http://www.wiimu.com对应的两行</p>
+
+<p>保存后再用<code>sudo apt-get update</code>更新。应该可以更新完毕</p>
+
+<h4 id="ros">安装ROS</h4>
+
+<p>安装适合自己的配置，我这里装基本包：</p>
+
+<pre><code>sudo apt-get install ros-groovy-ros-base
+</code></pre>
+
+<p>可以用<code>apt-cache search ros-groovy</code>查看还有哪些包可以装。</p>
+
+<h4 id="rosdep">初始化rosdep</h4>
+
+<pre><code>sudo apt-get install python-rosdep  
+sudo rosdep init  
+rosdep update
+</code></pre>
+
+<h4 id="rosterminal">设置ROS随Terminal启动运行</h4>
+
+<pre><code>echo "source /opt/ros/groovy/setup.bash" &gt;&gt; ~/.bashrc  
+source ~/.bashrc
+</code></pre>
+
+<h4 id="section-3">测试</h4>
+
+<p>此时运行<code>roscore</code>应该能看到ROS master正常运行消息：</p>
+
+<pre><code>started roslaunch server http://ubuntu:37709/
+ros_comm version 1.9.44
+
+SUMMARY
+========
+
+PARAMETERS
+ * /rosdistro
+ * /rosversion
+
+NODES
+
+auto-starting new master
+process[master]: started with pid [3734]
+ROS_MASTER_URI=http://ubuntu:11311/
+
+setting /run_id to 5956b562-f670-11de-8ea2-26eb04d6389b
+process[rosout-1]: started with pid [3747]
+started core service [/rosout]
+</code></pre>
 					
     </div>
     <div class="meta">
