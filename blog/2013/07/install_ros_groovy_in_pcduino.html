@@ -176,14 +176,17 @@
 
 <p>不要使用root用户，而是切换到Ubuntu用户执行以下过程。否则在普通用户下执行<code>roscore</code>可能会出现如下Error：</p>
 
-<pre><code>ubuntu@ubuntu:~$ roscore
-Traceback (most recent call last):
-  File "/opt/ros/groovy/lib/python2.7/dist-packages/roslaunch/__init__.py", line 230, in main
-    write_pid_file(options.pid_fn, options.core, options.port)
-  File "/opt/ros/groovy/lib/python2.7/dist-packages/roslaunch/__init__.py", line 107, in write_pid_file
-    f.write(str(os.getpid()))
-IOError: [Errno 28] No space left on device
-</code></pre>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>ubuntu@ubuntu:~$ roscore
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>Traceback (most recent call last):
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>  File &quot;/opt/ros/groovy/lib/python2.7/dist-packages/roslaunch/__init__.py&quot;, line 230, in main
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>    write_pid_file(options.pid_fn, options.core, options.port)
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>  File &quot;/opt/ros/groovy/lib/python2.7/dist-packages/roslaunch/__init__.py&quot;, line 107, in write_pid_file
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>    f.write(str(os.getpid()))
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>IOError: [Errno 28] No space left on device
+</pre></div>
+</div>
+</div>
 
 <h4 id="section">配置更新源</h4>
 
@@ -212,7 +215,9 @@ IOError: [Errno 28] No space left on device
 <pre><code>sudo leafpad /etc/apt/sources.list
 </code></pre>
 
-<p>注释掉http://www.wiimu.com对应的两行</p>
+<p>注释掉http://www.wiimu.com对应的两行如图：</p>
+
+<p><img src="img/2013/07/install_ros_groovy_in_pcduino/modify.jpg" alt="" /></p>
 
 <p>保存后再用<code>sudo apt-get update</code>更新。应该可以更新完毕</p>
 
@@ -242,26 +247,29 @@ source ~/.bashrc
 
 <p>此时运行<code>roscore</code>应该能看到ROS master正常运行消息：</p>
 
-<pre><code>started roslaunch server http://ubuntu:37709/
-ros_comm version 1.9.44
-
-SUMMARY
-========
-
-PARAMETERS
- * /rosdistro
- * /rosversion
-
-NODES
-
-auto-starting new master
-process[master]: started with pid [3734]
-ROS_MASTER_URI=http://ubuntu:11311/
-
-setting /run_id to 5956b562-f670-11de-8ea2-26eb04d6389b
-process[rosout-1]: started with pid [3747]
-started core service [/rosout]
-</code></pre>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>started roslaunch server http://ubuntu:37709/
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>ros_comm version 1.9.44
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>SUMMARY
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>========
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>PARAMETERS
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span> * /rosdistro
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span> * /rosversion
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>NODES
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>auto-starting new master
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>process[master]: started with pid [3734]
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>ROS_MASTER_URI=http://ubuntu:11311/
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>setting /run_id to 5956b562-f670-11de-8ea2-26eb04d6389b
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>process[rosout-1]: started with pid [3747]
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>started core service [/rosout]
+</pre></div>
+</div>
+</div>
 					
     </div>
     <div class="meta">
