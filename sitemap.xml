@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yuanboshe.github.io//about.html</loc>
+    <loc>http://yuanboshe.github.io/about.html</loc>
     <lastmod>2013-07-08</lastmod>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//blog.html</loc>
+    <loc>http://yuanboshe.github.io/blog.html</loc>
     <lastmod>2013-06-19</lastmod>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//blog/2013.html</loc>
+    <loc>http://yuanboshe.github.io/blog/2013.html</loc>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//blog/2013/06.html</loc>
+    <loc>http://yuanboshe.github.io/blog/2013/06.html</loc>
   </url>
   <url>
     <loc>http://yuanboshe.github.io/blog/2013/06/aquarium_scheme.html</loc>
@@ -23,7 +23,7 @@
     <lastmod>2013-06-21</lastmod>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//blog/2013/07.html</loc>
+    <loc>http://yuanboshe.github.io/blog/2013/07.html</loc>
   </url>
   <url>
     <loc>http://yuanboshe.github.io/blog/2013/07/depth_wifi_project.html</loc>
@@ -46,36 +46,36 @@
     <lastmod>2013-07-21</lastmod>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//blog/tags/Ros.html</loc>
+    <loc>http://yuanboshe.github.io/blog/tags/Ros.html</loc>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//blog/tags/Rovio.html</loc>
+    <loc>http://yuanboshe.github.io/blog/tags/Rovio.html</loc>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//blog/tags/pcDuino.html</loc>
+    <loc>http://yuanboshe.github.io/blog/tags/pcDuino.html</loc>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//</loc>
+    <loc>http://yuanboshe.github.io/</loc>
     <lastmod>2013-07-08</lastmod>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//news.html</loc>
+    <loc>http://yuanboshe.github.io/news.html</loc>
     <lastmod>2013-07-08</lastmod>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//sitemap.xml</loc>
+    <loc>http://yuanboshe.github.io/sitemap.xml</loc>
     <lastmod>2013-07-22</lastmod>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//test.html</loc>
+    <loc>http://yuanboshe.github.io/test.html</loc>
     <lastmod>2013-07-10</lastmod>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//works.html</loc>
+    <loc>http://yuanboshe.github.io/works.html</loc>
     <lastmod>2013-07-08</lastmod>
   </url>
   <url>
-    <loc>http://yuanboshe.github.io//works/project.html</loc>
+    <loc>http://yuanboshe.github.io/works/project.html</loc>
     <lastmod>2013-07-08</lastmod>
   </url>
 </urlset>
