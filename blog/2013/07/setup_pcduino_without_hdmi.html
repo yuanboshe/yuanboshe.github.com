@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
     <meta charset="utf-8" />
-    <title>PcDuino入手设置流程（无HDMI视频线有USB转串口） | Yuanbo She</title>
+    <title>PcDuino入手设置流程（无HDMI视频线有USB-TTL） | Yuanbo She</title>
     <meta name="generator" content="nanoc 3.6.4">
     <base href="http://yuanboshe.github.io" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -166,11 +166,11 @@
     
     <h2 class="page-heading"><span>Article</span></h2>
 <article class="format-standard">
-    <h2 class="post-heading"><a href="blog/2013/07/setup_pcduino_without_hdmi.html">PcDuino入手设置流程（无HDMI视频线有USB转串口）</a></h2>
+    <h2 class="post-heading"><a href="blog/2013/07/setup_pcduino_without_hdmi.html">PcDuino入手设置流程（无HDMI视频线有USB-TTL）</a></h2>
     <div class="post-content markdown">
         <p>做带depth camera的WIFI小车，考察了几种主流miniPC——pcDuino，MK802，Cubieboard，Raspberry pi，最终选择了pcDuino<a href="http://www.pcduino.com/">官网介绍</a>。</p>
 
-<p>入手配件如下：pcDuino + microUSB数据线 + WIFI Dongle + USB转TTL模块。当时没买HDMI视频线，遇到网络故障VNC远程不到pcDuino就麻烦了，后来补了一根，还在路上。实践证明，最小配置应该包含如下配件：pcDuino + microUSB线（我用的手机电源和配套的microUSB线） + USB转串口模块配线 + HDMI线 + 笔记本。</p>
+<p>入手配件如下：pcDuino + microUSB数据线 + WIFI Dongle + USB转TTL模块。当时没买HDMI视频线，遇到网络故障VNC远程不到pcDuino就麻烦了，后来补了一根，还在路上。实践证明，最小配置应该包含如下配件：pcDuino + microUSB线（我用的手机电源和配套的microUSB线） + USB转TTL模块配线 + HDMI线 + 笔记本。</p>
 
 <!-- more -->
 
@@ -183,11 +183,11 @@ pcDuino是目前配置最好的miniPC开发板之一，SPARKFUN出品，用miniP
 
 <p>要把pcDuino跑起来，做起码得有输入输出设备。<br />
 对pcDuino来说，有以下几种输入输出方式：
-1. 直接USB转串口，将pcDuino与PC连接，用PuTTY或其他串口工具调试。优点是pcDuino端不需要任何设置，即插即用；缺点是只能通过命令行调试。
-2. 用网线连接pcDuino，PC端用VNC远程访问pcDuino。优点是远程访问图形界面，省下了显示器鼠标键盘；缺点是pcDuino端先要开启vncserver服务，需要做少许配置，而且网络故障就烦人了。（当然，如果有交叉网线，应该也可以双机直连）
+1. 直接USB-TTL，将pcDuino与PC连接，用PuTTY或其他串口工具调试。优点是pcDuino端不需要任何设置，即插即用；缺点是只能通过命令行调试。
+2. 用网线连接pcDuino，PC端用VNC远程访问pcDuino。优点是远程访问图形界面，省下了显示器鼠标键盘；缺点是pcDuino端先要设置x11vnc，而且网络故障就烦人了。（当然，如果有交叉网线，应该也可以双机直连）
 3. 用HDMI视频线，将pcDuino接到显示器上，插上USB键盘直接当PC用。这是最可靠的方案了。</p>
 
-<p>手里没有HDMI视频线，只能用1,2方案结合来弄了。先用USB转串口连上pcDuino，用PuTTY开启vncserver，查看pcDuino IP，然后PC端用VNC Viewer访问。</p>
+<p>手里没有HDMI视频线，只能用1,2方案结合来弄了。先用USB-TTL连上pcDuino，用PuTTY设置x11vnc，查看pcDuino IP，然后PC端用VNC Viewer访问。</p>
 
 <h3 id="step1lubuntu">step1：刷Lubuntu</h3>
 
@@ -201,9 +201,9 @@ pcDuino是目前配置最好的miniPC开发板之一，SPARKFUN出品，用miniP
 1. pcDuino上面有两个miniUSB口，一个是Power口，一个是OTG。刷Kernel的时候不用给Power口供电，只用数据线连接OTG口就行了，否则刷不了。刷Ubuntu的时候，要重启pcDuino（有个白色的RESET按钮，按一下就行），插入SD卡后注意观察串口指示灯RX TX两等的变化，来判断是否刷好。<br />
 2. 如果用win32diskimager将Lubuntu刷如SD卡，需下载0.8版<a href="http://sourceforge.net/projects/win32diskimager/files/?source=navbar">下载</a>，我的系统（Win7x64）用pcDuino官网提供的0.7版，出现了刷不进去的问题。</p>
 
-<h3 id="step2-vncserver">step2: 开启vncserver</h3>
+<h3 id="step2-x11vnc">step2: 设置x11vnc</h3>
 
-<p>目前最新的Lubuntu（20130531）已经安装了VNC，依照以下步骤设置即可。</p>
+<p>目前最新的Lubuntu（20130531）自带x11vnc，依照以下步骤设置即可。</p>
 
 <h4 id="puttypcduino">PuTTY串口连接pcDuino</h4>
 
@@ -211,9 +211,9 @@ pcDuino是目前配置最好的miniPC开发板之一，SPARKFUN出品，用miniP
 
 <p>在用VNC远程访问pcDuino之前，唯一能访问pcDuino的方式就是串口了。使用串口访问，需要用到串口调试工具PuTTY<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">下载</a>。</p>
 
-<p>首先，在PC端安装USB串口驱动。自行Google “usb 串口 驱动”，下载并安装，我的Win7X64用的是PL2303。</p>
+<p>首先，在PC端安装USB串口驱动。根据自己的USB-TTL芯片，下载对应的驱动。我的USB-TTL模块是PL2303芯片，在Win7X64下用PL2303驱动偶尔把系统搞蓝屏，而且后来模块莫名其妙坏了，出现各种莫名其妙的问题。建议用FT232RL，或者CP2102等，现在用FT232一切安好。各驱动下载地址：<a href="http://www.ftdichip.com/Drivers/VCP.htm">FT232</a>,<a href="http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx">CP210x</a></p>
 
-<p>其次，将PC与pcDuino用USB转串口模块连起来，接线方式参考这篇文章的截图<a href="http://www.linksprite.com/cnblog/?p=319">pcDuino入门指南——第二章 Serial Debug Port</a>。接好后能够在设备管理里面看到新增的串口号，记下来（我的是“COM3”）。</p>
+<p>其次，将PC与pcDuino用USB转串口模块连起来，接线方式参考这篇文章的截图<a href="http://www.linksprite.com/cnblog/?p=319">pcDuino入门指南——第二章 Serial Debug Port</a>。接好后能够在设备管理里面看到新增的串口号，记下来（例如我的是“COM3”）。</p>
 
 <p>然后，下载PuTTY，打开，设置为串口工作模式，填入串口号，115200波特率，8n1等参数，即可打开串口调试。</p>
 
@@ -221,7 +221,7 @@ pcDuino是目前配置最好的miniPC开发板之一，SPARKFUN出品，用miniP
 
 <p><em>最好在PuTTY的“Window-&gt;Translation-&gt;Remote character set”里面将字符集设置为<code>UTF-8</code>否则在某些界面可能出现乱码。</em></p>
 
-<h4 id="vncserver">设置vncserver</h4>
+<h4 id="x11vnc">设置x11vnc</h4>
 
 <p>可以参考<a href="http://www.linuxvedio.cn/thread-11385-1-1.html">x11vnc怎么手动启动和随系统自启动</a>，但在这里只需要设置密码一步，系统默认已经设置好开机启动。即只需以下一步：</p>
 
@@ -244,10 +244,13 @@ pcDuino是目前配置最好的miniPC开发板之一，SPARKFUN出品，用miniP
 <h4 id="vnc">用VNC软件远程访问</h4>
 
 <p>下载VNC Viewer<a href="http://www.realvnc.com/download/">下载</a>，打开后只需要输入上面查到的IP，确认，然后输入之前设置的VNC访问密码即可。梦寐以求的Lubuntu界面，终于可以在你的PC上远程显示出来了！</p>
+
+<p><em>注意：</em><br />
+如果VNC Viewer上出现“Connection refused (10061)”的消息，可能是pcDuino没有配置好。用PuTTY连接上pcDuino后，登录，输入<code>sudo board-config.sh</code>进入到系统设置页面。选择“change_screen”选项，回车，然后选择一个屏幕配置选项，并确定。最后TAB键到“Done”选项下，完成退出就可以了。</p>
 					
     </div>
     <div class="meta">
-    <div class="author">  @ 2013 Jul, 18</div>
+    <div class="author"> Yuanbo She @ 2013 Jul, 18</div>
     <div class="comments"> 0 comments </div>
     <div class="tags"><a href="blog/tags/pcDuino.html">pcDuino</a></div>
 </div>
@@ -427,11 +430,11 @@ pcDuino是目前配置最好的miniPC开发板之一，SPARKFUN出品，用miniP
             <h4>DATES</h4>
             <ul>
                 
-                <li><a href="blog/2013.html" title="Blog posts from 2013">2013 (2)</a></li>
+                <li><a href="blog/2013.html" title="Blog posts from 2013">2013 (3)</a></li>
                     
                     <ul>
                     
-                        <li class="cat-item"><a href="blog/2013/07.html" title="Blog posts from July 2013">07 (1)</a></li>
+                        <li class="cat-item"><a href="blog/2013/07.html" title="Blog posts from July 2013">07 (2)</a></li>
                     
                         <li class="cat-item"><a href="blog/2013/06.html" title="Blog posts from June 2013">06 (1)</a></li>
                     
