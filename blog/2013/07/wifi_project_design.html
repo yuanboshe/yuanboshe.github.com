@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
     <meta charset="utf-8" />
-    <title>进度表 | Yuanbo She</title>
+    <title>带深度摄像头的WIFI小车ROS基础Topic (Message) 规范 | Yuanbo She</title>
     <meta name="generator" content="nanoc 3.6.4">
     <base href="http://yuanboshe.github.io" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -166,111 +166,60 @@
     
     <h2 class="page-heading"><span>Article</span></h2>
 <article class="format-standard">
-    <h2 class="post-heading"><a href="blog/2013/07/wifi_project_plan.html">进度表</a></h2>
+    <h2 class="post-heading"><a href="blog/2013/07/wifi_project_design.html">带深度摄像头的WIFI小车ROS基础Topic (Message) 规范</a></h2>
     <div class="post-content markdown">
-        <p>进度表实时更新，请再下方留言。</p>
+        <p>按照ROS比较常用的Topic (Message)来规范了下底层各个传感器的消息格式，做相关模块的同学可以查看对应消息，按照格式进行封装。上层调用者则依据次消息进行调用。以下均为publisher-subscriber调用方式。</p>
 
 <!-- more -->
 
-<p>A1. DepthCamera信号录入，BaseDepth</p>
+<h3 id="message-definition">Message Definition</h3>
 
-<blockquote>
-  <p>任务描述：解决深度摄像头驱动问题<br />
-设备需求：pcDuino + 深度摄像头<br />
-Member: yuanboshe</p>
-</blockquote>
+<p>Topic(Message)格式，Message详细定义请点开链接查看。</p>
 
-<p>A2. 小车控制，BaseControl</p>
+<p><a href="http://www.ros.org/doc/api/sensor_msgs/html/msg/Imu.html">imu_data (sensor_msgs/Imu)</a>：6轴陀螺仪加速度计。</p>
 
-<blockquote>
-  <p>任务描述：读取编码盘信息，PID协调好各个轮子速差，封装出控制函数。<br />
-设备需求：pcDuino or Arduino + 小车底盘。<br />
-Member: top, boa</p>
-</blockquote>
+<p><a href="http://www.ros.org/doc/api/geometry_msgs/html/msg/Twist.html">cmd_vel (geometry_msgs/Twist)</a>：二轮底盘控制。</p>
 
-<p>A3. 云台控制，BasePTZ</p>
+<p>ir_ranges (exbot/Sonar3)：3个超声波传感器。</p>
 
-<blockquote>
-  <p>任务描述：控制二自由度云台，均为180度舵机<br />
-设备需求：pcDuino or Arduino + 二自由度云台。<br />
-Member: boa</p>
-</blockquote>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>std_msgs/Header header
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>sensor_msgs/Range forward #the forward sound sensor
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>sensor_msgs/Range left    #the left sound sensor
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>sensor_msgs/Range right   #the right sound sensor
+</pre></div>
+</div>
+</div>
 
-<p>A4. 超声波传感器，BaseRanges</p>
+<p><a href="http://www.ros.org/doc/api/sensor_msgs/html/msg/Range.html">sensor_msgs/Range</a>：超声波传感器Message格式。</p>
 
-<blockquote>
-  <p>任务描述：3个超声波测距传感器（前，左前，右前）的检测<br />
-设备需求：pcDuino or Arduino + 超声波传感器。  </p>
-</blockquote>
+<p><a href="http://www.ros.org/doc/api/nav_msgs/html/msg/Odometry.html">odom (nav_msgs/Odometry)</a>：控制部分受控后对自身位姿的估计。</p>
 
-<p>A5. 6轴陀螺仪加速度传感器，BaseImu</p>
+<p>joint_states (exbot/Joint2)：2自由度云台状态。</p>
 
-<blockquote>
-  <p>任务描述：6轴陀螺仪加速度传感器的信号获取<br />
-设备需求：pcDuino or Arduino + 6轴陀螺仪加速度传感器</p>
-</blockquote>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>std_msgs/Header header
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>sensor_msgs/JointState horizon  #180度水平舵机
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>sensor_msgs/JointState vertical #180度竖直舵机
+</pre></div>
+</div>
+</div>
 
-<p>A6. 双向语音，BaseVoice</p>
+<p>joint_goal (exbot/Joint2)：2自由度云台控制。</p>
 
-<blockquote>
-  <p>任务描述：给出语音信号的输出和输入接口<br />
-设备需求：pcDuino + 声音检测模块 + 蜂鸣器模块</p>
-</blockquote>
+<p><a href="http://www.ros.org/doc/api/sensor_msgs/html/msg/JointState.html">sensor_msgs/JointState</a>：舵机姿态描述。</p>
 
-<p>A7. ROS封装，…</p>
+<p>depth/image (sensor_msgs/Image)：深度图像，uint16。</p>
 
-<blockquote>
-  <p>任务描述：将上述所有类封装为ROS节点<br />
-设备需求：懂ROS</p>
-</blockquote>
+<p>rgb/image (sensor_msgs/Image)：RGB图像，uint8。</p>
 
-<p>B1. 语音控制</p>
+<p><a href="http://www.ros.org/doc/api/sensor_msgs/html/msg/Image.html">sensor_msgs/Image</a>：深度图像。<a href="http://www.ros.org/doc/api/sensor_msgs/html/namespacesensor__msgs_1_1image__encodings.html">image_encoding</a>：depth设置为<code>TYPE_16SC1 = "16SC1"</code>，RGB设置为<code>TYPE_8SC3 = "8SC3"</code>。</p>
 
-<blockquote>
-  <p>任务描述：处理语音输入，转换为对应控制信号（命令表待定）<br />
-需求：懂语音识别，能在Ubuntu内实现封装<br />
-Member: panpan</p>
-</blockquote>
-
-<p>B2. 行人跟踪</p>
-
-<blockquote>
-  <p>任务描述：识别移动物体，跟踪人形物体<br />
-需求：懂机器视觉，会用Opencv或其他工具实现，有(深度)摄像头<br />
-Member: top</p>
-</blockquote>
-
-<p>B3. 智能避障</p>
-
-<blockquote>
-  <p>任务描述：识别可移动区域及障碍物<br />
-需求：懂机器视觉，会用Opencv或其他工具实现，有(深度)摄像头
-Member: yuanboshe</p>
-</blockquote>
-
-<p>B4. 人脸识别</p>
-
-<blockquote>
-  <p>任务描述：能够识别人脸，最好能从不同的人脸中区分人脸（要求有点高了）<br />
-需求：懂机器视觉，会用Opencv或其他工具实现，有(深度)摄像头</p>
-</blockquote>
-
-<p>B5. ROS通讯</p>
-
-<blockquote>
-  <p>任务描述：建立pcDuino与PC通讯的桥梁<br />
-需求：懂ROS</p>
-</blockquote>
-
-<p>所有代码请封装为C++类，先实现核心，接口再商量。
-A1~A6主要涉及底层，有pcDuino的尽量在pcDuino里面跑跑。
-A7涉及ROS标准sensor message及service-client，publisher-subscriber选择问题。
-B1~B4尽量用Opencv，mrpt等ROS里面有的工具包，或者能在ubuntu里面用的工具包。
-B5范围太大了，将A部分和B部分的工作结合。</p>
+<p><img src="img/2013/07/wifi_project_design/design.jpg" alt="" /></p>
 					
     </div>
     <div class="meta">
-    <div class="author">  @ 2013 Jul, 16</div>
+    <div class="author">  @ 2013 Jul, 22</div>
     <div class="comments"> 0 comments </div>
     <div class="tags"><a href="blog/tags/wifi project.html">wifi project</a></div>
 </div>
@@ -404,7 +353,7 @@ B5范围太大了，将A部分和B部分的工作结合。</p>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'yuanboshe'; // required: replace example with your forum shortname
-    var disqus_identifier = "/blog/2013/07/wifi_project_plan/";
+    var disqus_identifier = "/blog/2013/07/wifi_project_design/";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function () {
@@ -421,7 +370,7 @@ B5范围太大了，将A部分和B部分的工作结合。</p>
 <div id="uyan_frame"></div>
 <script type="text/javascript">
     var uyan_config = {
-        'su': '/blog/2013/07/wifi_project_plan/'
+        'su': '/blog/2013/07/wifi_project_design/'
     };
 </script>
 <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
