@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
     <meta charset="utf-8" />
-    <title>带深度摄像头的WIFI小车ROS基础Topic (Message) 规范 | Yuanbo She</title>
+    <title>intel_ros_project_config | Yuanbo She</title>
     <meta name="generator" content="nanoc 3.6.4">
     <base href="http://yuanboshe.github.io" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -166,62 +166,35 @@
     
     <h2 class="page-heading"><span>Article</span></h2>
 <article class="format-standard">
-    <h2 class="post-heading"><a href="blog/2013/07/wifi_project_design.html">带深度摄像头的WIFI小车ROS基础Topic (Message) 规范</a></h2>
+    <h2 class="post-heading"><a href="blog/2013/08/intel_ros_project_config.html">intel_ros_project_config</a></h2>
     <div class="post-content markdown">
-        <p>按照ROS比较常用的Topic (Message)来规范了下底层各个传感器的消息格式，做相关模块的同学可以查看对应消息，按照格式进行封装。上层调用者则依据次消息进行调用。以下均为publisher-subscriber调用方式。</p>
+        <!-- more -->
 
-<!-- more -->
+<ol>
+  <li>新建控制台应用应用程序intel_ros，取消“预编译头”，“安全开发生命周期(SDL)检查”。</li>
+  <li>视图-&gt;属性管理器，右键“添加现有属性表”，添加intel_ros.props。</li>
+  <li>常规-&gt;平台工具集，改为“v100”。（所有配置）</li>
+  <li>添加代码文件。</li>
+  <li>新建launch文件夹，添加对应的launch文件。</li>
+  <li>新建并编辑manifest.xml</li>
+  <li>启动ros master和此launch文件。</li>
+</ol>
 
-<h3 id="message-definition">Message Definition</h3>
+<p>测试voice_syn:</p>
 
-<p>Topic(Message)格式，Message详细定义请点开链接查看。</p>
-
-<p><a href="http://www.ros.org/doc/api/sensor_msgs/html/msg/Imu.html">imu_data (sensor_msgs/Imu)</a>：6轴陀螺仪加速度计。</p>
-
-<p><a href="http://www.ros.org/doc/api/geometry_msgs/html/msg/Twist.html">cmd_vel (geometry_msgs/Twist)</a>：二轮底盘控制。</p>
-
-<p>ir_ranges (exbot/Sonar3)：3个超声波传感器。</p>
-
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>std_msgs/Header header
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>sensor_msgs/Range front #the front sound sensor
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>sensor_msgs/Range left    #the left sound sensor
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>sensor_msgs/Range right   #the right sound sensor
-</pre></div>
-</div>
-</div>
-
-<p><a href="http://www.ros.org/doc/api/sensor_msgs/html/msg/Range.html">sensor_msgs/Range</a>：超声波传感器Message格式。</p>
-
-<p><a href="http://www.ros.org/doc/api/nav_msgs/html/msg/Odometry.html">odom (nav_msgs/Odometry)</a>：控制部分受控后对自身位姿的估计。</p>
-
-<p>joint_states (exbot/Joint2)：2自由度云台状态。</p>
-
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>std_msgs/Header header
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>sensor_msgs/JointState horizon  #180度水平舵机
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>sensor_msgs/JointState vertical #180度竖直舵机
-</pre></div>
-</div>
-</div>
-
-<p>joint_goal (exbot/Joint2)：2自由度云台控制。</p>
-
-<p><a href="http://www.ros.org/doc/api/sensor_msgs/html/msg/JointState.html">sensor_msgs/JointState</a>：舵机姿态描述。</p>
-
-<p>depth/image (sensor_msgs/Image)：深度图像，uint16。</p>
-
-<p>rgb/image (sensor_msgs/Image)：RGB图像，uint8。</p>
-
-<p><a href="http://www.ros.org/doc/api/sensor_msgs/html/msg/Image.html">sensor_msgs/Image</a>：深度图像。<a href="http://www.ros.org/doc/api/sensor_msgs/html/namespacesensor__msgs_1_1image__encodings.html">image_encoding</a>：depth设置为<code>TYPE_16SC1 = "16SC1"</code>，RGB设置为<code>TYPE_8SC3 = "8SC3"</code>。</p>
-
-<p><img src="img/2013/07/wifi_project_design/design.jpg" alt="" /></p>
+<ol>
+  <li>复制文件</li>
+  <li>项目属性-&gt;ATL的使用，动态链接到ATL</li>
+  <li><code>roslaunch intel_ros voice_synthesis.launch</code></li>
+  <li><code>rostopic pub /voice_syn std_msgs/String "Hello world"</code></li>
+  <li><code>roslaunch intel_ros voice_recognition.launch</code></li>
+</ol>
 					
     </div>
     <div class="meta">
-    <div class="author">  @ 2013 Jul, 22</div>
+    <div class="author">  @ 2013 Aug, 06</div>
     <div class="comments"> 0 comments </div>
-    <div class="tags"><a href="blog/tags/wifi project.html">wifi project</a></div>
+    <div class="tags"></div>
 </div>
 
 
@@ -353,7 +326,7 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'yuanboshe'; // required: replace example with your forum shortname
-    var disqus_identifier = "/blog/2013/07/wifi_project_design/";
+    var disqus_identifier = "/blog/2013/08/intel_ros_project_config/";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function () {
@@ -370,7 +343,7 @@
 <div id="uyan_frame"></div>
 <script type="text/javascript">
     var uyan_config = {
-        'su': '/blog/2013/07/wifi_project_design/'
+        'su': '/blog/2013/08/intel_ros_project_config/'
     };
 </script>
 <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
@@ -399,9 +372,11 @@
             <h4>DATES</h4>
             <ul>
                 
-                <li><a href="blog/2013.html" title="Blog posts from 2013">2013 (3)</a></li>
+                <li><a href="blog/2013.html" title="Blog posts from 2013">2013 (4)</a></li>
                     
                     <ul>
+                    
+                        <li class="cat-item"><a href="blog/2013/08.html" title="Blog posts from August 2013">08 (1)</a></li>
                     
                         <li class="cat-item"><a href="blog/2013/07.html" title="Blog posts from July 2013">07 (2)</a></li>
                     

@@ -170,6 +170,43 @@
     <article class="format-standard">
         
         
+        <h2 class="post-heading"><a href="blog/2013/08/intel_ros_project_config.html">intel_ros_project_config</a></h2>
+        <div class="excerpt"><!-- more -->
+
+<ol>
+  <li>新建控制台应用应用程序intel_ros，取消“预编译头”，“安全开发生命周期(SDL)检查”。</li>
+  <li>视图-&gt;属性管理器，右键“添加现有属性表”，添加intel_ros.props。</li>
+  <li>常规-&gt;平台工具集，改为“v100”。（所有配置）</li>
+  <li>添加代码文件。</li>
+  <li>新建launch文件夹，添加对应的launch文件。</li>
+  <li>新建并编辑manifest.xml</li>
+  <li>启动ros master和此launch文件。</li>
+</ol>
+
+<p>测试voice_syn:</p>
+
+<ol>
+  <li>复制文件</li>
+  <li>项目属性-&gt;ATL的使用，动态链接到ATL</li>
+  <li><code>roslaunch intel_ros voice_synthesis.launch</code></li>
+  <li><code>rostopic pub /voice_syn std_msgs/String "Hello world"</code></li>
+  <li><code>roslaunch intel_ros voice_recognition.launch</code></li>
+</ol>
+</div>
+        <div class="meta">
+    <div class="author">  @ 2013 Aug, 06</div>
+    <div class="comments"> 0 comments </div>
+    <div class="tags"></div>
+</div>
+
+    </article>
+</li>
+
+
+    <li class="article">
+    <article class="format-standard">
+        
+        
         <h2 class="post-heading"><a href="blog/2013/07/install_ros_groovy_in_pcduino.html">在pcDuino内安装ROS Groovy</a></h2>
         <div class="excerpt"><p>在pcDuino上面安装ROS，也许很多人的第一反应是参考树莓派等其他板子机的经验，或者直接编译源码。其实大可不必，ROS大团队当然考虑到了板子机对ROS的需求，已有支持Ubuntu ARM的远程库，官方教程<a href="http://www.ros.org/wiki/groovy/Installation/UbuntuARM">Ubuntu ARM install of ROS Groovy</a>，pcDuino + Lubuntu系统，完美安装ROS。当然还是有点美中不足，这里把流程记录下来。</p>
 
@@ -257,9 +294,11 @@
             <h4>DATES</h4>
             <ul>
                 
-                <li><a href="blog/2013.html" title="Blog posts from 2013">2013 (3)</a></li>
+                <li><a href="blog/2013.html" title="Blog posts from 2013">2013 (4)</a></li>
                     
                     <ul>
+                    
+                        <li class="cat-item"><a href="blog/2013/08.html" title="Blog posts from August 2013">08 (1)</a></li>
                     
                         <li class="cat-item"><a href="blog/2013/07.html" title="Blog posts from July 2013">07 (2)</a></li>
                     
