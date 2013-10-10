@@ -26,6 +26,11 @@ preprocess do
   end
 end
 
+# For sitemap
+compile '/sitemap/' do
+  filter :erb
+end
+
 # For blog list
 compile '/blog/' do
   filter :erb
@@ -36,7 +41,7 @@ end
 compile /\/blog\/\d{4}\/\d{2}\/.+\// do
   if !item[:filter].nil? && item[:filter] == "kramdown"
     filter :erb
-    filter :kramdown 
+    filter :kramdown
   else
     filter :erb
   end
@@ -64,7 +69,18 @@ end
 # For about region
 compile '/about/*' do
   filter :erb
+  filter :kramdown
   layout 'about'
+end
+
+compile '/news/*' do
+  filter :erb
+  layout 'default'
+end
+
+compile '/works/*' do
+  filter :erb
+  layout 'default'
 end
 
 compile '*' do

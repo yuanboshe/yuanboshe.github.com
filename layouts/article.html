@@ -2,7 +2,7 @@
     <h2 class="page-heading"><span>Article</span></h2>
 <article class="format-standard">
     <h2 class="post-heading"><a href="<%= path_url %>"><%= item[:title] %></a></h2>
-    <div class="post-content">
+    <div class="post-content markdown">
         <%= yield %>					
     </div>
     <%= render 'partial/articlemeta', :item => item %>
@@ -130,6 +130,7 @@
     </div>
 </article>
 
+<!--
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -145,5 +146,16 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    -->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript">
+    var uyan_config = {
+        'su': '<%=@item.identifier %>'
+    };
+</script>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
+<!-- UY END -->
 
 <% end %>

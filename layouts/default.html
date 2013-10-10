@@ -2,9 +2,9 @@
 <html class="no-js">
 <head>
     <meta charset="utf-8" />
-    <title><%= @item[:title] %> | Yuanbo She</title>
+    <title><%= @item[:title] %> | <%=@config[:vars][:site_name]%></title>
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
-    <base href="<%= false ? "http://yuanboshe.github.io/" : "http://localhost:3000/" %>" />
+    <base href="<%=@config[:base_url] %>" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
     <!--[if lt IE 9]>
@@ -60,7 +60,7 @@
     <script src="js/moveform.js"></script>
 </head>
 
-<body lang="en">
+<body lang="zh">
     <header class="clearfix">
 
         <div style="display:none">
@@ -128,7 +128,7 @@
 
         <div class="wrapper">
             <div id="logo" class="clearfix">
-                <a href="index.html" id="name"><h1>Yuanbo She</h1></a>
+                <a href="index.html" id="name"><h1><%=@config[:vars][:site_name]%></h1></a>
                 <a href="http://blog.exbot.net"><img src="img/logo.png" alt="ExBot's Blog"></a>
                 <a href="http://lamda.nju.edu.cn"><img src="img/lamda.png" alt="Lamda Lab"></a>
                 <a href="http://www.nju.edu.cn/"><img src="img/nju.png" alt="Nanjing University"></a>
@@ -137,7 +137,10 @@
             <nav>
                 <ul id="nav" class="sf-menu">
                     <li <%= (item.identifier =~ /\A\/home\//) != nil ? 'class="current-menu-item"' : '' %>><a href="index.html">HOME</a></li>
+                    <li <%= (item.identifier =~ /\A\/news\//) != nil ? 'class="current-menu-item"' : '' %>><a href="news.html">NEWS</a></li>
                     <li <%= (item.identifier =~ /\A\/blog\//) != nil ? 'class="current-menu-item"' : '' %>><a href="blog.html">BLOG</a></li>
+                    <li <%= (item.identifier =~ /\A\/works\//) != nil ? 'class="current-menu-item"' : '' %>><a href="works.html">WORKS</a></li>
+                    <li <%= (item.identifier =~ /\A\/about\//) != nil ? 'class="current-menu-item"' : '' %>><a href="about.html">ABOUT</a></li>
                     <!--<li <%= (item.identifier =~ /\A\/page\//) != nil ? 'class="current-menu-item"' : '' %>><a href="page.html">ABOUT</a>
                         <ul>
                             <li><a href="#">Submenu</a></li>
@@ -164,7 +167,6 @@
 
     <footer>
         <div class="wrapper">
-
             <div style="display:none">
             <ul class="widget-cols clearfix">
                 <li class="first-col">

@@ -1,6 +1,6 @@
 # get item's path as url
 def path_url()
-   path = @item.path
+   path = @item.path.dup
    if path[0] == "\/" then path.slice!(0) end
    path
 end
