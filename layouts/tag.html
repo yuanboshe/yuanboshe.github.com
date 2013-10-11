@@ -1,8 +1,0 @@
-<% render 'blog' do %>
-<h2 class="page-heading"><span><%= @item[:title] %>" </span></h2>
-<ul>
-    <% for item in articles_with_tag(@item[:tag]) %>
-        <%= render 'partial/listitem', :item => item %>
-    <% end %>
-</ul>
-<% end %>

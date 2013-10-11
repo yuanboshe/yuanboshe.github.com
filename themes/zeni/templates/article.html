@@ -1,0 +1,14 @@
+{% extends "blog.html" %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block blog_title %}{{ article.title|e }}{% endblock %}
+{% block blog_content %}
+    <article class="format-standard">
+        {% include 'partial/article_info.html' %}
+        <div id="post-content">
+            {{ article.summary }}
+            {{ article.content }}
+        </div>
+    </article>
+
+    {% include "partial/comments.html" %}
+{% endblock %}

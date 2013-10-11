@@ -1,9 +1,0 @@
----
-title: Latest blog posts
----
-<h2 class="page-heading"><span><%= item[:title] %></span></h2>
-<ul>
-    <% sorted_articles[0, 10].each do |article| %>
-    <%= render 'partial/listitem', :item => article %>
-<% end %>
-</ul>
