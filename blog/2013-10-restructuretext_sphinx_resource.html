@@ -3,17 +3,53 @@
 
 <head>
     <meta charset="utf-8">
+<<<<<<< HEAD
     <meta name="description" content="Yuanbo She's blog">
     <meta name="author" content="Yuanbo She">
     <title>reStructuredText + Sphinx的一些学习资源 | Yuanbo She</title>
     <meta name="baidu-site-verification" content="ffaIcavBJ8"/>
     <meta name="ujianVerification" content="e4d1651983db8731b2591d1b93719116"/>
+=======
+    <title>reStructuredText + Sphinx的一些学习资源 | Yuanbo She</title>
+    <meta name="ujianVerification" content="e4d1651983db8731b2591d1b93719116"/>
+    <meta name="description" content="Yuanbo She's blog">
+    <meta name="author" content="Yuanbo She">
+>>>>>>> 97a7f59bf6529f177bee80dfc3e7e25c2a1bb51b
 
     <!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
+<<<<<<< HEAD
+=======
+
+    <!-- superfish -->
+    <link rel="stylesheet" media="screen" href="http://yuanboshe.github.io/theme/css/superfish.css"/>
+    <!-- ENDS superfish -->
+
+    <!-- prettyPhoto -->
+    <link rel="stylesheet" href="http://yuanboshe.github.io/theme/js/prettyPhoto/css/prettyPhoto.css"
+          media="screen"/>
+    <!-- ENDS prettyPhoto -->
+
+    <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300' rel='stylesheet' type='text/css'>
+
+    <!-- Flex Slider -->
+    <link rel="stylesheet" href="http://yuanboshe.github.io/theme/css/flexslider.css">
+    <!-- ENDS Flex Slider -->
+
+    <!-- SKIN -->
+    <link rel="stylesheet" media="all" href="http://yuanboshe.github.io/theme/css/skin.css"/>
+    <link rel="stylesheet" media="all" href="http://yuanboshe.github.io/theme/css/style.css"/>
+    <link rel="stylesheet" media="all" href="http://yuanboshe.github.io/theme/css/code.css"/>
+
+    <!-- icons -->
+    <link rel="shortcut icon" href="http://yuanboshe.github.io/theme/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" media="all" href="http://yuanboshe.github.io/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" media="all" href="http://yuanboshe.github.io/theme/css/pygments.css"/>
+>>>>>>> 97a7f59bf6529f177bee80dfc3e7e25c2a1bb51b
 </head>
 
 <body lang="zh">
@@ -121,7 +157,11 @@ Docutils is an open-source text processing system for processing plaintext docum
 <p><em>Docutils: Documentation Utilities</em> 上面有解释，可以把它看成是Python下的文档处理库，reStructuredText是Docutils项目的一部分，想学reStructuredText去官网（Docutils）没错，里面有详细的上手教程和指令参考等。</p>
 <p><strong>User Documentation</strong> 里面 <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickstart.html">A ReStructuredText Primer</a> 和 <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">Quick reStructuredText</a>
 分别是入门教程和快速参考手册，看完就能写出比较完美的文档了。<a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickstart.txt">text source</a> 是 <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickstart.html">A ReStructuredText Primer</a>
+<<<<<<< HEAD
 的 <tt class="docutils literal">.rst</tt> 格式文档，对照一下能够帮助理解reST各种标记的效果。</p>
+=======
+的``.rst``格式文档，对照一下能够帮助理解reST各种标记的效果。</p>
+>>>>>>> 97a7f59bf6529f177bee80dfc3e7e25c2a1bb51b
 <p><strong>Reference Documentation</strong> 里面的内容可以当成是速查手册，比如需要用到什么指令的时候，可以来这里 <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html">reStructuredText Directives</a></p>
 </div>
 <div class="section" id="id4">
@@ -159,8 +199,13 @@ Sphinx is a tool that makes it easy to create intelligent and beautiful document
 也会在Python解析的时候出现“非utf-8编码”的提示，导致无法对中文进行转换。ReText新版本是Python3.x下的，也许是我的Windows + Python2.7导致的水土不服，也许在Ubuntu下面或者Python3.x下面会
 好些，总之，现在对我来说用处不大了，直接使用PyCharm编辑，虽然没有实时预览的功能，但有高亮提示，转换方便，用起来没什么麻烦的。</p>
 <p><a class="reference external" href="http://sourceforge.net/p/retext/wiki/Windows%20Install%20of%20ReText">ReText Windows安装说明</a> 如果想在Windows下面这条ReText，可以参考这个流程，安装起来比较麻烦，中间也许会遇到一些问题。
+<<<<<<< HEAD
 如无法加载PySide模块的问题，使用 <tt class="docutils literal">easy_install</tt> 可以解决。
 而后也许会遇到 <tt class="docutils literal">error: Unable to find vcvarsall.bat</tt> 的错误，需要先在控制台执行一下 <tt class="docutils literal">SET <span class="pre">VS90COMNTOOLS=%VS110COMNTOOLS%</span></tt> （VS2008对应90，VS2010对应100，VS2012对应110），如果你没有VS2008的编译器就会出现这个问题，
+=======
+如无法加载PySide模块的问题，使用``easy_install``可以解决。
+而后也许会遇到``error: Unable to find vcvarsall.bat``的错误，需要先在控制台执行一下``SET VS90COMNTOOLS=%VS110COMNTOOLS%``（VS2008对应90，VS2010对应100，VS2012对应110），如果你没有VS2008的编译器就会出现这个问题，
+>>>>>>> 97a7f59bf6529f177bee80dfc3e7e25c2a1bb51b
 这条命令的意思是将默认的VS2008的编译器改成使用VS2012的编译器（如果你装了VS2012），参考&lt;<a class="reference external" href="http://stackoverflow.com/questions/2817869/error-unable-to-find-vcvarsall-bat">http://stackoverflow.com/questions/2817869/error-unable-to-find-vcvarsall-bat</a>&gt;。</p>
 </div>
 <div class="section" id="id10">
@@ -214,6 +259,7 @@ Sphinx is a tool that makes it easy to create intelligent and beautiful document
 <!-- UY END -->    </div>
 <aside id="sidebar">
     <ul>
+<<<<<<< HEAD
     <!--
         <li class="block li-0">
             <script>
@@ -230,6 +276,8 @@ Sphinx is a tool that makes it easy to create intelligent and beautiful document
             </script>
             <gcse:search></gcse:search>
         </li> -->
+=======
+>>>>>>> 97a7f59bf6529f177bee80dfc3e7e25c2a1bb51b
         <li class="block li-0">
             <a href="http://yuanboshe.github.io/blog/categories.html" title="Categories">
                 <i class="icon-folder-open icon-large"></i>Categories
@@ -246,10 +294,17 @@ Sphinx is a tool that makes it easy to create intelligent and beautiful document
             <p><a href="http://yuanboshe.github.io/blog/tags.html" title="Tags">
                 <i class="icon-tags icon-large"></i>Tags
             </a></p>
+<<<<<<< HEAD
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
                 <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
+=======
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
+                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+>>>>>>> 97a7f59bf6529f177bee80dfc3e7e25c2a1bb51b
         </li>
         <li class="block li-0">
             <a href="http://yuanboshe.github.io/blog/dates.html" title="Dates">
@@ -288,6 +343,7 @@ Sphinx is a tool that makes it easy to create intelligent and beautiful document
     </div>
 </footer>
 
+<<<<<<< HEAD
 <!-- superfish -->
 <link rel="stylesheet" media="screen" href="http://yuanboshe.github.io/theme/css/superfish.css"/>
 <!-- ENDS superfish -->
@@ -314,6 +370,8 @@ Sphinx is a tool that makes it easy to create intelligent and beautiful document
 <link rel="stylesheet" media="all" href="http://yuanboshe.github.io/theme/css/font-awesome.css"/>
 <link rel="stylesheet" media="all" href="http://yuanboshe.github.io/theme/css/pygments.css"/>
 
+=======
+>>>>>>> 97a7f59bf6529f177bee80dfc3e7e25c2a1bb51b
 <!-- JS -->
 <script src="http://yuanboshe.github.io/theme/js/jquery-1.6.4.min.js"></script>
 <script src="http://yuanboshe.github.io/theme/js/css3-mediaqueries.js"></script>
@@ -358,4 +416,8 @@ Sphinx is a tool that makes it easy to create intelligent and beautiful document
 
 </script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 97a7f59bf6529f177bee80dfc3e7e25c2a1bb51b
