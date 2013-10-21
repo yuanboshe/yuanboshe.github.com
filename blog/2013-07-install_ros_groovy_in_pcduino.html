@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Yuanbo She's blog">
     <meta name="author" content="Yuanbo She">
-    <title>WEB前端 | Yuanbo She</title>
+    <title>在pcDuino内安装ROS Groovy | Yuanbo She</title>
     <meta name="baidu-site-verification" content="ffaIcavBJ8"/>
     <meta name="ujianVerification" content="e4d1651983db8731b2591d1b93719116"/>
 
@@ -44,12 +44,12 @@
                     </li>
                     <li>
                         <a href="http://yuanboshe.github.io/blog/category/ros.html">
-                            <i class="icon-folder-close icon-large"></i>ROS
+                            <i class="icon-folder-open icon-large"></i>ROS
                         </a>
                     </li>
                     <li>
                         <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">
-                            <i class="icon-folder-open icon-large"></i>WEB前端
+                            <i class="icon-folder-close icon-large"></i>WEB前端
                         </a>
                     </li>
             </ul>
@@ -62,20 +62,13 @@
     <div class="wrapper clearfix">
     <!-- post list -->
     <div id="posts-list">
-        <h2 class="page-heading"><span>Category: WEB前端</span></h2>
-        <ul>
-                <li class="article">
-                    <article class="format-standard">
-                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-restructuretext_sphinx_resource.html">reStructuredText + Sphinx的一些学习资源</a></h2>
-
-                        <div class="excerpt"><p class="first last">一些reStructuredText &amp; Sphinx的学习资源，备查。</p>
-</div>
-                        <div class="clearfix"></div>
+        <h2 class="page-heading"><span>在pcDuino内安装ROS Groovy</span></h2>
+    <article class="format-standard">
 <div class="meta">
     <div class="date">
         <i class="icon-calendar icon-large"></i>
-        <abbr class="published" title="2013-10-15T00:00:00">
-            2013-10-15
+        <abbr class="published" title="2013-07-20T00:00:00">
+            2013-07-20
         </abbr>
     </div>
         <div class="author">
@@ -84,49 +77,132 @@
         </div>
     <div class="category">
         <i class="icon-folder-open icon-large"></i>
-        <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">WEB前端</a>
+        <a href="http://yuanboshe.github.io/blog/category/ros.html">ROS</a>
     </div>
         <div class="tags">
             <i class="icon-tag icon-large"></i>
-                <a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a>,
         </div>
-</div>                    </article>
-                    <hr/>
-                </li>
-                <li class="article">
-                    <article class="format-standard">
-                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-select_personal_websit_solution.html">从文档整理看个人web站点方案的选择</a></h2>
+</div>        <div class="post-content">
+            <div class="summary">
+                <p class="first">环境：Windows7 64位。</p>
+<p class="last">在pcDuino上面安装ROS，也许很多人的第一反应是参考树莓派等其他板子机的经验，或者直接编译源码。其实大可不必，ROS大团队当然考虑到了板子机对ROS的需求，已有支持Ubuntu ARM的远程库，
+官方教程 <a class="reference external" href="http://www.ros.org/wiki/groovy/Installation/UbuntuARM">Ubuntu ARM install of ROS Groovy</a> ，pcDuino + Lubuntu系统，完美安装ROS。当然还是有点美中不足，这里把流程记录下来。</p>
 
-                        <div class="excerpt"><p class="first last">搞IT应用技术的人大多喜欢写博客，有搞个人web站点的需求。写博客有很多好处：一是可以帮助自己整理技术细节，遗忘后还能回过头来查阅，整理完就能安心干其他活了；二是可以分享自己的经验给他人，有成就感。干过web开发的人大多有类似的经历：用博客服务商提供的免费博客系统（博客园，CSDN）发布个人博客，用免费或者付费空间（服务器）建立个人web站点，个人站点又分为动态站点（WordPress + VPS...）和静态站点（Nanoc, Pelican + GitHub...)。从开始要写技术博客到现在两年多了，尝试过几种方案，最终决定在GitHub上生根，搭建个人静态站点，而静态站点生成工具选定为Pelican，编辑方式选定为reStructuredText。也许以后还会变，但目前来说这套方案是最符合我的需求的。</p>
+            </div>
+            <div class="section" id="id1">
+<h2>安装流程</h2>
+<p>先确保按照《 <a class="reference external" href="http://yuanboshe.github.io/blog/2013-07-setup_pcduino_for_ros.html">PcDuino入手设置流程（for ROS）</a> 》做好准备工作。
+以pcDuino的默认用户 <tt class="docutils literal">ubuntu</tt> 身份进入Lubuntu系统。打开Terminal，然后依次执行以下流程。</p>
+<div class="section" id="id2">
+<h3>配置更新源</h3>
+<div class="highlight"><pre>sudo sh -c &#39;echo &quot;deb http://packages.ros.org/ahendrix-mirror/ubuntu precise main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#39;
+</pre></div>
 </div>
-                        <div class="clearfix"></div>
-<div class="meta">
-    <div class="date">
-        <i class="icon-calendar icon-large"></i>
-        <abbr class="published" title="2013-10-10T00:00:00">
-            2013-10-10
-        </abbr>
-    </div>
-        <div class="author">
-            <i class="icon-user icon-large"></i>
-            <a href="http://yuanboshe.github.io/about.html">Yuanbo She</a>
+<div class="section" id="id3">
+<h3>设置秘钥</h3>
+<div class="highlight"><pre>wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+</pre></div>
+</div>
+<div class="section" id="id4">
+<h3>更新软件</h3>
+<div class="highlight"><pre>sudo apt-get update
+</pre></div>
+<p>这时可能会出现一个错误（20130531版Lubuntu）：</p>
+<blockquote>
+W: Conflicting distribution: <a class="reference external" href="http://www.wiimu.com">http://www.wiimu.com</a> pcduino Release (expected pcduino but got )</blockquote>
+<p>可以直接把对应源注释掉。方法是用LeafPad编辑器打开/etc/apt/sources.list：</p>
+<div class="highlight"><pre>sudo leafpad /etc/apt/sources.list
+</pre></div>
+<p>注释掉http://www.wiimu.com对应的两行如图：</p>
+<img alt="modify" src="http://yuanboshe.github.io/images/2013-07-20_install_ros_groovy_in_pcduino/modify.jpg" />
+<p>保存后再用 <tt class="docutils literal">sudo <span class="pre">apt-get</span> update</tt> 更新。即可顺利更新完毕。</p>
+</div>
+<div class="section" id="ros">
+<h3>安装ROS</h3>
+<p>ROS目前主要有如下3种配置：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>ros-groovy-ros-base</td>
+<td>Meta package for ros-base variant of ROS.</td>
+</tr>
+<tr><td>ros-groovy-ros-comm</td>
+<td>ROS communications-related packages, including
+core client libraries (roscpp, rospy) and graph
+introspection tools (rostopic, rosnode, rosservice, rosparam).</td>
+</tr>
+<tr><td>ros-groovy-ros-full</td>
+<td>Meta package for ros-full variant of ROS.</td>
+</tr>
+</tbody>
+</table>
+<p>3中配置方案，功能包依次丰富。但ros-groovy-ros-full安装时目前会出现依赖包版本问题：</p>
+<blockquote>
+The following packages have unmet dependencies:
+ros-groovy-ros-full : Depends: ros-groovy-rqt-common-plugins (= 0.2.14-0precise-20130402-0859-+0000) but it is not going to be installed
+E: Unable to correct problems, you have held broken packages.</blockquote>
+<p>ros-groovy-ros-comm 和 ros-groovy-ros-base 能够顺利装完，这里我装的是 ros-groovy-ros-comm：</p>
+<div class="highlight"><pre>sudo apt-get install ros-groovy-ros-comm
+</pre></div>
+<p>可以用 <tt class="docutils literal"><span class="pre">apt-cache</span> search <span class="pre">ros-groovy</span></tt> 命令查看还有哪些包可以装。</p>
+</div>
+<div class="section" id="rosdep">
+<h3>初始化rosdep</h3>
+<div class="highlight"><pre>sudo apt-get install python-rosdep
+sudo rosdep init
+rosdep update
+</pre></div>
+</div>
+<div class="section" id="rosterminal">
+<h3>设置ROS随Terminal启动运行</h3>
+<div class="highlight"><pre>echo &quot;source /opt/ros/groovy/setup.bash&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</pre></div>
+</div>
+<div class="section" id="id5">
+<h3>测试</h3>
+<p>此时运行命令 <tt class="docutils literal">roscore</tt> 应该能看到ROS master正常运行消息：</p>
+<pre class="literal-block">
+started roslaunch server http://ubuntu:37709/
+ros_comm version 1.9.44
+
+SUMMARY
+========
+
+PARAMETERS
+ * /rosdistro
+ * /rosversion
+
+NODES
+
+auto-starting new master
+process[master]: started with pid [3734]
+ROS_MASTER_URI=http://ubuntu:11311/
+
+setting /run_id to 5956b562-f670-11de-8ea2-26eb04d6389b
+process[rosout-1]: started with pid [3747]
+started core service [/rosout]
+</pre>
+</div>
+</div>
+
         </div>
-    <div class="category">
-        <i class="icon-folder-open icon-large"></i>
-        <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">WEB前端</a>
-    </div>
-        <div class="tags">
-            <i class="icon-tag icon-large"></i>
-                <a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/github.html">github</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a>,
-        </div>
-</div>                    </article>
-                    <hr/>
-                </li>
-        </ul>
-    </div>
+    </article>
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript">
+    var uyan_config = {
+        'su': 'blog/2013-07-install_ros_groovy_in_pcduino.html'
+    };
+</script>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
+<!-- UY END -->    </div>
 <aside id="sidebar">
     <ul>
     <!--
@@ -157,12 +233,12 @@
                     </li>
                     <li class="li-1">
                         <a href="http://yuanboshe.github.io/blog/category/ros.html" title="ROS">
-                            <i class="icon-folder-close icon-large"></i>ROS
+                            <i class="icon-folder-open icon-large"></i>ROS
                         </a>
                     </li>
                     <li class="li-1">
                         <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html" title="WEB前端">
-                            <i class="icon-folder-open icon-large"></i>WEB前端
+                            <i class="icon-folder-close icon-large"></i>WEB前端
                         </a>
                     </li>
             </ul>
