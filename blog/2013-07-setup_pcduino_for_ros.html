@@ -165,6 +165,10 @@
 <p>通过桌面上的“LXTerminal”打开终端（Terminal），输入 <tt class="docutils literal">sudo <span class="pre">board-config.sh</span></tt> 打开板子的配置界面，选择“expand_rootfs”，一路确认后退出Board Configuration界面，会提示自动重启信息。
 自动重启后会在resize执行界面停留几分钟，完后再进“Disk Utility”就能看到SD卡上剩余的空间全部并入root分区内了。</p>
 <img alt="Disk Utility" src="http://yuanboshe.github.io/images/2013-07-18_setup_pcduino_for_ros/lubuntu4.jpg" />
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">使用pcDuino的&quot;expand_rootfs&quot;会将SD卡剩下空间全部扩到root分区里面，如果想自定义分区，可以使用Linux下的&quot;GParted&quot;工具划分。但一般也没这个必要吧，所有空间都挂在&quot;/&quot;下，安逸。</p>
+</div>
 </div>
 <div class="section" id="id5">
 <h3><a class="toc-backref" href="#id12">2.5. 联网更新</a></h3>
@@ -234,12 +238,12 @@
             <p><a href="http://yuanboshe.github.io/blog/tags.html" title="Tags">
                 <i class="icon-tags icon-large"></i>Tags
             </a></p>
-                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
                 <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a></span> ,
                 <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
+                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
         </li>
         <li class="block li-0">
             <a href="http://yuanboshe.github.io/blog/dates.html" title="Dates">
