@@ -4,8 +4,10 @@
 {% block blog_content %}
     <article class="format-standard">
         {% include 'partial/article_info.html' %}
-        <div id="post-content">
-            {{ article.summary }}
+        <div class="post-content">
+            <div class="summary">
+                {{ article.summary }}
+            </div>
             {{ article.content }}
         </div>
     </article>

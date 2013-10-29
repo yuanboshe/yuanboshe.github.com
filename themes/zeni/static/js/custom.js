@@ -32,6 +32,14 @@ $.fn.smartFloat = function () {
 jQuery(document).ready(function ($) {
 
     //##########################################
+    // My Code
+    //##########################################
+    $("nav").smartFloat(); // 绑定导航栏浮动
+    $("div.tip p.admonition-title").prepend("<i class='icon-info-sign icon-large' /> ");
+    $("div.note p.admonition-title").prepend("<i class='icon-exclamation-sign icon-large' /> ");
+    $("div.warning p.admonition-title").prepend("<i class='icon-warning-sign icon-large' /> ");
+
+    //##########################################
     // Superfish
     //##########################################
 
@@ -129,11 +137,6 @@ jQuery(document).ready(function ($) {
     $("#comboNav").change(function () {
         location = this.options[this.selectedIndex].value;
     });
-
-    $("nav").smartFloat(); // 绑定导航栏浮动
-    $("div.tip p.first~p").prepend("<i class='icon-info-sign icon-large' />");
-    $("div.note p.last~p").prepend("<i class='icon-exclamation-sign icon-large' />");
-    $("div.warning p.last~p").prepend("<i class='icon-warning-sign icon-large' />");
 
 //close			
 });
