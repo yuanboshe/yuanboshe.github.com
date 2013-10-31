@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Yuanbo She's blog">
     <meta name="author" content="Yuanbo She">
-    <title>reStructuredText | Yuanbo She</title>
+    <title>Kinect | Yuanbo She</title>
     <meta name="baidu-site-verification" content="ffaIcavBJ8"/>
     <meta name="ujianVerification" content="e4d1651983db8731b2591d1b93719116"/>
 
@@ -57,20 +57,24 @@
     <div class="wrapper clearfix">
     <!-- post list -->
     <div id="posts-list">
-        <h2 class="page-heading"><span>Tag: reStructuredText</span></h2>
+        <h2 class="page-heading"><span>Tag: Kinect</span></h2>
         <ul>
                 <li class="article">
                     <article class="format-standard">
-                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-restructuretext_sphinx_resource.html">reStructuredText + Sphinx的一些学习资源</a></h2>
+                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-fix_kinect_xtion_pro_with_3dsensor.html">Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro</a></h2>
 
-                        <div class="excerpt"><p class="first last">一些reStructuredText &amp; Sphinx的学习资源，备查。</p>
+                        <div class="excerpt"><p class="first">忘了是从哪里看来的消息，说ROS里面的openni已经不能用来驱动Kinect和Xtion pro摄像头了，究其原因，说是openni驱动更新出现了问题，而且官方也不再更新了。当前Ubuntu某个摄像头包已经包含了Kinect驱动，新版Xtion pro
+也不能用以前的openni驱动。那么现在的Kinect和Xtion pro用什么驱动呢？经试验，Kinct使用freenect驱动，Xtion pro使用openni2驱动。玩turtlebot免不了使用3dsensor.launch来启动深度摄像头相关的nodes
+但3dsensor.launch里面依旧使用的openni驱动，大部分玩家都是买的现成turtlebot，不明白为什么他们的Kinect还能用得起来而我的Kinect却无法用openni驱动起来，也许是他们没有更新openni包吧。
+对于我这种没钱买turtlebot的，只有自己fix 3dsensor.launch的摄像头驱动问题了。</p>
+<p class="last">环境：ROS groovy + Kinect / Xtion pro</p>
 </div>
                         <div class="clearfix"></div>
 <div class="meta">
     <div class="date">
         <i class="icon-calendar icon-large"></i>
-        <abbr class="published" title="2013-10-15T00:00:00">
-            2013-10-15
+        <abbr class="published" title="2013-10-29T00:00:00">
+            2013-10-29
         </abbr>
     </div>
         <div class="author">
@@ -79,43 +83,14 @@
         </div>
     <div class="category">
         <i class="icon-folder-open icon-large"></i>
-        <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">WEB前端</a>
+        <a href="http://yuanboshe.github.io/blog/category/ros.html">ROS</a>
     </div>
         <div class="tags">
             <i class="icon-tag icon-large"></i>
-                <a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a>,
-        </div>
-</div>                    </article>
-                    <hr/>
-                </li>
-                <li class="article">
-                    <article class="format-standard">
-                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-select_personal_websit_solution.html">从文档整理看个人web站点方案的选择</a></h2>
-
-                        <div class="excerpt"><p class="first last">搞IT应用技术的人大多喜欢写博客，有搞个人web站点的需求。写博客有很多好处：一是可以帮助自己整理技术细节，遗忘后还能回过头来查阅，整理完就能安心干其他活了；二是可以分享自己的经验给他人，有成就感。干过web开发的人大多有类似的经历：用博客服务商提供的免费博客系统（博客园，CSDN）发布个人博客，用免费或者付费空间（服务器）建立个人web站点，个人站点又分为动态站点（WordPress + VPS...）和静态站点（Nanoc, Pelican + GitHub...)。从开始要写技术博客到现在两年多了，尝试过几种方案，最终决定在GitHub上生根，搭建个人静态站点，而静态站点生成工具选定为Pelican，编辑方式选定为reStructuredText。也许以后还会变，但目前来说这套方案是最符合我的需求的。</p>
-</div>
-                        <div class="clearfix"></div>
-<div class="meta">
-    <div class="date">
-        <i class="icon-calendar icon-large"></i>
-        <abbr class="published" title="2013-10-10T00:00:00">
-            2013-10-10
-        </abbr>
-    </div>
-        <div class="author">
-            <i class="icon-user icon-large"></i>
-            <a href="http://yuanboshe.github.io/about.html">Yuanbo She</a>
-        </div>
-    <div class="category">
-        <i class="icon-folder-open icon-large"></i>
-        <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">WEB前端</a>
-    </div>
-        <div class="tags">
-            <i class="icon-tag icon-large"></i>
-                <a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/github.html">github</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/xtion-pro.html">Xtion pro</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/kinect.html">Kinect</a>,
         </div>
 </div>                    </article>
                     <hr/>
