@@ -199,10 +199,10 @@
 <p>机器人技术里软件的发展围绕着一段试图为程序设计创造出一个标准框架的历史，理论上这种框架能以开放共享的方式逐步提高所有机器人的能力。通常从计算标准化的成功中得到启示，在标准框架方面的努力已经在软件开发中获得了很好的实践，并试图将这些成果应用在机器人方面。</p>
 <p>38</p>
 <p>但是，机器人与计算机差距甚远，受制于这个因素，在机器人技术上的这种尝试只取得了部分成功。计算机之间有相似的结构，并使用类似的处理器和零部件。机器人之间在外表上看起来可以很像，但内部结构确实完全不同：例如，一个机器人使用无线电收发器和低成本的处理器，而另外一个使用成熟的计算机和定制的传感器。标准化在这些差异性面前几乎就是矛盾的。但是，这并没有妨碍那些大公司做最大的努力。</p>
-<p>2002年，因特尔公司和其他一些公司首先在开发社区项目上做推进，并着手机器人技术标准化的工作（<a class="reference external" href="http://www.retf.info">http://www.retf.info</a>）。在基于社区的互联网工程任务组（Internet Engineering Task Force：IETF），因特尔是早期的重要参与者，他们的想法是在这个成功模式基础上规范机器人技术。IETF基于兼容，开放，一致性，成功地规范了互联网。通过建立机器人工程任务组（Robotics Engineering Task Force：RETF）来将这些概念引入机器人技术，似乎是合理尝试的第一步，但是，这种尝试在把基于一致性的方法应用于最简单的问题时，就已经困难重重了：例如为机器人零部件编写一系列标准化的规范。机器人技术可不是那么轻易就能定义传感器，马达，处理器的——不是因为努力不够，而是因为一个研究者的马达，毫不夸张地讲就可以是另外一个人的感知器。即使是机器人这个词也太难定义了，标准化似乎也只是一个目标，还没到实现这个目标的时候。</p>
+<p>2002年，英特尔公司和其他一些公司首先在开发社区项目上做推进，并着手机器人技术标准化的工作（<a class="reference external" href="http://www.retf.info">http://www.retf.info</a>）。在基于社区的互联网工程任务组（Internet Engineering Task Force：IETF），英特尔是早期的重要参与者，他们的想法是在这个成功模式基础上规范机器人技术。IETF基于兼容，开放，一致性，成功地规范了互联网。通过建立机器人工程任务组（Robotics Engineering Task Force：RETF）来将这些概念引入机器人技术，似乎是合理尝试的第一步，但是，这种尝试在把基于一致性的方法应用于最简单的问题时，就已经困难重重了：例如为机器人零部件编写一系列标准化的规范。机器人技术可不是那么轻易就能定义传感器，马达，处理器的——不是因为努力不够，而是因为一个研究者的马达，毫不夸张地讲就可以是另外一个人的感知器。即使是机器人这个词也太难定义了，标准化似乎也只是一个目标，还没到实现这个目标的时候。</p>
 <p>39</p>
 <p>跳过硬件上追求一致的目标，微软从2005年开始借助Microsoft Robotics Studio独自标准化机器人技术的编程开发（Jackson 2007）。微软的目标是为机器人技术开发一套唯一的编程接口，这种接口对爱好者，教育工作者，甚至从业人员都是很有价值的。应用目标的多样性迫使微软要同时解决多方面的需求，例如爱好者和教育工作者要求容易上手，研究工作者们要求有如实时控制之类的高性能，还有工业装配机器人之类的商业应用的需求。同时，微软希望支持一种基于服务的架构，以便机器人和机器人进程能够发布和订阅如同人脸追踪，导航，远程控制之类的服务。最后，满足这些消费者差异性的需求，导致最后的产品能够被一部分人使用，但还是没能成为广泛的社区性标准。2005年对于诞生一个这样的标准来说，似乎还是太早了。</p>
-<p>2008年，一个叫Willow Garage的新公司依靠其机器人操作系统（Robot Operating System: ROS）加入了竞争行列。因特尔的OpenCV库由一系列开源的计算机视觉程序组成，它对爱好者，教育工作者，和研究者们在计算机视觉方面的工作影响很大，ROS就是从因特尔公司在先前的十年里在OpenCV上面取得的成功中获取了灵感（Bradski and Kaehler 2008）。选择重要的计算机视觉功能，然后在因特尔的计算机芯片上优化软件使这些功能更好地运行，公司通过这种方式向为终端用户制作应用的那些人递交了高质量的视觉产品（Quigley et al. 2009）。从可以打乒乓球的机器人到能够照下你的脸然后用线条画出来的草图绘制机械臂，纵观计算机实验室和科技博物馆，OpenCV引领了迷人的演示程序的蓬勃发展。Willow Garage希望通过ROS，将移动机器人所要用到的关键技术成功地封装起来，将所有技术打包给用户，这样，用户就能在Willow Garage自己的机器人或者是其他运行ROS的机器人上面使用这些技术了。这些技术包括基本的导航，操控，跟踪移动的物体，人脸识别，以及手势识别，这已经催生了一个由ROS研究者组成的社区性质的亚群体，这些人使用ROS，修改ROS，以及向ROS资源库内添加自己的功能包。</p>
+<p>2008年，一个叫Willow Garage的新公司依靠其机器人操作系统（Robot Operating System: ROS）加入了竞争行列。英特尔的OpenCV库由一系列开源的计算机视觉程序组成，它对爱好者，教育工作者，和研究者们在计算机视觉方面的工作影响很大，ROS就是从英特尔公司在先前的十年里在OpenCV上面取得的成功中获取了灵感（Bradski and Kaehler 2008）。选择重要的计算机视觉功能，然后在英特尔的计算机芯片上优化软件使这些功能更好地运行，公司通过这种方式向为终端用户制作应用的那些人递交了高质量的视觉产品（Quigley et al. 2009）。从可以打乒乓球的机器人到能够照下你的脸然后用线条画出来的草图绘制机械臂，纵观计算机实验室和科技博物馆，OpenCV引领了迷人的演示程序的蓬勃发展。Willow Garage希望通过ROS，将移动机器人所要用到的关键技术成功地封装起来，将所有技术打包给用户，这样，用户就能在Willow Garage自己的机器人或者是其他运行ROS的机器人上面使用这些技术了。这些技术包括基本的导航，操控，跟踪移动的物体，人脸识别，以及手势识别，这已经催生了一个由ROS研究者组成的社区性质的亚群体，这些人使用ROS，修改ROS，以及向ROS资源库内添加自己的功能包。</p>
 <p>40</p>
 <p>当ROS已经很有成效地应用在高端机器人上的时候，智能手机方面在小型低耗机器人技术上也同样有很大的进步。谷歌公司的安卓操作系统提出了一种架构，这种架构允许智能手机直接与机器人通讯，并允许智能手机像小型机器人的决策处理器或者大脑一样运作。在不久的将来，你也许能够建造一个可以与手机通讯的机器人，甚至是通过手机与互联网通讯。你手里的手机甚至可能成为一个控制中心，像蜂后那样，控制你周围的一群低成本机器人。</p>
 <p>过去十年的经验告诉我们，将不会有对所有机器人都适用的大统一的软件架构出现。这个领域的差异性实在是太大了，以至于这种大统一的尝试没有任何意义。然而，在所有机器人都能使用的软件服务里已经出现了重要的进展，并且这种进展的发展速度只增不减。室内导航曾今是机器人技术里主要的研究课题，有一系列会议文章致力于解决如何让机器人不会迷路。现在，整个室内导航工具包常常作为软件服务被那些不需要学习机器人导航理论，却需要搭建能够进行室内地图构建与导航的大学生使用。按照OpenCV和ROS的惯例，越来越多的软件服务将会面向大众，尤其是机器人，将会走的更远并与我们的现实世界做更多的交互。在道路上人群里行走，乘坐电梯并协调出入，做简单的煎蛋，在现在，这些对机器人来说都还是很困难的，但是只要出现合适的硬件设备，软件上的解决方案很快就能以共享的方式开放出来，所有的机器人都能从中受益。</p>
@@ -276,15 +276,15 @@
             <p><a href="http://yuanboshe.github.io/blog/tags.html" title="Tags">
                 <i class="icon-tags icon-large"></i>Tags
             </a></p>
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/kinect.html">Kinect</a></span> ,
-                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
-                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/xtion-pro.html">Xtion pro</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
                 <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
+                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
+                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/xtion-pro.html">Xtion pro</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/kinect.html">Kinect</a></span> ,
         </li>
         <li class="block li-0">
             <a href="http://yuanboshe.github.io/blog/dates.html" title="Dates">
