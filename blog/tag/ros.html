@@ -61,13 +61,168 @@
         <ul>
                 <li class="article">
                     <article class="format-standard">
-                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-fix_kinect_xtion_pro_with_3dsensor.html">Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro</a></h2>
+                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-12-use_xtion_pro_in_ros.html">Use ASUS Xtion pro (no RGB) in ROS</a></h2>
 
-                        <div class="excerpt"><p class="first">忘了是从哪里看来的消息，说ROS里面的openni已经不能用来驱动Kinect和Xtion pro摄像头了，究其原因，说是openni驱动更新出现了问题，而且官方也不再更新了。当前Ubuntu某个摄像头包已经包含了Kinect驱动，新版Xtion pro
-也不能用以前的openni驱动。那么现在的Kinect和Xtion pro用什么驱动呢？经试验，Kinct使用freenect驱动，Xtion pro使用openni2驱动。玩turtlebot免不了使用3dsensor.launch来启动深度摄像头相关的nodes
-但3dsensor.launch里面依旧使用的openni驱动，大部分玩家都是买的现成turtlebot，不明白为什么他们的Kinect还能用得起来而我的Kinect却无法用openni驱动起来，也许是他们没有更新openni包吧。
-对于我这种没钱买turtlebot的，只有自己fix 3dsensor.launch的摄像头驱动问题了。</p>
-<p class="last">环境：ROS groovy + Kinect / Xtion pro</p>
+                        <div class="excerpt"><p class="first">本文介绍如何在turtlebot上应用ASUS Xtion pro (no RGB)，注意Xtion pro (no RGB)和Xtion pro Live (RGB-D)是不同的两款深度摄像头，前者缺少一个RGB摄像头，无色彩信息，而有者是带RGB的深度摄像头。Xtion pro在ROS圈里似乎已经没有什么市场了，网络上没看到有人讨论它在ROS里面的驱动问题。我先前就是把这名字弄混了，一不小心坑别人买了Xtion pro，在这里就解决一下它的驱动问题。</p>
+<p class="last">环境：ROS Hydro，Xtion pro (no RGB)</p>
+</div>
+                        <div class="clearfix"></div>
+<div class="meta">
+    <div class="date">
+        <i class="icon-calendar icon-large"></i>
+        <abbr class="published" title="2013-12-23T00:00:00">
+            2013-12-23
+        </abbr>
+    </div>
+        <div class="author">
+            <i class="icon-user icon-large"></i>
+            <a href="http://yuanboshe.github.io/about.html">Yuanbo She</a>
+        </div>
+    <div class="category">
+        <i class="icon-folder-open icon-large"></i>
+        <a href="http://yuanboshe.github.io/blog/category/ros.html">ROS</a>
+    </div>
+        <div class="tags">
+            <i class="icon-tag icon-large"></i>
+                <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a>,
+        </div>
+</div>                    </article>
+                    <hr/>
+                </li>
+                <li class="article">
+                    <article class="format-standard">
+                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-12-overlay_catkin_and_rosbuild.html">配置ROS工作空间catkin+rosbuild</a></h2>
+
+                        <div class="excerpt"><p class="first">本文通过一系列问题，解释ROS里面node, package, workspace, source setup.bash, build system, overlay等概念。并以最常用的workspace搭配方式，记录如何配置一个catkin和一个rosbuild工作空间，并overlay它们。</p>
+<p class="last">环境：ROS Hydro。</p>
+</div>
+                        <div class="clearfix"></div>
+<div class="meta">
+    <div class="date">
+        <i class="icon-calendar icon-large"></i>
+        <abbr class="published" title="2013-12-20T00:00:00">
+            2013-12-20
+        </abbr>
+    </div>
+        <div class="author">
+            <i class="icon-user icon-large"></i>
+            <a href="http://yuanboshe.github.io/about.html">Yuanbo She</a>
+        </div>
+    <div class="category">
+        <i class="icon-folder-open icon-large"></i>
+        <a href="http://yuanboshe.github.io/blog/category/ros.html">ROS</a>
+    </div>
+        <div class="tags">
+            <i class="icon-tag icon-large"></i>
+                <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
+        </div>
+</div>                    </article>
+                    <hr/>
+                </li>
+                <li class="article">
+                    <article class="format-standard">
+                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-12-use_xtion_pro_live_in_trutlebot.html">给自制Turtlebot装上ASUS Xtion pro Live摄像头</a></h2>
+
+                        <div class="excerpt"><p class="first">在《 <a class="reference external" href="{filename}2013-12-17_run_trutlebot_with_irobot_create.rst">在iRobot Create底盘上跑Turtlebot</a> 》一文中介绍了如何在irobot create底盘上面运行turtlebot，这里介绍如何给自己搭建的简易turtlebot加上ASUS Xtion pro live深度摄像头。《 <a class="reference external" href="{filename}2013-10-29_fix_kinect_xtion_pro_with_3dsensor.rst">Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro Live</a> 》一文介绍了如何在ROS Groovy中解决Kinect和Xtion pro Live驱动的问题，这里是Hydro版本的ROS，过程略有差异。</p>
+<p class="last">环境：Ubuntu 12.04, ROS Hydro.</p>
+</div>
+                        <div class="clearfix"></div>
+<div class="meta">
+    <div class="date">
+        <i class="icon-calendar icon-large"></i>
+        <abbr class="published" title="2013-12-18T00:00:00">
+            2013-12-18
+        </abbr>
+    </div>
+        <div class="author">
+            <i class="icon-user icon-large"></i>
+            <a href="http://yuanboshe.github.io/about.html">Yuanbo She</a>
+        </div>
+    <div class="category">
+        <i class="icon-folder-open icon-large"></i>
+        <a href="http://yuanboshe.github.io/blog/category/ros.html">ROS</a>
+    </div>
+        <div class="tags">
+            <i class="icon-tag icon-large"></i>
+                <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a>,
+        </div>
+</div>                    </article>
+                    <hr/>
+                </li>
+                <li class="article">
+                    <article class="format-standard">
+                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-12-run_trutlebot_with_irobot_create.html">在iRobot Create底盘上跑Turtlebot</a></h2>
+
+                        <div class="excerpt"><p class="first">在iRobot create底盘上面跑turtlebot功能包，其实并不是件困难的事情，只是没有做过研究的人不知道如何下手罢了，本文记录全部流程。</p>
+<p class="last">环境：Ubuntu 12.04, ROS Hydro.</p>
+</div>
+                        <div class="clearfix"></div>
+<div class="meta">
+    <div class="date">
+        <i class="icon-calendar icon-large"></i>
+        <abbr class="published" title="2013-12-17T00:00:00">
+            2013-12-17
+        </abbr>
+    </div>
+        <div class="author">
+            <i class="icon-user icon-large"></i>
+            <a href="http://yuanboshe.github.io/about.html">Yuanbo She</a>
+        </div>
+    <div class="category">
+        <i class="icon-folder-open icon-large"></i>
+        <a href="http://yuanboshe.github.io/blog/category/ros.html">ROS</a>
+    </div>
+        <div class="tags">
+            <i class="icon-tag icon-large"></i>
+                <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a>,
+        </div>
+</div>                    </article>
+                    <hr/>
+                </li>
+                <li class="article">
+                    <article class="format-standard">
+                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-12-prepare_softs_for_turtlebot.html">TurtleBot笔记本端ROS环境配置</a></h2>
+
+                        <div class="excerpt"><p class="first">本文记录了为TurtleBot上的笔记本配置软环境的流程。笔记本操作系统为Windows7，通过虚拟机VMWare安装Ubuntu，在Ubuntu中运行ROS主控。通过虚拟机安装Ubuntu的好处就是Windows和Ubuntu可以共存，有些驱动或者库只有Windows版本（可以通过win_ros将消息转换为ROS标准的消息，与Ubuntu网络互联），也可能你需要使用Windows环境干点别的，与官网的做法对比就是节约了一台PC。当然，缺点就是跑虚拟机要求笔记本配置不至于太过时，内存最好大于4G。</p>
+<p class="last">环境：Windows7 x64, VMWare Workstation 10.0.0, Ubuntu 12.04 i386, ROS Hydro.</p>
+</div>
+                        <div class="clearfix"></div>
+<div class="meta">
+    <div class="date">
+        <i class="icon-calendar icon-large"></i>
+        <abbr class="published" title="2013-12-15T00:00:00">
+            2013-12-15
+        </abbr>
+    </div>
+        <div class="author">
+            <i class="icon-user icon-large"></i>
+            <a href="http://yuanboshe.github.io/about.html">Yuanbo She</a>
+        </div>
+    <div class="category">
+        <i class="icon-folder-open icon-large"></i>
+        <a href="http://yuanboshe.github.io/blog/category/ros.html">ROS</a>
+    </div>
+        <div class="tags">
+            <i class="icon-tag icon-large"></i>
+                <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
+        </div>
+</div>                    </article>
+                    <hr/>
+                </li>
+                <li class="article">
+                    <article class="format-standard">
+                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-fix_kinect_xtion_pro_with_3dsensor.html">Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro Live</a></h2>
+
+                        <div class="excerpt"><p class="first">忘了是从哪里看来的消息，说ROS里面的openni已经不能用来驱动Kinect和Xtion pro Live摄像头了，究其原因，说是openni驱动更新出现了问题，而且官方也不再更新了。当前Ubuntu某个摄像头包已经包含了Kinect驱动，新版Xtion pro Live也不能用以前的openni驱动。那么现在的Kinect和Xtion pro Live用什么驱动呢？经试验，Kinct使用freenect驱动，Xtion pro Live使用openni2驱动。玩turtlebot免不了使用3dsensor.launch来启动深度摄像头相关的nodes但3dsensor.launch里面依旧使用的openni驱动，大部分玩家都是买的现成turtlebot，不明白为什么他们的Kinect还能用得起来而我的Kinect却无法用openni驱动起来，也许是他们没有更新openni包吧。对于我这种没买turtlebot的，只有自己fix 3dsensor.launch的摄像头驱动问题了。</p>
+<p class="last">环境：ROS Groovy + Kinect / Xtion pro Live</p>
 </div>
                         <div class="clearfix"></div>
 <div class="meta">
@@ -89,8 +244,8 @@
             <i class="icon-tag icon-large"></i>
                 <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
                 <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/xtion-pro.html">Xtion pro</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/kinect.html">Kinect</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/kinect.html">kinect</a>,
         </div>
 </div>                    </article>
                     <hr/>
@@ -200,14 +355,14 @@
                 <i class="icon-tags icon-large"></i>Tags
             </a></p>
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
-                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
-                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
-                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/xtion-pro.html">Xtion pro</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/kinect.html">Kinect</a></span> ,
+                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a></span> ,
+                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
+                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/kinect.html">kinect</a></span> ,
+                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a></span> ,
         </li>
         <li class="block li-0">
             <a href="http://yuanboshe.github.io/blog/dates.html" title="Dates">

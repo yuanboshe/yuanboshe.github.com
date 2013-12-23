@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Yuanbo She's blog">
     <meta name="author" content="Yuanbo She">
-    <title>WEB前端 | Yuanbo She</title>
+    <title>Use ASUS Xtion pro (no RGB) in ROS | Yuanbo She</title>
     <meta name="baidu-site-verification" content="ffaIcavBJ8"/>
     <meta name="ujianVerification" content="e4d1651983db8731b2591d1b93719116"/>
 
@@ -39,12 +39,12 @@
                 <li class="divider-vertical"></li>
                     <li>
                         <a href="http://yuanboshe.github.io/blog/category/ros.html">
-                            <i class="icon-folder-close icon-large"></i>ROS
+                            <i class="icon-folder-open icon-large"></i>ROS
                         </a>
                     </li>
                     <li>
                         <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">
-                            <i class="icon-folder-open icon-large"></i>WEB前端
+                            <i class="icon-folder-close icon-large"></i>WEB前端
                         </a>
                     </li>
             </ul>
@@ -57,20 +57,13 @@
     <div class="wrapper clearfix">
     <!-- post list -->
     <div id="posts-list">
-        <h2 class="page-heading"><span>Category: WEB前端</span></h2>
-        <ul>
-                <li class="article">
-                    <article class="format-standard">
-                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-restructuretext_sphinx_resource.html">reStructuredText + Sphinx的一些学习资源</a></h2>
-
-                        <div class="excerpt"><p class="first last">一些reStructuredText &amp; Sphinx的学习资源，备查。</p>
-</div>
-                        <div class="clearfix"></div>
+        <h2 class="page-heading"><span>Use ASUS Xtion pro (no RGB) in ROS</span></h2>
+    <article class="format-standard">
 <div class="meta">
     <div class="date">
         <i class="icon-calendar icon-large"></i>
-        <abbr class="published" title="2013-10-15T00:00:00">
-            2013-10-15
+        <abbr class="published" title="2013-12-23T00:00:00">
+            2013-12-23
         </abbr>
     </div>
         <div class="author">
@@ -79,48 +72,118 @@
         </div>
     <div class="category">
         <i class="icon-folder-open icon-large"></i>
-        <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">WEB前端</a>
+        <a href="http://yuanboshe.github.io/blog/category/ros.html">ROS</a>
     </div>
         <div class="tags">
             <i class="icon-tag icon-large"></i>
-                <a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a>,
         </div>
-</div>                    </article>
-                    <hr/>
-                </li>
-                <li class="article">
-                    <article class="format-standard">
-                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-select_personal_websit_solution.html">从文档整理看个人web站点方案的选择</a></h2>
+</div>        <div class="post-content">
+            <div class="summary">
+                <p class="first">本文介绍如何在turtlebot上应用ASUS Xtion pro (no RGB)，注意Xtion pro (no RGB)和Xtion pro Live (RGB-D)是不同的两款深度摄像头，前者缺少一个RGB摄像头，无色彩信息，而有者是带RGB的深度摄像头。Xtion pro在ROS圈里似乎已经没有什么市场了，网络上没看到有人讨论它在ROS里面的驱动问题。我先前就是把这名字弄混了，一不小心坑别人买了Xtion pro，在这里就解决一下它的驱动问题。</p>
+<p class="last">环境：ROS Hydro，Xtion pro (no RGB)</p>
 
-                        <div class="excerpt"><p class="first last">搞IT应用技术的人大多喜欢写博客，有搞个人web站点的需求。写博客有很多好处：一是可以帮助自己整理技术细节，遗忘后还能回过头来查阅，整理完就能安心干其他活了；二是可以分享自己的经验给他人，有成就感。干过web开发的人大多有类似的经历：用博客服务商提供的免费博客系统（博客园，CSDN）发布个人博客，用免费或者付费空间（服务器）建立个人web站点，个人站点又分为动态站点（WordPress + VPS...）和静态站点（Nanoc, Pelican + GitHub...)。从开始要写技术博客到现在两年多了，尝试过几种方案，最终决定在GitHub上生根，搭建个人静态站点，而静态站点生成工具选定为Pelican，编辑方式选定为reStructuredText。也许以后还会变，但目前来说这套方案是最符合我的需求的。</p>
+            </div>
+            <div class="contents topic" id="id1">
+<p class="topic-title first">目录</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id2" id="id7">前言</a></li>
+<li><a class="reference internal" href="#fix-driver" id="id8">Fix Driver</a><ul>
+<li><a class="reference internal" href="#openni2-launch" id="id9">安装openni2_launch包</a></li>
+<li><a class="reference internal" href="#catkin" id="id10">新建catkin工作空间</a></li>
+<li><a class="reference internal" href="#openni2-camera" id="id11">下载openni2_camera源码</a></li>
+<li><a class="reference internal" href="#id3" id="id12">修改源码</a></li>
+<li><a class="reference internal" href="#id4" id="id13">编译openni2_camera</a></li>
+<li><a class="reference internal" href="#id5" id="id14">测试</a></li>
+</ul>
+</li>
+</ul>
 </div>
-                        <div class="clearfix"></div>
-<div class="meta">
-    <div class="date">
-        <i class="icon-calendar icon-large"></i>
-        <abbr class="published" title="2013-10-10T00:00:00">
-            2013-10-10
-        </abbr>
-    </div>
-        <div class="author">
-            <i class="icon-user icon-large"></i>
-            <a href="http://yuanboshe.github.io/about.html">Yuanbo She</a>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id7">前言</a></h2>
+<p>《 <a class="reference external" href="http://yuanboshe.github.io/blog/2013-10-fix_kinect_xtion_pro_with_3dsensor.html">Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro Live</a> 》一文介绍了如何在Groovy中解决Kinect和Xtion pro Live两款RGB-D摄像头的驱动问题。《 <a class="reference external" href="http://yuanboshe.github.io/blog/2013-12-use_xtion_pro_live_in_trutlebot.html">给自制Turtlebot装上ASUS Xtion pro Live摄像头</a> 》一文介绍了如何在Hydro中解决Xtion pro Live的驱动问题，本文与之类似，在Hydro中解决Xtion pro的驱动问题。</p>
+<p>新版Xtion pro Live需要用openni2作驱动，在ROS里面相关的封装对应两个包： <em>openni2_camera</em> 和 <em>openni2_launch</em>。理论上Xtion pro也可以用 <em>openni2_camera</em> 来驱动，但是实践过程中会出问题。</p>
+</div>
+<div class="section" id="fix-driver">
+<h2><a class="toc-backref" href="#id8">Fix Driver</a></h2>
+<p>首先确保ROS Hydro环境已经配置好。</p>
+<div class="section" id="openni2-launch">
+<h3><a class="toc-backref" href="#id9">安装openni2_launch包</a></h3>
+<p>ROS里openni2驱动的封装包包含两个部分，一个是openni2_camera，另一个是openni2_launch。openni2_camera需要修改源码，因此采用源码编译的方式，而openni2_launch没什么需要编译的源码，直接从远程库拖下来（由于依赖关系，openni2_camera也会被顺带拖下来）。</p>
+<div class="highlight"><pre>sudo apt-get install ros-hydro-openni2-launch
+</pre></div>
+<p>后面的步骤，就是为编译openni2_camera而做的了。</p>
+</div>
+<div class="section" id="catkin">
+<h3><a class="toc-backref" href="#id10">新建catkin工作空间</a></h3>
+<p>如果已经有自己的catkin工作空间则跳过，否则新建catkin工作空间：</p>
+<div class="highlight"><pre>mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src
+catkin_init_workspace
+cd ~/catkin_ws/
+catkin_make
+echo &quot;source ~/catkin_ws/devel/setup.bash&quot; &gt;&gt; ~/.bashrc
+</pre></div>
+<p>对应解释参照《<a class="reference external" href="http://yuanboshe.github.io/blog/2013-12-overlay_catkin_and_rosbuild.html">配置ROS工作空间catkin+rosbuild</a>》。关闭所有的terminal在重新打开，使环境变量生效。</p>
+</div>
+<div class="section" id="openni2-camera">
+<h3><a class="toc-backref" href="#id11">下载openni2_camera源码</a></h3>
+<div class="highlight"><pre>cd ~/catkin_ws/src
+git clone git@github.com:ros-drivers/openni2_camera.git
+</pre></div>
+<p>如果没有安装git，先用 <tt class="docutils literal">sudo <span class="pre">apt-get</span> install git</tt> 命令安装git。然后进入catkin工作空间的包目录下，将openni2_camera的源码下载下来。</p>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id12">修改源码</a></h3>
+<div class="highlight"><pre>cd ~/catkin_ws/src/openni2_camera/src
+gedit openni2_driver.cpp
+</pre></div>
+<p>进入到openni2_camera的源码目录，编辑openni2_driver.cpp文件。找到 <tt class="docutils literal"><span class="pre">OpenNI2Driver::applyConfigToOpenNIDevice()</span></tt> 函数，在其内部找到如下三行：</p>
+<div class="highlight"><pre><span class="n">setIRVideoMode</span><span class="p">(</span><span class="n">ir_video_mode_</span><span class="p">);</span>
+<span class="n">setColorVideoMode</span><span class="p">(</span><span class="n">color_video_mode_</span><span class="p">);</span>
+<span class="n">setDepthVideoMode</span><span class="p">(</span><span class="n">depth_video_mode_</span><span class="p">);</span>
+</pre></div>
+<p>将其替换为：</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">device_</span><span class="o">-&gt;</span><span class="n">hasIRSensor</span><span class="p">())</span> <span class="n">setIRVideoMode</span><span class="p">(</span><span class="n">ir_video_mode_</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">device_</span><span class="o">-&gt;</span><span class="n">hasColorSensor</span><span class="p">())</span> <span class="n">setColorVideoMode</span><span class="p">(</span><span class="n">color_video_mode_</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">device_</span><span class="o">-&gt;</span><span class="n">hasDepthSensor</span><span class="p">())</span> <span class="n">setDepthVideoMode</span><span class="p">(</span><span class="n">depth_video_mode_</span><span class="p">);</span>
+</pre></div>
+<p>保存并退出。</p>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id13">编译openni2_camera</a></h3>
+<div class="highlight"><pre>cd ~/catkin_ws
+catkin_make
+</pre></div>
+<p>进入到catkin工作空间根目录，编译所有包。</p>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id14">测试</a></h3>
+<p>可以直接使用openni2_launch里的文件进行测试。</p>
+<div class="highlight"><pre>roslaunch openni2_launch openni2.launch
+rosrun rqt_image_view rqt_image_view
+</pre></div>
+<p>第一条命令启动openni2.launch脚本，如果没有红色的Error出现，则正常。第二条语句打开ROS图像查看的GUI，在image_view GUI里面选择 <em>/camera/depth/image</em> 就能看到下图所示的深度图像了：</p>
+<img alt="Depth Image" src="http://yuanboshe.github.io/images/2013-12-23_use_xtion_pro_in_ros/depth.jpg" />
+<p>至此，驱动部分已经Fix完成。Xtion pro与Xtion pro Live相比，体积重量等等都一样，只是少了个RGB摄像头，而RGB摄像头对大多数人来说是很重要的。可能是Xtion pro已经被抛弃了吧，导致其驱动问题无人问津。ROS里面 <em>openni2_*</em> 的开发者似乎都没考虑用它来驱动Xtion pro，或许说这就是一个bug。</p>
+<p>将Xtion pro (no RGB)用在turtlebot还会有一些小问题的，如何Fix 3dsensor.launch，参考《 <a class="reference external" href="http://yuanboshe.github.io/blog/2013-12-use_xtion_pro_live_in_trutlebot.html">给自制Turtlebot装上ASUS Xtion pro Live摄像头</a> 》，其他的小问题有待解决，但建议还是直接用Xtion pro Live合算。</p>
+</div>
+</div>
+
         </div>
-    <div class="category">
-        <i class="icon-folder-open icon-large"></i>
-        <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">WEB前端</a>
-    </div>
-        <div class="tags">
-            <i class="icon-tag icon-large"></i>
-                <a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/github.html">github</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a>,
-        </div>
-</div>                    </article>
-                    <hr/>
-                </li>
-        </ul>
+    </article>
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript">
+    var uyan_config = {
+        'su': 'blog/2013-12-use_xtion_pro_in_ros.html'
+    };
+</script>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
+<!-- UY END -->
     </div>
 <aside id="sidebar">
     <ul>
@@ -147,12 +210,12 @@
             <ul>
                     <li class="li-1">
                         <a href="http://yuanboshe.github.io/blog/category/ros.html" title="ROS">
-                            <i class="icon-folder-close icon-large"></i>ROS
+                            <i class="icon-folder-open icon-large"></i>ROS
                         </a>
                     </li>
                     <li class="li-1">
                         <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html" title="WEB前端">
-                            <i class="icon-folder-open icon-large"></i>WEB前端
+                            <i class="icon-folder-close icon-large"></i>WEB前端
                         </a>
                     </li>
             </ul>

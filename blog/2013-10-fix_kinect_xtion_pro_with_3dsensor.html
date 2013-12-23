@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Yuanbo She's blog">
     <meta name="author" content="Yuanbo She">
-    <title>Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro | Yuanbo She</title>
+    <title>Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro Live | Yuanbo She</title>
     <meta name="baidu-site-verification" content="ffaIcavBJ8"/>
     <meta name="ujianVerification" content="e4d1651983db8731b2591d1b93719116"/>
 
@@ -57,7 +57,7 @@
     <div class="wrapper clearfix">
     <!-- post list -->
     <div id="posts-list">
-        <h2 class="page-heading"><span>Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro</span></h2>
+        <h2 class="page-heading"><span>Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro Live</span></h2>
     <article class="format-standard">
 <div class="meta">
     <div class="date">
@@ -78,16 +78,13 @@
             <i class="icon-tag icon-large"></i>
                 <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
                 <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/xtion-pro.html">Xtion pro</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/kinect.html">Kinect</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/kinect.html">kinect</a>,
         </div>
 </div>        <div class="post-content">
             <div class="summary">
-                <p class="first">忘了是从哪里看来的消息，说ROS里面的openni已经不能用来驱动Kinect和Xtion pro摄像头了，究其原因，说是openni驱动更新出现了问题，而且官方也不再更新了。当前Ubuntu某个摄像头包已经包含了Kinect驱动，新版Xtion pro
-也不能用以前的openni驱动。那么现在的Kinect和Xtion pro用什么驱动呢？经试验，Kinct使用freenect驱动，Xtion pro使用openni2驱动。玩turtlebot免不了使用3dsensor.launch来启动深度摄像头相关的nodes
-但3dsensor.launch里面依旧使用的openni驱动，大部分玩家都是买的现成turtlebot，不明白为什么他们的Kinect还能用得起来而我的Kinect却无法用openni驱动起来，也许是他们没有更新openni包吧。
-对于我这种没钱买turtlebot的，只有自己fix 3dsensor.launch的摄像头驱动问题了。</p>
-<p class="last">环境：ROS groovy + Kinect / Xtion pro</p>
+                <p class="first">忘了是从哪里看来的消息，说ROS里面的openni已经不能用来驱动Kinect和Xtion pro Live摄像头了，究其原因，说是openni驱动更新出现了问题，而且官方也不再更新了。当前Ubuntu某个摄像头包已经包含了Kinect驱动，新版Xtion pro Live也不能用以前的openni驱动。那么现在的Kinect和Xtion pro Live用什么驱动呢？经试验，Kinct使用freenect驱动，Xtion pro Live使用openni2驱动。玩turtlebot免不了使用3dsensor.launch来启动深度摄像头相关的nodes但3dsensor.launch里面依旧使用的openni驱动，大部分玩家都是买的现成turtlebot，不明白为什么他们的Kinect还能用得起来而我的Kinect却无法用openni驱动起来，也许是他们没有更新openni包吧。对于我这种没买turtlebot的，只有自己fix 3dsensor.launch的摄像头驱动问题了。</p>
+<p class="last">环境：ROS Groovy + Kinect / Xtion pro Live</p>
 
             </div>
             <div class="contents topic" id="id1">
@@ -99,9 +96,9 @@
 <li><a class="reference internal" href="#id5" id="id14">启动测试</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#xtion-pro" id="id15">Xtion pro</a><ul>
+<li><a class="reference internal" href="#xtion-pro-live" id="id15">Xtion pro Live</a><ul>
 <li><a class="reference internal" href="#id6" id="id16">准备工作</a></li>
-<li><a class="reference internal" href="#fixe-xtion-pro-3dsensor-launch" id="id17">Fixe Xtion pro 3dsensor.launch</a></li>
+<li><a class="reference internal" href="#fix-xtion-pro-live-3dsensor-launch" id="id17">Fix Xtion pro Live 3dsensor.launch</a></li>
 <li><a class="reference internal" href="#id10" id="id18">启动测试</a></li>
 </ul>
 </li>
@@ -159,8 +156,8 @@
 <p>场景中红色点线即为从点云中提取的模拟2D激光雷达的信息。</p>
 </div>
 </div>
-<div class="section" id="xtion-pro">
-<h2><a class="toc-backref" href="#id15">Xtion pro</a></h2>
+<div class="section" id="xtion-pro-live">
+<h2><a class="toc-backref" href="#id15">Xtion pro Live</a></h2>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id16">准备工作</a></h3>
 <p>安装 <tt class="docutils literal">turtlebot</tt> 工具包（refer <a class="citation-reference" href="#turtlebot" id="id7">[turtlebot]</a> ）：</p>
@@ -180,9 +177,9 @@
 <p class="last">如果对 <a class="citation-reference" href="#catkin" id="id9">[catkin]</a> 和 git 不熟悉，还是先预习一下相关知识吧。目前官方的Ubuntu更新源里没有 <tt class="docutils literal">openni2_launch</tt> 包，只能下载源码到自己的catkin workspace里。</p>
 </div>
 </div>
-<div class="section" id="fixe-xtion-pro-3dsensor-launch">
-<h3><a class="toc-backref" href="#id17">Fixe Xtion pro 3dsensor.launch</a></h3>
-<p>Xtion pro的Fix稍微复杂点，进入到3dsensor路径，对其进行编辑：</p>
+<div class="section" id="fix-xtion-pro-live-3dsensor-launch">
+<h3><a class="toc-backref" href="#id17">Fix Xtion pro Live 3dsensor.launch</a></h3>
+<p>Xtion pro Live的Fix稍微复杂点，进入到3dsensor路径，对其进行编辑：</p>
 <div class="highlight"><pre>&gt; roscd turtlebot_bringup/launch/
 &gt; sudo gedit 3dsensor.launch
 </pre></div>
@@ -191,7 +188,7 @@
 <p class="last">可以先用 <tt class="docutils literal">sudo cp 3dsensor.launch 3dsensor_back.launch</tt> 将以前的launch文件备份一份，以防万一。</p>
 </div>
 <p>用下面的内容替换到整个 <tt class="docutils literal">3dsensor.launch</tt> 的内容：</p>
-<div class="highlight"><pre><span class="c">&lt;!-- Modified for Xtion pro camera. Author: yuanboshe --&gt;</span>
+<div class="highlight"><pre><span class="c">&lt;!-- Modified for Xtion pro Live camera. --&gt;</span>
 <span class="nt">&lt;launch&gt;</span>
   <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;camera&quot;</span> <span class="na">default=</span><span class="s">&quot;camera&quot;</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;publish_tf&quot;</span> <span class="na">default=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
@@ -230,8 +227,8 @@
 &gt; roslaunch turtlebot_bringup 3dsensor.launch
 &gt; roslaunch turtlebot_rviz_launchers view_robot.launch
 </pre></div>
-<p>rviz启动后，勾选“DepthCloud”和“LaserScan”，展开“DepthCloud”，选择“Color Image Topic”为“/camera/rgt/image”即可看到深度摄像头利用深度信息重建的3D点云图像，如下图：</p>
-<img alt="Xtion pro 3dsensor" src="http://yuanboshe.github.io/images/2013-10-29_fix_kinect_xtion_pro_with_3dsensor/xtion1.jpg" />
+<p>rviz启动后，勾选“DepthCloud”和“LaserScan”，展开“DepthCloud”，选择“Color Image Topic”为“/camera/rgb/image”即可看到深度摄像头利用深度信息重建的3D点云图像，如下图：</p>
+<img alt="Xtion pro Live 3dsensor" src="http://yuanboshe.github.io/images/2013-10-29_fix_kinect_xtion_pro_with_3dsensor/xtion1.jpg" />
 <p>场景中红色点线即为从点云中提取的模拟2D激光雷达的信息。</p>
 </div>
 </div>
@@ -322,14 +319,14 @@
                 <i class="icon-tags icon-large"></i>Tags
             </a></p>
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
-                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
-                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
-                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/xtion-pro.html">Xtion pro</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/kinect.html">Kinect</a></span> ,
+                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a></span> ,
+                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
+                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/kinect.html">kinect</a></span> ,
+                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a></span> ,
         </li>
         <li class="block li-0">
             <a href="http://yuanboshe.github.io/blog/dates.html" title="Dates">

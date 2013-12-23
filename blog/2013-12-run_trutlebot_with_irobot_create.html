@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Yuanbo She's blog">
     <meta name="author" content="Yuanbo She">
-    <title>WEB前端 | Yuanbo She</title>
+    <title>在iRobot Create底盘上跑Turtlebot | Yuanbo She</title>
     <meta name="baidu-site-verification" content="ffaIcavBJ8"/>
     <meta name="ujianVerification" content="e4d1651983db8731b2591d1b93719116"/>
 
@@ -39,12 +39,12 @@
                 <li class="divider-vertical"></li>
                     <li>
                         <a href="http://yuanboshe.github.io/blog/category/ros.html">
-                            <i class="icon-folder-close icon-large"></i>ROS
+                            <i class="icon-folder-open icon-large"></i>ROS
                         </a>
                     </li>
                     <li>
                         <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">
-                            <i class="icon-folder-open icon-large"></i>WEB前端
+                            <i class="icon-folder-close icon-large"></i>WEB前端
                         </a>
                     </li>
             </ul>
@@ -57,20 +57,13 @@
     <div class="wrapper clearfix">
     <!-- post list -->
     <div id="posts-list">
-        <h2 class="page-heading"><span>Category: WEB前端</span></h2>
-        <ul>
-                <li class="article">
-                    <article class="format-standard">
-                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-restructuretext_sphinx_resource.html">reStructuredText + Sphinx的一些学习资源</a></h2>
-
-                        <div class="excerpt"><p class="first last">一些reStructuredText &amp; Sphinx的学习资源，备查。</p>
-</div>
-                        <div class="clearfix"></div>
+        <h2 class="page-heading"><span>在iRobot Create底盘上跑Turtlebot</span></h2>
+    <article class="format-standard">
 <div class="meta">
     <div class="date">
         <i class="icon-calendar icon-large"></i>
-        <abbr class="published" title="2013-10-15T00:00:00">
-            2013-10-15
+        <abbr class="published" title="2013-12-17T00:00:00">
+            2013-12-17
         </abbr>
     </div>
         <div class="author">
@@ -79,48 +72,124 @@
         </div>
     <div class="category">
         <i class="icon-folder-open icon-large"></i>
-        <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">WEB前端</a>
+        <a href="http://yuanboshe.github.io/blog/category/ros.html">ROS</a>
     </div>
         <div class="tags">
             <i class="icon-tag icon-large"></i>
-                <a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a>,
         </div>
-</div>                    </article>
-                    <hr/>
-                </li>
-                <li class="article">
-                    <article class="format-standard">
-                        <h2 class="post-heading"><a href="http://yuanboshe.github.io/blog/2013-10-select_personal_websit_solution.html">从文档整理看个人web站点方案的选择</a></h2>
+</div>        <div class="post-content">
+            <div class="summary">
+                <p class="first">在iRobot create底盘上面跑turtlebot功能包，其实并不是件困难的事情，只是没有做过研究的人不知道如何下手罢了，本文记录全部流程。</p>
+<p class="last">环境：Ubuntu 12.04, ROS Hydro.</p>
 
-                        <div class="excerpt"><p class="first last">搞IT应用技术的人大多喜欢写博客，有搞个人web站点的需求。写博客有很多好处：一是可以帮助自己整理技术细节，遗忘后还能回过头来查阅，整理完就能安心干其他活了；二是可以分享自己的经验给他人，有成就感。干过web开发的人大多有类似的经历：用博客服务商提供的免费博客系统（博客园，CSDN）发布个人博客，用免费或者付费空间（服务器）建立个人web站点，个人站点又分为动态站点（WordPress + VPS...）和静态站点（Nanoc, Pelican + GitHub...)。从开始要写技术博客到现在两年多了，尝试过几种方案，最终决定在GitHub上生根，搭建个人静态站点，而静态站点生成工具选定为Pelican，编辑方式选定为reStructuredText。也许以后还会变，但目前来说这套方案是最符合我的需求的。</p>
+            </div>
+            <div class="contents topic" id="id1">
+<p class="topic-title first">目录</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id2" id="id5">准备工作</a><ul>
+<li><a class="reference internal" href="#irobot-create" id="id6">配置irobot create 底盘环境变量</a></li>
+<li><a class="reference internal" href="#pc" id="id7">赋予PC访问底盘接口权限</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3" id="id8">运行测试</a><ul>
+<li><a class="reference internal" href="#id4" id="id9">键盘远程控制测试</a></li>
+</ul>
+</li>
+</ul>
 </div>
-                        <div class="clearfix"></div>
-<div class="meta">
-    <div class="date">
-        <i class="icon-calendar icon-large"></i>
-        <abbr class="published" title="2013-10-10T00:00:00">
-            2013-10-10
-        </abbr>
-    </div>
-        <div class="author">
-            <i class="icon-user icon-large"></i>
-            <a href="http://yuanboshe.github.io/about.html">Yuanbo She</a>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id5">准备工作</a></h2>
+<p>首先确保按照《 <a class="reference external" href="http://yuanboshe.github.io/blog/2013-12-prepare_softs_for_turtlebot.html">TurtleBot笔记本端ROS环境配置</a>》一文中的步骤配置好ROS环境，并安装好turtlebot功能包。</p>
+<p>用USB-TTL线将底盘与PC连接，设置虚拟机连接USB设备。下面的一系列操作要在首次测试前执行，以后测试不必执行。</p>
+<div class="section" id="irobot-create">
+<h3><a class="toc-backref" href="#id6">配置irobot create 底盘环境变量</a></h3>
+<p>turtlebot包默认配置是用于kobuki底盘的，直接运行会无法与irobot create底盘通讯，因此要改成irobot create底盘的配置。执行下面的命令，将在用户目录的 <em>.bashrc</em> 文件下添加命令中的脚本语句，随terminal的启动而执行：</p>
+<div class="highlight"><pre>echo &quot;export TURTLEBOT_BASE=create&quot; &gt;&gt; ~/.bashrc
+echo &quot;export TURTLEBOT_STACKS=circles&quot; &gt;&gt; ~/.bashrc
+</pre></div>
+<p>可以设置的变量有如下四个，可以根据自己的需求修改:</p>
+<pre class="literal-block">
+export TURTLEBOT_BASE=create
+export TURTLEBOT_STACKS=circles
+export TURTLEBOT_3D_SENSOR=kinect
+export TURTLEBOT_SIMULATION=false
+</pre>
+<p>重新打开terminal之后，这些变量就会生效。</p>
+</div>
+<div class="section" id="pc">
+<h3><a class="toc-backref" href="#id7">赋予PC访问底盘接口权限</a></h3>
+<p>对于DIY玩家来说，用自己的Ubuntu系统连接irobot create底盘，跑turtlebot的底盘驱动包的时候，会遇到如下Error：</p>
+<blockquote>
+[ERROR] [WallTime: 1383454018.987015] Failed to open port /dev/ttyUSB0.  Please make sure the Create cable is plugged into the computer.</blockquote>
+<p>这时PC无法与底盘通讯，问题的原因很可能是没有将自己的Ubuntu用户加入 <em>dialout</em> 用户组，解决办法如下。</p>
+<p>列出ttyUSB设备：</p>
+<div class="highlight"><pre>ls -l /dev/ttyUSB*
+</pre></div>
+<p>结果可能是这样：</p>
+<blockquote>
+crw-rw---- 1 root dialout 188, 0 Nov  2 10:31 /dev/ttyUSB0</blockquote>
+<p>如果没有 <em>ttyUSB0</em> ，重新插拔一下USB转串口线。</p>
+<p>查看自己的用户组：</p>
+<div class="highlight"><pre>groups
+</pre></div>
+<p>结果可能是这样：</p>
+<blockquote>
+viki adm cdrom sudo dip plugdev lpadmin sambashare</blockquote>
+<p>表示自己的用户不在 <em>dialout</em> 用户组内，通过下面的命令加入（我的用户名是 <em>viki</em> ，需要替换成自己的ubuntu用户名）：</p>
+<div class="highlight"><pre>sudo gpasswd -a viki dialout
+</pre></div>
+<p>重启系统后，设置才会生效。可以通过 <tt class="docutils literal">groups</tt> 命令查看是否添加成功。</p>
+<div class="warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">如果你使用的是 <strong>Ubuntu 13.04</strong> ，<em>Failed to open port /dev/ttyUSB0</em> 的Error还是会存在，表面看似乎是串口权限的问题，其实是turtlebot内部隐藏的一个bug。在Ubuntu 13.04，可能是串口相关软件做了更新，行为与之前的版本不太一样，通过调试发现，在turtlebot的 <em>create_driver</em> package的 <em>create_driver.py</em> 文件的213行，<em>self.ser.open()</em> 处会抛出一段exception，显示 <em>the port is already open</em> 。注释掉这一行，在重启机器后能够正常连接上irobot create底盘，但是当退出连接，尝试重新连接的时候，会出现 <em>Error reading from SCI port. No data.</em> 的Error。暂时还没发现比较好的解决方案，也没有做深入研究。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id8">运行测试</a></h2>
+<p>最简单的turtlebot测试就是键盘控制测试了。</p>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id9">键盘远程控制测试</a></h3>
+<p>启动3个terminal分别运行以下命令：</p>
+<div class="highlight"><pre>roscore
+roslaunch turtlebot_bringup minimal.launch
+roslaunch turtlebot_teleop keyboard_teleop.launch
+</pre></div>
+<p>这3个terminal分别：启动master，启动turtlebot底盘，启动键盘控制。实际上不运行 <tt class="docutils literal">roscore</tt> 也行， <em>minimal.launch</em> 里面会附带运行，但作为ROSer，还是规范点开机就执行 <tt class="docutils literal">roscore</tt> 。</p>
+<p>控制方式在启动 <em>keyboard_teleop.launch</em> 上面的terminal里面有提示:</p>
+<pre class="literal-block">
+Control Your Turtlebot!
+---------------------------
+Moving around:
+   u    i    o
+   j    k    l
+   m    ,    .
+
+q/z : increase/decrease max speeds by 10%
+w/x : increase/decrease only linear speed by 10%
+e/c : increase/decrease only angular speed by 10%
+space key, k : force stop
+anything else : stop smoothly
+</pre>
+<p>例如：键盘按键 <strong>“i”</strong> ”是前进，键盘按键 <strong>“,”</strong> 是后退...</p>
+</div>
+</div>
+
         </div>
-    <div class="category">
-        <i class="icon-folder-open icon-large"></i>
-        <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html">WEB前端</a>
-    </div>
-        <div class="tags">
-            <i class="icon-tag icon-large"></i>
-                <a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/github.html">github</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a>,
-        </div>
-</div>                    </article>
-                    <hr/>
-                </li>
-        </ul>
+    </article>
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript">
+    var uyan_config = {
+        'su': 'blog/2013-12-run_trutlebot_with_irobot_create.html'
+    };
+</script>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
+<!-- UY END -->
     </div>
 <aside id="sidebar">
     <ul>
@@ -147,12 +216,12 @@
             <ul>
                     <li class="li-1">
                         <a href="http://yuanboshe.github.io/blog/category/ros.html" title="ROS">
-                            <i class="icon-folder-close icon-large"></i>ROS
+                            <i class="icon-folder-open icon-large"></i>ROS
                         </a>
                     </li>
                     <li class="li-1">
                         <a href="http://yuanboshe.github.io/blog/category/webqian-duan.html" title="WEB前端">
-                            <i class="icon-folder-open icon-large"></i>WEB前端
+                            <i class="icon-folder-close icon-large"></i>WEB前端
                         </a>
                     </li>
             </ul>
