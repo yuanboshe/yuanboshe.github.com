@@ -61,7 +61,7 @@ TAG_SAVE_AS = 'blog/tag/{slug}.html'
 TAG_URL = 'blog/tag/{slug}.html'
 AUTHOR_SAVE_AS = None
 AUTHORS_SAVE_AS = None
-DIRECT_TEMPLATES = ('index', 'blog/index', 'blog/tags', 'blog/categories', 'blog/dates')
+DIRECT_TEMPLATES = ('index', 'blog/index', 'blog/tags', 'blog/categories', 'blog/dates', '404')
 PAGINATED_DIRECT_TEMPLATES = ('index', 'blog/index')
 #TEMPLATE_PAGES = {'test/home.html': 'books.html',
 #                  'pages/home.html': 'index.html'}
@@ -72,7 +72,20 @@ MENUITEMS = (('Home', 'index.html'),
              ('Blog', 'categories.html'))
 
 PLUGIN_PATH = 'plugins'
-PLUGINS = ['custom', ]
+PLUGINS = ['custom', 'sitemap']
+SITEMAP = {
+    "format": "xml",
+    "priorities": {
+        "articles": 0.9,
+        "indexes": 0.3,
+        "pages": 0.3,
+    },
+    "changefreqs": {
+        "articles": "monthly",
+        "indexes": "daily",
+        "pages": "monthly",
+    }
+}
 
 # include jinja2ex script path
 import os

@@ -104,12 +104,16 @@ pre {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     border-radius: 3px;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
 .highlight pre {
     background: #202020;
     color: #D0D0D0;
     border: none;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
 tt {

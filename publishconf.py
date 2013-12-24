@@ -19,6 +19,6 @@ RELATIVE_URLS = False
 DELETE_OUTPUT_DIRECTORY = False
 
 # Following items are often useful when publishing
-
+COMMENT_SITENAME = "uyan"
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""
