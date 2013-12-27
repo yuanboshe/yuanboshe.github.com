@@ -5,9 +5,16 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://yuanboshe.github.io/index.html</loc>
-<lastmod>2013-12-26T13:12:36-00:00</lastmod>
+<lastmod>2013-12-28T03:00:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://yuanboshe.github.io/blog/2013-12-create_low_cost_turtlebot_in_30mins.html</loc>
+<lastmod>2013-12-25T00:00:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
 </url>
 
 <url>
@@ -82,7 +89,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://yuanboshe.github.io/blog/category/ros.html</loc>
-<lastmod>2013-12-23T00:00:00-00:00</lastmod>
+<lastmod>2013-12-25T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.3</priority>
 </url>
@@ -96,7 +103,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://yuanboshe.github.io/blog/tag/turtlebot.html</loc>
-<lastmod>2013-12-23T00:00:00-00:00</lastmod>
+<lastmod>2013-12-25T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.3</priority>
 </url>
@@ -152,7 +159,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://yuanboshe.github.io/blog/tag/ros.html</loc>
-<lastmod>2013-12-23T00:00:00-00:00</lastmod>
+<lastmod>2013-12-25T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.3</priority>
 </url>
