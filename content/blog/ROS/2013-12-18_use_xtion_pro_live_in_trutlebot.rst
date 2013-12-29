@@ -2,7 +2,7 @@
 #################################################
 
 :tags: turtlebot, ros, xtion
-:summary: 在《 `在iRobot Create底盘上跑Turtlebot <{filename}2013-12-17_run_trutlebot_with_irobot_create.rst>`_ 》一文中介绍了如何在irobot create底盘上面运行turtlebot，这里介绍如何给自己搭建的简易turtlebot加上ASUS Xtion pro live深度摄像头。《 `Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro Live  <{filename}2013-10-29_fix_kinect_xtion_pro_with_3dsensor.rst>`_ 》一文介绍了如何在ROS Groovy中解决Kinect和Xtion pro Live驱动的问题，这里是Hydro版本的ROS，过程略有差异。
+:summary: 在《 `在iRobot Create底盘上跑Turtlebot. <2013-12-run_trutlebot_with_irobot_create.html>`_》一文中介绍了如何在irobot create底盘上面运行turtlebot，这里介绍如何给自己搭建的简易turtlebot加上ASUS Xtion pro live深度摄像头。《 `Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro Live <2013-10-fix_kinect_xtion_pro_with_3dsensor.html>`_ 》一文介绍了如何在ROS Groovy中解决Kinect和Xtion pro Live驱动的问题，这里是Hydro版本的ROS，过程略有差异。
 
 	环境：Ubuntu 12.04, ROS Hydro.
 

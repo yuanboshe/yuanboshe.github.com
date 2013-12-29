@@ -7,16 +7,19 @@ import glob
 
 # filters
 def path2filename(value):
-    m = re.search(r'(\w*).\w*$', value)
+    m = re.search(r'([-\w]*).\w*$', value)
     if m:
         return m.group(1)
     else:
         return None
 
-def image_main_path(value):
-    filename = path2filename(value)
-    image_path = os.path.join(os.path.dirname(__file__), "content", "images", filename, "main")
-    image_path += ".*"
+def image_main_path(article):
+    filename = path2filename(article.source_path)
+    if vars(article).has_key("icon"):
+        icon = article.icon
+    else:
+        icon = "main.*"
+    image_path = os.path.join(os.path.dirname(__file__), "content", "images", filename, icon)
     paths = glob.glob(image_path)
     if len(paths) > 0:
         image_path = paths[0].replace('\\', '/')

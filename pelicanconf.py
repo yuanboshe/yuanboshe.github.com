@@ -95,7 +95,7 @@ JINJA_FILTERS = { 'path2filename': jinja2.path2filename,
                   'image_main_path': jinja2.image_main_path, }
 JINJA_TESTS = {'test_tests': jinja2.test_tests,}
 
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images', 'CNAME']
 
 FILENAME_METADATA = '(?P<date>\d{4}-\d{2}-\d{2})_(?P<slug>.*)'
 
