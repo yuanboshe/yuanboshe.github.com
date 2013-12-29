@@ -5,9 +5,16 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://yuanboshe.github.io/index.html</loc>
-<lastmod>2013-12-28T03:10:10-00:00</lastmod>
+<lastmod>2013-12-30T06:48:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://yuanboshe.github.io/blog/2013-12-ros_ide_qtcreator.html</loc>
+<lastmod>2013-12-29T00:00:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
 </url>
 
 <url>
@@ -89,7 +96,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://yuanboshe.github.io/blog/category/ros.html</loc>
-<lastmod>2013-12-25T00:00:00-00:00</lastmod>
+<lastmod>2013-12-29T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.3</priority>
 </url>
@@ -103,7 +110,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://yuanboshe.github.io/blog/tag/turtlebot.html</loc>
-<lastmod>2013-12-25T00:00:00-00:00</lastmod>
+<lastmod>2013-12-29T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.3</priority>
 </url>
@@ -125,6 +132,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://yuanboshe.github.io/blog/tag/sphinx.html</loc>
 <lastmod>2013-10-15T00:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://yuanboshe.github.io/blog/tag/qt.html</loc>
+<lastmod>2013-12-29T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.3</priority>
 </url>
@@ -159,7 +173,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://yuanboshe.github.io/blog/tag/ros.html</loc>
-<lastmod>2013-12-25T00:00:00-00:00</lastmod>
+<lastmod>2013-12-29T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.3</priority>
 </url>
