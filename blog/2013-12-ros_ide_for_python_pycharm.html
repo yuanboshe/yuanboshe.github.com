@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="&lt;p class=&#34;first&#34;&gt;可以用于ROS开发的IDE很多（可以参考 &lt;a class=&#34;reference external&#34; href=&#34;http://wiki.ros.org/IDEs&#34;&gt;http://wiki.ros.org/IDEs&lt;/a&gt; )，ROS的调试依赖环境变量，与外部程序有通讯，因此要求启动IDE的时候加载ROS环境参数，其他方面并无太多限制。最常用的IDE是eclipse，本人也是如此，eclipse调试环境的配置可以参照作者旧博客 &lt;a class=&#34;reference external&#34; href=&#34;http://www.cnblogs.com/freedomshe/archive/2013/05/16/configure_eclipse_in_catkin.html&#34;&gt;Configure Eclipse IDE in catkin of Ros Groovy&lt;/a&gt; ，Qt Creator比Eclipse要轻量级，配置起来也更方便简洁。本文记录ROS开发环境，Qt Creator的配置过程。&lt;/p&gt;
-&lt;p class=&#34;last&#34;&gt;环境：ROS Hydro, Qt Creator 5.2.0.&lt;/p&gt;
+    <meta name="description" content="&lt;p class=&#34;first&#34;&gt;可以用于ROS开发的IDE很多（可以参考 &lt;a class=&#34;reference external&#34; href=&#34;http://wiki.ros.org/IDEs&#34;&gt;http://wiki.ros.org/IDEs&lt;/a&gt; )，ROS的调试依赖环境变量，与外部程序有通讯，因此要求启动IDE的时候加载ROS环境参数，其他方面并无太多限制。身为编译语言的C++，常常需要IDE的辅助，否则难以完成编写和调试；而身为脚本语言的Python，随写随测，很多写手不需要IDE辅助，只是用GDB除错器就能完成调试。为了可视化的调试，以及设置断点（breakpoint），使用IDE还是很有必要的。在ROS社区，讨论最多的IDE恐怕就是eclipse了，不仅可以作为C++项目的IDE，也可以结合pydev来调试python项目。PyCharm是本人最喜欢的python IDE，不仅有Windows版本，还有Linux版本，但在ROS社区暂时还没发现有人讨论PyCharm，本文介绍用PyCharm调试ROS配置流程。&lt;/p&gt;
+&lt;p class=&#34;last&#34;&gt;环境：ROS Hydro, PyCharm 3.0.2, Ubuntu 12.04.&lt;/p&gt;
 ">
     <meta name="author" content="Yuanbo She">
-    <title>ROS开发环境之Qt Creator | Yuanbo She</title>
+    <title>ROS开发环境之PyCharm (python) | Yuanbo She</title>
 	<meta name="google-site-verification" content="0mXr6Pg187Q4q6NgNglcunnBiVqqS1L4yKV6loUWYkY" />
     <meta name="baidu-site-verification" content="mokzl45EA3" />
     <meta name="ujianVerification" content="e4d1651983db8731b2591d1b93719116"/>
@@ -60,13 +60,13 @@
     <div class="wrapper clearfix">
     <!-- post list -->
     <div id="posts-list">
-        <h2 class="page-heading"><span>ROS开发环境之Qt Creator</span></h2>
+        <h2 class="page-heading"><span>ROS开发环境之PyCharm (python)</span></h2>
     <article class="format-standard">
 <div class="meta">
     <div class="date">
         <i class="icon-calendar icon-large"></i>
-        <abbr class="published" title="2013-12-29T00:00:00">
-            2013-12-29
+        <abbr class="published" title="2013-12-31T00:00:00">
+            2013-12-31
         </abbr>
     </div>
         <div class="author">
@@ -81,66 +81,71 @@
             <i class="icon-tag icon-large"></i>
                 <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
                 <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
-                <a href="http://yuanboshe.github.io/blog/tag/qt.html">qt</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/python.html">python</a>,
         </div>
 </div>        <div class="post-content">
             <div class="summary">
-                <p class="first">可以用于ROS开发的IDE很多（可以参考 <a class="reference external" href="http://wiki.ros.org/IDEs">http://wiki.ros.org/IDEs</a> )，ROS的调试依赖环境变量，与外部程序有通讯，因此要求启动IDE的时候加载ROS环境参数，其他方面并无太多限制。最常用的IDE是eclipse，本人也是如此，eclipse调试环境的配置可以参照作者旧博客 <a class="reference external" href="http://www.cnblogs.com/freedomshe/archive/2013/05/16/configure_eclipse_in_catkin.html">Configure Eclipse IDE in catkin of Ros Groovy</a> ，Qt Creator比Eclipse要轻量级，配置起来也更方便简洁。本文记录ROS开发环境，Qt Creator的配置过程。</p>
-<p class="last">环境：ROS Hydro, Qt Creator 5.2.0.</p>
+                <p class="first">可以用于ROS开发的IDE很多（可以参考 <a class="reference external" href="http://wiki.ros.org/IDEs">http://wiki.ros.org/IDEs</a> )，ROS的调试依赖环境变量，与外部程序有通讯，因此要求启动IDE的时候加载ROS环境参数，其他方面并无太多限制。身为编译语言的C++，常常需要IDE的辅助，否则难以完成编写和调试；而身为脚本语言的Python，随写随测，很多写手不需要IDE辅助，只是用GDB除错器就能完成调试。为了可视化的调试，以及设置断点（breakpoint），使用IDE还是很有必要的。在ROS社区，讨论最多的IDE恐怕就是eclipse了，不仅可以作为C++项目的IDE，也可以结合pydev来调试python项目。PyCharm是本人最喜欢的python IDE，不仅有Windows版本，还有Linux版本，但在ROS社区暂时还没发现有人讨论PyCharm，本文介绍用PyCharm调试ROS配置流程。</p>
+<p class="last">环境：ROS Hydro, PyCharm 3.0.2, Ubuntu 12.04.</p>
 
             </div>
             <div class="contents topic" id="id1">
 <p class="topic-title first">目录</p>
 <ul class="simple">
-<li><a class="reference internal" href="#qtcreator" id="id6">QtCreator安装</a><ul>
-<li><a class="reference internal" href="#id2" id="id7">下载安装</a></li>
-<li><a class="reference internal" href="#id3" id="id8">设置快捷方式</a></li>
+<li><a class="reference internal" href="#pycharm" id="id8">PyCharm安装</a><ul>
+<li><a class="reference internal" href="#id2" id="id9">下载安装</a></li>
+<li><a class="reference internal" href="#id3" id="id10">设置快捷方式</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#qt-creatorc" id="id9">用Qt Creator调试C++工程</a><ul>
-<li><a class="reference internal" href="#catkin" id="id10">新建catkin工作空间</a></li>
-<li><a class="reference internal" href="#id4" id="id11">向catkin工作空间添加源码包</a></li>
-<li><a class="reference internal" href="#qt-creator" id="id12">向Qt Creator里添加工程</a></li>
-<li><a class="reference internal" href="#id5" id="id13">调试</a></li>
-<li><a class="reference internal" href="#debug" id="id14">关于Debug问题</a></li>
+<li><a class="reference internal" href="#pycharmpython" id="id11">用PyCharm调试Python工程</a><ul>
+<li><a class="reference internal" href="#catkin" id="id12">新建catkin工作空间</a></li>
+<li><a class="reference internal" href="#id4" id="id13">向catkin工作空间添加源码包</a></li>
+<li><a class="reference internal" href="#id5" id="id14">向PyCharm里添加工程</a></li>
+<li><a class="reference internal" href="#python2-7pycharminterpreter" id="id15">设置python2.7为PyCharm工程的Interpreter</a></li>
+<li><a class="reference internal" href="#id6" id="id16">调试</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id7" id="id17">最后</a></li>
 </ul>
 </div>
-<div class="section" id="qtcreator">
-<h2><a class="toc-backref" href="#id6">QtCreator安装</a></h2>
-<p>QtCreator安装方式很多，本文以Qt 5.2.0为例，我直接下载离线安装程序安装。</p>
+<div class="section" id="pycharm">
+<h2><a class="toc-backref" href="#id8">PyCharm安装</a></h2>
+<p>PyCharm是个多平台的python IDE，还支持Javascript, HTML, Jinja2, reStructuredText 等语言的编辑。我在PyCharm的支持下修改基于Pyhon的Pelican静态站点生成器，制作自己的Jinja2模板，才完成了github博客系统，因此对PyCharm情有独钟。</p>
 <div class="section" id="id2">
-<h3><a class="toc-backref" href="#id7">下载安装</a></h3>
-<p>从http://qt-project.org/downloads下载QtCreator安装程序。对于Ubuntu 32位系统，点击 <em>Qt 5.2.0 for Linux 32-bit (425 MB)</em> 将下载离线安装程序（ <em>Qt Online Installer for Linux 32-bit (23 MB)</em> 为在线安装程序，不推荐），下载后的文件名为 <em>qt-linux-opensource-5.2.0-x86-offline.run</em>。</p>
-<p>双击 <em>.run</em> 安装文件直接图形界面安装，默认安装在 <em>/home/&lt;user&gt;/Qt5.2.0</em> 下（ <em>&lt;user&gt;</em> 为你的用户名，这里为 <em>viki</em> ）。</p>
-<img alt="Qt Installer" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/qtinstaller.jpg" />
-<p>按照指示一路Next即可安装完成。</p>
-<p>安装完成后点左上角的 <em>Dash home</em>，输入“qt”如果看到 <em>Qt Creator</em> 图标则安装成功。</p>
-<img alt="Qt Creator" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/qt.jpg" />
+<h3><a class="toc-backref" href="#id9">下载安装</a></h3>
+<p>从PyCharm官网下载安装程序：<a class="reference external" href="http://www.jetbrains.com/pycharm/download/">http://www.jetbrains.com/pycharm/download/</a>。选择Linux版本，目前有Professional和Community两个Linux版本，前者是付费版，30天免费试用期限，后者是免费版，阉割部分功能。一般使用免费版就行了，我比较喜欢折腾，用的付费版，本文以Professional版本为例，下载后的文件名为 <em>pycharm-professional-3.0.2.tar.gz</em>。（付费版激活码自行Google:)）</p>
+<p>打开terminal，进入 <em>pycharm-professional-3.0.2.tar.gz</em> 所在路径。我习惯将程序装在 <em>~/programs/</em> 路径下，如果没有 <em>~/programs/</em> 先用 <cite>mkdir ~/programs</cite> 命令创建之。然后运行下面的命令：</p>
+<div class="highlight"><pre>tar xfz pycharm-professional-3.0.2.tar.gz -C ~/programs
+cd ~/programs/pycharm-3.0.2/bin/
+./pycharm.sh
+</pre></div>
+<p>第一条命令将 <em>pycharm-3.0.2</em> 解压到 <em>~/programs/</em> 路径下；第二条命令进入 <em>~/programs/pycharm-3.0.2/bin/</em> 路径；第三条命令则启动PyCharm，如果是第一次启动，则自动进入安装步骤，按照安装步骤完成安装即可。</p>
+<p>安装完成后点左上角的 <em>Dash home</em>，输入“py”如果看到 <em>PyCharm</em> 图标则安装成功。</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/pycharm1.jpg" />
 </div>
 <div class="section" id="id3">
-<h3><a class="toc-backref" href="#id8">设置快捷方式</a></h3>
-<p>这一步将要修改Qt Creator快捷方式，使从快捷方式启动Qt Creator的同时加载ROS环境变量。</p>
+<h3><a class="toc-backref" href="#id10">设置快捷方式</a></h3>
+<p>这一步将要修改PyCharm快捷方式，使从快捷方式启动PyCharm的同时加载ROS环境变量。</p>
 <p>打开terminal，输入下面的命令：</p>
-<div class="highlight"><pre>gedit ~/.local/share/applications/DigiaQtOpenSource-qtcreator.desktop
+<div class="highlight"><pre>gedit ~/.local/share/applications/jetbrains-pycharm.desktop
 </pre></div>
-<p>这条命令将打开DigiaQtOpenSource-qtcreator.desktop快捷方式文件，可以看到文件内容如下：</p>
+<p>这条命令将打开jetbrains-pycharm.desktop快捷方式文件，可以看到文件内容如下：</p>
 <pre class="literal-block">
 [Desktop Entry]
+Version=1.0
 Type=Application
-Exec=/home/viki/Qt5.2.0/Tools/QtCreator/bin/qtcreator
-Name=Qt Creator (Opensource)
-GenericName=The IDE of choice for Qt development.
-Icon=QtProject-qtcreator
+Name=PyCharm
+Icon=/home/viki/programs/pycharm-3.0.2/bin/pycharm.png
+Exec=bash -i -c &quot;/home/viki/programs/pycharm-3.0.2/bin/pycharm.sh&quot; %f
+Comment=Develop with pleasure!
+Categories=Development;IDE;
 Terminal=false
-Categories=Development;IDE;Qt;
-MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;application/vnd.qt.qmakeprofile;application/vnd.qt.xml.resource;text/x-qml;text/x-qt.qml;text/x-qt.qbs;
+StartupWMClass=jetbrains-pycharm
 </pre>
-<p>修改 <em>Exec</em> 变量一行，在中间添加 <tt class="docutils literal">bash <span class="pre">-i</span> <span class="pre">-c</span></tt> 即改为 <tt class="docutils literal">Exec=bash <span class="pre">-i</span> <span class="pre">-c</span> /home/viki/Qt5.2.0/Tools/QtCreator/bin/qtcreator</tt> ，保存并退出。添加 <tt class="docutils literal">bash <span class="pre">-i</span> <span class="pre">-c</span></tt> 是为了在通过快捷方式启动Qt Creator的同时加载ROS环境变量（ROS环境变量加载脚本配置在 <em>~/.bashrc</em> 文件内）。</p>
+<p>修改 <em>Exec</em> 变量一行，在中间添加 <tt class="docutils literal">bash <span class="pre">-i</span> <span class="pre">-c</span></tt> 即改为 <tt class="docutils literal">Exec=bash <span class="pre">-i</span> <span class="pre">-c</span> <span class="pre">&quot;/home/viki/programs/pycharm-3.0.2/bin/pycharm.sh&quot;</span> %f</tt> ，保存并退出。添加 <tt class="docutils literal">bash <span class="pre">-i</span> <span class="pre">-c</span></tt> 是为了在通过快捷方式启动PyCharm的同时加载ROS环境变量（ROS环境变量加载脚本配置在 <em>~/.bashrc</em> 文件内）。</p>
 <div class="warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">如果打开的文件是空，则表示没有找到DigiaQtOpenSource-qtcreator.desktop文件，可能是安装路径不在本地用户目录下，或者版本不同导致的文件名不一致。可以在 <em>~/.local/share/applications/</em> 和 <em>/usr/share/applications/</em> 两个路径下用 <tt class="docutils literal">ls *qt*</tt> 命令找找看。</p>
+<p class="last">如果打开的文件是空，则表示没有找到jetbrains-pycharm.desktop文件，可能是安装路径不在本地用户目录下，或者版本不同导致的文件名不一致。可以在 <em>~/.local/share/applications/</em> 和 <em>/usr/share/applications/</em> 两个路径下用 <tt class="docutils literal">ls *pycharm*</tt> 命令找找看。</p>
 </div>
 <div class="tip">
 <p class="first admonition-title">Tip</p>
@@ -148,11 +153,11 @@ MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;applicat
 </div>
 </div>
 </div>
-<div class="section" id="qt-creatorc">
-<h2><a class="toc-backref" href="#id9">用Qt Creator调试C++工程</a></h2>
+<div class="section" id="pycharmpython">
+<h2><a class="toc-backref" href="#id11">用PyCharm调试Python工程</a></h2>
 <p>可以自己建立包做实验，为求简洁，这里直接从GitHub下载现有的源码包，即大家熟悉的 <em>ros_tutorials</em> 包。</p>
 <div class="section" id="catkin">
-<h3><a class="toc-backref" href="#id10">新建catkin工作空间</a></h3>
+<h3><a class="toc-backref" href="#id12">新建catkin工作空间</a></h3>
 <p>如果已经有自己的catkin工作空间则跳过，否则新建catkin工作空间：</p>
 <div class="highlight"><pre>mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
@@ -164,7 +169,7 @@ echo &quot;source ~/catkin_ws/devel/setup.bash&quot; &gt;&gt; ~/.bashrc
 <p>对应解释参照《<a class="reference external" href="http://yuanboshe.github.io/blog/2013-12-overlay_catkin_and_rosbuild.html">配置ROS工作空间catkin+rosbuild</a>》。关闭所有的terminal在重新打开，使环境变量生效。</p>
 </div>
 <div class="section" id="id4">
-<h3><a class="toc-backref" href="#id11">向catkin工作空间添加源码包</a></h3>
+<h3><a class="toc-backref" href="#id13">向catkin工作空间添加源码包</a></h3>
 <p>这里添加 <em>ros_tutorials</em> 源码包。</p>
 <div class="highlight"><pre>cd ~/catkin_ws/src
 git clone git@github.com:ros/ros_tutorials.git -b hydro-devel
@@ -176,51 +181,41 @@ viki&#64;ROS:~/catkin_ws/src$ ls
 CMakeLists.txt  ros_tutorials
 </pre>
 </div>
-<div class="section" id="qt-creator">
-<h3><a class="toc-backref" href="#id12">向Qt Creator里添加工程</a></h3>
-<p>从 <em>Dash home</em> 里启动Qt Creator，将看到下面的Welcome界面：</p>
-<img alt="Qt Creator" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/qt2.jpg" />
-<p>这里我们导入 <em>roscpp_tutorials</em> 包，使之成为Qt Creator的C++工程。点击 <strong>Open Project</strong> 按钮，在弹出的对话框中选择 <em>~/catkin_ws/src/ros_tutorials/roscpp_tutorials/</em> 路径下的 <strong>CMakeLists.txt</strong> 文件，如下图：</p>
-<img alt="Qt Creator" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/qt3.jpg" />
-<p>点击 <em>Open</em>，将会出现编译路径选择对话框。这里要注意了，需要 <em>Browse</em> 将路径修改为 <em>~/catkin_ws/build/</em> 的路径，如下图：</p>
-<img alt="Qt Creator" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/qt4.jpg" />
-<p>点击 <em>Next</em> 后，在出现的对话框的 <em>Arguments</em> 一栏填入 <tt class="docutils literal"><span class="pre">-DCMAKE_BUILD_TYPE=Debug</span></tt> （不填后面将无法调试），然后点击 <em>Run CMake</em> 即可开始编译，结果如下图：</p>
-<img alt="Qt Creator" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/qt5.jpg" />
-<p>如果没有错误信息，则点击 <em>Finish</em> 完成，在 <em>Edit</em> 界面可以看到工程结构，可以开始编辑工程了。</p>
-</div>
 <div class="section" id="id5">
-<h3><a class="toc-backref" href="#id13">调试</a></h3>
+<h3><a class="toc-backref" href="#id14">向PyCharm里添加工程</a></h3>
+<p>从 <em>Dash home</em> 里启动PyCharm，将看到下面的Welcome界面：</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/pycharm2.jpg" />
+<p>这里我们导入 <em>rospy_tutorials</em> 包，使之成为PyCharm的python工程。点击 <strong>Open Directory</strong> 按钮，在弹出的对话框中选择 <em>~/catkin_ws/src/ros_tutorials/rospy_tutorials/</em> 路径，如下图：</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/pycharm3.jpg" />
+<p>点击 <em>OK</em>，工程将被创建，如下图：</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/pycharm4.jpg" />
+</div>
+<div class="section" id="python2-7pycharminterpreter">
+<h3><a class="toc-backref" href="#id15">设置python2.7为PyCharm工程的Interpreter</a></h3>
+<p>PyCharm默认将Python 3.2设置为工程的interpreter，而ROS使用的是Python 2.7，这里需要设置一下，使用Python 2.7，否则无法运行ROS相关的Python库。</p>
+<p><em>File</em> 菜单 -&gt; <em>Settings</em> 项，打开设置对话框，选择 <em>Project Interpreter</em> -&gt; <em>Python Interpreters</em> 如下图：</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/setting1.jpg" />
+<p>点击右边选框的加号，增加 <em>Python 2.7 Interpreter</em>，并将其设置为工程默认，结果如下图：</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/setting2.jpg" />
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id16">调试</a></h3>
 <p>先打开一个terminal，输入 <tt class="docutils literal">roscore</tt> 命令启动ROS Master。</p>
-<p>在Qt Creator的 <em>Edit</em> 界面工程目录中，找到 <em>talker.cpp</em> 文件，打开。然后找到 “hello world” 所在的位置，修改为 “hello I'm yuanboshe”，并设置断点，如下图：</p>
-<img alt="Qt Creator" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/test1.jpg" />
-<p>保存后，从左下角的工程面板里选择 <em>talker</em> 可执行程序项，然后按 <strong>F5</strong> 快捷键运行调试。稍等片刻，Qt Creator会需要一点时间编译所有程序，编译完成后，会运行到断点处停下来：</p>
-<img alt="Qt Creator" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/test2.jpg" />
-<p>取消断点，按 <strong>F5</strong> 继续运行，在弹出的 <em>Application Output</em> 界面能够看到修改后的信息，如下：</p>
-<img alt="Qt Creator" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/test3.jpg" />
-<p>回到桌面，再开一个terminal窗口，输入 <tt class="docutils literal">rosrun roscpp_tutorials listener</tt> 命令，可以看到正确的监听消息，如下图：</p>
-<img alt="Qt Creator" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/test4.jpg" />
+<p>在PyCharm左边的 <em>Project</em> 树形框中，找到 <em>talker.py</em> 文件，打开。然后找到 “hello world” 所在的位置，修改为 “hello I'm yuanboshe”，并设置断点，如下图：</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/test1.jpg" />
+<p>保存后，右键左边的 <em>talker.py</em> 文件，弹出右键菜单，选择 <em>Debug 'talker'</em> 项：</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/test2.jpg" />
+<p>启动调试后，<em>talker</em> 程序就会运行，并会运行到断点处停下来：</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/test3.jpg" />
+<p>在下面的变量栏能够看到变量值。取消断点，按 <strong>F9</strong> 继续运行，将下面的显示窗口切换到 <em>Console</em> 窗口，能够看到修改后的信息，如下：</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/test4.jpg" />
+<p>回到桌面，再开一个terminal窗口，输入 <tt class="docutils literal">rosrun rospy_tutorials listener</tt> 命令，可以看到正确的监听消息，如下图：</p>
+<img alt="PyCharm" src="http://yuanboshe.github.io/images/2013-12-31_ros_ide_for_python_pycharm/test5.jpg" />
 </div>
-<div class="section" id="debug">
-<h3><a class="toc-backref" href="#id14">关于Debug问题</a></h3>
-<p>如果之前在CMake的时候没有填写 <tt class="docutils literal"><span class="pre">-DCMAKE_BUILD_TYPE=Debug</span></tt> 参数，则编译出来的程序不可用于调试。按下调试快捷键 <strong>F5</strong> 的时候，可能会出现下面的警告信息：</p>
-<pre class="literal-block">
-This does not seem to be a &quot;Debug&quot; build.
-Setting breakpoints by file name and line number may fail.
-
-Section .debug_info: Not found.
-Section .debug_abbrev: Not found.
-Section .debug_line: Not found.
-Section .debug_str: Not found.
-Section .debug_loc: Not found.
-Section .debug_range: Not found.
-Section .gdb_index: Not found.
-Section .note.gnu.build-id: Found.
-Section .gnu.hash: Found.
-Section .gnu_debuglink: Not found.
-</pre>
-<p>可以通过左边的&quot;Projects&quot;-&gt;&quot;Run CMake&quot;重新设置参数，并make，如下图：</p>
-<img alt="ROS debug" src="http://yuanboshe.github.io/images/2013-12-29_ros_ide_qtcreator/debug.jpg" />
 </div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id17">最后</a></h2>
+<p>作为脚本语言的Python，debug要比作为编译语言的C++方便简单得多，其他的Python IDE也可以使用类似方式使之能够用来调试ROS工程。由于缺少了编译环节，不需要CMake的参与，无论是catkin工程还是rosbuild工程都一样的设置，没有差异。</p>
 </div>
 
         </div>
@@ -230,7 +225,7 @@ Section .gnu_debuglink: Not found.
 <div id="uyan_frame"></div>
 <script type="text/javascript">
     var uyan_config = {
-        'su': 'blog/2013-12-ros_ide_qtcreator.html'
+        'su': 'blog/2013-12-ros_ide_for_python_pycharm.html'
     };
 </script>
 <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
