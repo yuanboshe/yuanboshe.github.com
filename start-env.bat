@@ -1,2 +1,2 @@
-call D:\Python27\env\Scripts\activate.bat
+call D:\Python\Envs\pelicanenv\Scripts\activate.bat
 cmd

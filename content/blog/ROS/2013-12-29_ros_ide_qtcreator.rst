@@ -54,11 +54,11 @@ QtCreator安装方式很多，本文以Qt 5.2.0为例，我直接下载离线安
 	Categories=Development;IDE;Qt;
 	MimeType=text/x-c++src;text/x-c++hdr;text/x-xsrc;application/x-designer;application/vnd.qt.qmakeprofile;application/vnd.qt.xml.resource;text/x-qml;text/x-qt.qml;text/x-qt.qbs;
 
-修改 *Exec* 变量一行，在中间添加 ``bash -i -c`` 即改为 ``Exec=bash -i -c /home/viki/Qt5.2.0/Tools/QtCreator/bin/qtcreator`` ，保存并退出。添加 ``bash -i -c`` 即是为了在通过快捷方式启动Qt Creator的同时加载ROS环境变量（ROS环境变量加载脚本配置在 *~/.bashrc* 文件内）。
+修改 *Exec* 变量一行，在中间添加 ``bash -i -c`` 即改为 ``Exec=bash -i -c /home/viki/Qt5.2.0/Tools/QtCreator/bin/qtcreator`` ，保存并退出。添加 ``bash -i -c`` 是为了在通过快捷方式启动Qt Creator的同时加载ROS环境变量（ROS环境变量加载脚本配置在 *~/.bashrc* 文件内）。
 
 .. warning:: 如果打开的文件是空，则表示没有找到DigiaQtOpenSource-qtcreator.desktop文件，可能是安装路径不在本地用户目录下，或者版本不同导致的文件名不一致。可以在 *~/.local/share/applications/* 和 */usr/share/applications/* 两个路径下用 ``ls *qt*`` 命令找找看。
 
-.. tip:: 如果没有上述快捷方式文件，自己新建一个，只要文件内容类似上面的类容，路径正确即可。快捷方式可以放在 *~/.local/share/applications/* 和 */usr/share/applications/* 两个位置，当然也可以放在任意位置，功能一样但左边的任务栏不会正确显示图标。
+.. tip:: 如果没有上述快捷方式文件，自己新建一个，只要文件内容类似上面的类容，路径正确即可。快捷方式可以放在 *~/.local/share/applications/* 和 */usr/share/applications/* 两个位置。当然也可以放在任意其他位置，功能跟放在上面两个位置一样，但左边的任务栏不会正确显示图标。
 
 用Qt Creator调试C++工程
 ========================
@@ -103,7 +103,7 @@ QtCreator安装方式很多，本文以Qt 5.2.0为例，我直接下载离线安
 .. image:: {image}qt2.jpg
     :alt: Qt Creator
 
-这里我们导入 *roscpp_tutorials* 包，使之成为工程。点击 **Open Project** 按钮，在弹出的对话框中选择 *~/catkin_ws/src/ros_tutorials/roscpp_tutorials/* 路径下的 **CMakeLists.txt** 文件，如下图：
+这里我们导入 *roscpp_tutorials* 包，使之成为Qt Creator的C++工程。点击 **Open Project** 按钮，在弹出的对话框中选择 *~/catkin_ws/src/ros_tutorials/roscpp_tutorials/* 路径下的 **CMakeLists.txt** 文件，如下图：
 
 .. image:: {image}qt3.jpg
     :alt: Qt Creator
@@ -124,7 +124,7 @@ QtCreator安装方式很多，本文以Qt 5.2.0为例，我直接下载离线安
 ------
 先打开一个terminal，输入 ``roscore`` 命令启动ROS Master。
 
-在Qt Creator的 *Edit* 界面工程目录中，找到 *talker.cpp* 文件，找到 “hello world” 所在的位置，修改为 “hello I'm yuanboshe”，并设置断点，如下图：
+在Qt Creator的 *Edit* 界面工程目录中，找到 *talker.cpp* 文件，打开。然后找到 “hello world” 所在的位置，修改为 “hello I'm yuanboshe”，并设置断点，如下图：
 
 .. image:: {image}test1.jpg
     :alt: Qt Creator
