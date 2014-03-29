@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="&lt;p class=&#34;first last&#34;&gt;玩ROS的人应该都知道TurtleBot，它是ROS官方最流行的机器人平台，很多地方都是以TurtleBot为ROS教学平台。TurtleBot包含移动机器人硬件和ROS软件包两个部分，ROS学习者没有一台自己的TurtleBot实验平台是很可惜的事情，本文介绍如何利用iRobot Create底盘打造自己的TurtleBot移动机器人平台，希望各位手头拮据的ROS爱好者也能拥有自己的ROS机器人。&lt;/p&gt;
+    <meta name="description" content="&lt;p class=&#34;first&#34;&gt;可能绝大部分人都习惯用Eclipse来做开发吧，可谓ROS开发No.1的IDE。2013年的时候写过一篇配置Eclipse的文章，现在再次总结一下。&lt;/p&gt;
+&lt;p class=&#34;last&#34;&gt;环境：ROS Hydro, Ubuntu 12.04, Eclipse for C/C++ Kepler.&lt;/p&gt;
 ">
     <meta name="author" content="Yuanbo She">
-    <title>30分钟搭建自己的TurtleBot | Yuanbo She</title>
+    <title>ROS开发环境之Eclipse (C/C++ &amp; python) | Yuanbo She</title>
 	<meta name="google-site-verification" content="0mXr6Pg187Q4q6NgNglcunnBiVqqS1L4yKV6loUWYkY" />
     <meta name="baidu-site-verification" content="mokzl45EA3" />
     <meta name="ujianVerification" content="e4d1651983db8731b2591d1b93719116"/>
@@ -35,7 +36,7 @@
         </div>
         <nav class="float">
             <ul id="nav" class="sf-menu">
-                <li class="current-menu-item"><a
+                <li ><a
                         href="http://yuanboshe.github.io/blog/index.html">Blog</a>
                 </li>
                 <li class="divider-vertical"></li>
@@ -64,13 +65,13 @@
     <div class="wrapper clearfix">
     <!-- post list -->
     <div id="posts-list">
-        <h2 class="page-heading"><span>30分钟搭建自己的TurtleBot</span></h2>
+        <h2 class="page-heading"><span>ROS开发环境之Eclipse (C/C++ &amp;amp; python)</span></h2>
     <article class="format-standard">
 <div class="meta">
     <div class="date">
         <i class="icon-calendar icon-large"></i>
-        <abbr class="published" title="2013-12-25T00:00:00">
-            2013-12-25
+        <abbr class="published" title="2014-03-15T00:00:00">
+            2014-03-15
         </abbr>
     </div>
         <div class="author">
@@ -85,199 +86,196 @@
             <i class="icon-tag icon-large"></i>
                 <a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a>,
                 <a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/python.html">python</a>,
+                <a href="http://yuanboshe.github.io/blog/tag/cpp.html">cpp</a>,
         </div>
 </div>        <div class="post-content">
             <div class="summary">
-                <p class="first last">玩ROS的人应该都知道TurtleBot，它是ROS官方最流行的机器人平台，很多地方都是以TurtleBot为ROS教学平台。TurtleBot包含移动机器人硬件和ROS软件包两个部分，ROS学习者没有一台自己的TurtleBot实验平台是很可惜的事情，本文介绍如何利用iRobot Create底盘打造自己的TurtleBot移动机器人平台，希望各位手头拮据的ROS爱好者也能拥有自己的ROS机器人。</p>
+                <p class="first">可能绝大部分人都习惯用Eclipse来做开发吧，可谓ROS开发No.1的IDE。2013年的时候写过一篇配置Eclipse的文章，现在再次总结一下。</p>
+<p class="last">环境：ROS Hydro, Ubuntu 12.04, Eclipse for C/C++ Kepler.</p>
 
             </div>
             <div class="contents topic" id="id1">
 <p class="topic-title first">目录</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id2" id="id10">TurtleBot的硬件组成</a></li>
-<li><a class="reference internal" href="#id3" id="id11">物品清单</a></li>
-<li><a class="reference internal" href="#id4" id="id12">组装过程</a><ul>
-<li><a class="reference internal" href="#id5" id="id13">装配底盘</a></li>
-<li><a class="reference internal" href="#mm" id="id14">装170mm铝合金型材</a></li>
-<li><a class="reference internal" href="#id6" id="id15">装配架子</a></li>
-<li><a class="reference internal" href="#id7" id="id16">安装数据线</a></li>
-<li><a class="reference internal" href="#id8" id="id17">安置摄像头</a></li>
+<li><a class="reference internal" href="#id2" id="id14">准备工作</a><ul>
+<li><a class="reference internal" href="#jdk" id="id15">安装JDK</a></li>
+<li><a class="reference internal" href="#eclipse-for-c-c" id="id16">安装Eclipse for C/C++</a></li>
+<li><a class="reference internal" href="#id3" id="id17">创建快捷方式</a></li>
+<li><a class="reference internal" href="#id4" id="id18">下载测试代码</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id9" id="id18">最后</a></li>
+<li><a class="reference internal" href="#eclipse-c-c" id="id19">配置Eclipse (C/C++)</a><ul>
+<li><a class="reference internal" href="#id5" id="id20">生成工程文件</a></li>
+<li><a class="reference internal" href="#id6" id="id21">导入工程</a></li>
+<li><a class="reference internal" href="#fix-invalid-arguments" id="id22">Fix &quot;Invalid arguments&quot; 等问题</a></li>
+<li><a class="reference internal" href="#id7" id="id23">测试</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#eclipse-python" id="id24">配置Eclipse (Python)</a><ul>
+<li><a class="reference internal" href="#pydev" id="id25">安装PyDev</a></li>
+<li><a class="reference internal" href="#id8" id="id26">配置PyDev</a></li>
+<li><a class="reference internal" href="#id9" id="id27">测试</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ros" id="id28">一些有用的ROS插件</a><ul>
+<li><a class="reference internal" href="#cmake-editor" id="id29">CMake Editor</a></li>
+<li><a class="reference internal" href="#rinzo-xml-editor" id="id30">Rinzo XML Editor</a></li>
+<li><a class="reference internal" href="#yeditor" id="id31">YEditor</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10" id="id32">优化工作</a><ul>
+<li><a class="reference internal" href="#id11" id="id33">增加文件关联</a></li>
+<li><a class="reference internal" href="#xml-formatting" id="id34">XML formatting</a></li>
+<li><a class="reference internal" href="#ros-formatting" id="id35">增加ROS Formatting</a></li>
+<li><a class="reference internal" href="#id12" id="id36">增强现实效果</a></li>
+<li><a class="reference internal" href="#id13" id="id37">快捷键</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id10">TurtleBot的硬件组成</a></h2>
-<img alt="TurtleBot1" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/turtlebot.jpg" />
-<p>TurtleBot是非常典型的移动机器人，其硬件结构清晰简洁：移动机器人底盘，架子，RGB-D摄像头，外加笔记本。第一代TurtleBot由iRobot Create扫地机器人底盘打造，第二代TurtleBot由Kobuki机器人底盘打造，他们最大的区别在于Kobuki底盘比iRobot Create底盘多了IMU（惯性测量）部分。自制TurtleBot，就是按照这个架构自制架子，搭建自己的移动机器人硬件平台，以及解决ROS软件控制问题。30分钟只是搭建硬件平台的时间，软件部分才是最耗时的，可以很负责任地告诉以为搞定全套TurtleBot平台只需要30分钟的人：你们上当了:)。</p>
+<h2><a class="toc-backref" href="#id14">准备工作</a></h2>
+<div class="section" id="jdk">
+<h3><a class="toc-backref" href="#id15">安装JDK</a></h3>
+<p>安装JDK，Ubuntu系统中默认不附带常规JDK，而是OpenJDK，需要自己安装常规JDK，这里装最新的JDK8。</p>
+<div class="highlight"><pre>sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+</pre></div>
+</div>
+<div class="section" id="eclipse-for-c-c">
+<h3><a class="toc-backref" href="#id16">安装Eclipse for C/C++</a></h3>
+<p>从官网下载Eclipse for C/C++，（<a class="reference external" href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a> 从链接进去，选择Linux 32 bit版本）。解压后放在 <em>~/Program/</em> 文件夹下。</p>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id11">物品清单</a></h2>
-<p>下面是主要物件清单：</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="38%" />
-<col width="62%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">名称</th>
-<th class="head">备注</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>iRobot Create底盘</td>
-<td>目前只能海购，国内无售</td>
-</tr>
-<tr><td>ASUS Xtion pro Live摄像头</td>
-<td>比Kinect好用太多</td>
-</tr>
-<tr><td>笔记本</td>
-<td>至少两个USB口，内存4G，能装WIN7跑虚拟机就行</td>
-</tr>
-</tbody>
-</table>
-<p>下面是框架的清单：</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="30%" />
-<col width="70%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">名称</th>
-<th class="head">备注</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>2020工业铝型材</td>
-<td>170mm*2+200mm*5+240mm*3=2060mm。
-2020表示截面为正方形的铝型材，边长20mm。
-2根170mm固定在底盘上，4根200mm用于架高，
-3根240mm为最上面的U形架，1根200mm用于安置摄像头。</td>
-</tr>
-<tr><td>2020角件</td>
-<td>12个。用于连接铝型材。</td>
-</tr>
-<tr><td>20系列M4 T型螺母</td>
-<td>24颗。M4表示螺纹型号，需配M4螺栓。</td>
-</tr>
-<tr><td>M4*10内六角螺栓</td>
-<td>24颗。M4表示螺纹型号，10表示螺纹部分长度为10mm。</td>
-</tr>
-<tr><td>M4圆形垫圈</td>
-<td>28片。</td>
-</tr>
-<tr><td>M4弹簧垫片</td>
-<td>28片。</td>
-</tr>
-<tr><td>美制内六角螺栓6#-32*1</td>
-<td>4颗。由于irobot create底盘螺纹孔为美标，与中国
-国标不同，故框架与底盘固定必须使用美制螺丝。在
-这里，6#表示螺纹直径，32表示牙距，1表示长度。
-不可配错。</td>
-</tr>
-</tbody>
-</table>
-<p>制作架子的材料如下图：</p>
-<img alt="框架材料" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/frame1.jpg" />
-<div class="note">
-<p class="first admonition-title">Note</p>
-<p class="last">2020工业铝型材中的两根170mm铝型材需要与底盘固定，故各需打两个M3.5的孔（美制#6螺栓外径尺寸相当于国标M3.5，故可以用M3.5的钻头钻孔）。一般的铝型材卖家都会提供钻孔服务，图纸如下：</p>
-</div>
-<img alt="170mm铝型材" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/170mm.jpg" />
-<p>配件清单：</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="37%" />
-<col width="63%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">名称</th>
-<th class="head">备注</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>镍氢AA充电电池+充电器</td>
-<td>iRobot Create底盘是不附带电池的，只有一个12
-节AA电池串联的电池盒。</td>
-</tr>
-<tr><td>USB-RS232转接头</td>
-<td>iRobot Create附带的数据线对外接口是RS232母头
-串口，而一般电脑已经没有了串口，需要USB
-转RS232模块与之相连接。</td>
-</tr>
-</tbody>
-</table>
-<p>除了上述所有组件外，还必须保证手里有相应的工具，如起子套件。</p>
+<h3><a class="toc-backref" href="#id17">创建快捷方式</a></h3>
+<p>打开terminal，输入命令：</p>
+<div class="highlight"><pre>sudo gedit /usr/share/applications/eclipse.desktop
+</pre></div>
+<p>将打开gedit编辑器，贴入下面的代码：</p>
+<div class="highlight"><pre>[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Eclipse
+Icon=/home/exbot/Programs/eclipse/icon.xpm
+Exec=bash -i -c &quot;/home/exbot/Programs/eclipse/eclipse&quot;
+Comment=Develop with pleasure!
+Categories=Development;IDE;
+Terminal=false
+</pre></div>
+<p>完成后在Dash菜单输入 <em>eclipse</em> 将会看到Eclipse图标，以后启动eclipse都从快捷方式启动。</p>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id12">组装过程</a></h2>
+<h3><a class="toc-backref" href="#id18">下载测试代码</a></h3>
+<div class="highlight"><pre>cd catkin_ws/
+git clone https://github.com/yuanboshe/exbot_xi.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="eclipse-c-c">
+<h2><a class="toc-backref" href="#id19">配置Eclipse (C/C++)</a></h2>
 <div class="section" id="id5">
-<h3><a class="toc-backref" href="#id13">装配底盘</a></h3>
-<p>iRboto Create底盘基本套件开封后如下：</p>
-<img alt="iRobot Create" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/create1.jpg" />
-<p>绿色的是电池盒（无电池），右上角的是配件，右下角的是数据线。按照说明书，很轻松就能装配好底盘。</p>
-<img alt="电池盒" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/power.jpg" />
-<p>将12节AA电池先充满电，用起子卸下四颗电池盒上的固定螺丝，打开电池仓即可将电池装入电池盒。</p>
-<div class="tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">官方说明书上指示，电池需要使用普通的非可充电AA电池，不要使用非官方提供的充电电池。这纯粹是官方的唬人手段，每节普通AA电池是1.5V，而镍氢AA充电电池是1.2V，虽然电压并不充足，但还是可以用的。而官方提供的可充电池组实际上也是大容量的镍氢充电电池。</p>
-</div>
-<div class="note">
-<p class="first admonition-title">Note</p>
-<p class="last">镍氢电池可以随意折腾，但如果想改装成锂电池，则比较危险，不要轻易尝试。</p>
-</div>
-</div>
-<div class="section" id="mm">
-<h3><a class="toc-backref" href="#id14">装170mm铝合金型材</a></h3>
-<img alt="iRobot Create" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/create2.jpg" />
-<p>用4颗美制内六角螺栓6#-32*1将两根170mm铝合金型材固定在iRobot Create底盘上，螺帽处最好加上弹簧垫片和普通圆形垫片。</p>
+<h3><a class="toc-backref" href="#id20">生成工程文件</a></h3>
+<div class="highlight"><pre>cd ~/catkin_ws
+catkin_make --force-cmake -G&quot;Eclipse CDT4 - Unix Makefiles&quot; -DCMAKE_BUILD_TYPE=Debug -DCMAKE_ECLIPSE_MAKE_ARGUMENTS=-j8
+</pre></div>
 </div>
 <div class="section" id="id6">
-<h3><a class="toc-backref" href="#id15">装配架子</a></h3>
-<p>铝合金型材的每个接头处需要使用一个角件，两颗M4*10内六角螺栓，两颗M4 T型螺母，两片弹簧垫圈和两片圆形垫片。架子的装配是很耗费时间的，可以先将四根200mm的铝合金型材固定在已经装好的两根170mm型材上，然后在装配最上面的3根240mm型材，也可以先按照下图的方式装配。</p>
-<img alt="Frame" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/frame2.jpg" />
-<p>最后装配中间固定摄像头用的200mm型材。具体效果参考最后的图片。</p>
+<h3><a class="toc-backref" href="#id21">导入工程</a></h3>
+<p>File --&gt; Import --&gt; Existing projects into workspace</p>
+<p>&quot;Select root directory&quot; 选择 <em>~/catkin_ws/build</em> ，&quot;Finish&quot; 结束。</p>
+</div>
+<div class="section" id="fix-invalid-arguments">
+<h3><a class="toc-backref" href="#id22">Fix &quot;Invalid arguments&quot; 等问题</a></h3>
+<p>Project -&gt; Properties -&gt; C/C++ General -&gt; Preprocessor Include Paths, Macros etc. -&gt; Providers 选上 CDT GCC Built-in Compiler Settings</p>
+<p>Project -&gt; Index -&gt; Rebuild</p>
 </div>
 <div class="section" id="id7">
-<h3><a class="toc-backref" href="#id16">安装数据线</a></h3>
-<p>将USB-RS232转接头与iRobot Create的数据线相连接，并插入iRobot Create底盘（底盘右侧有个活动的盖子，掀开即可看到数据线接口）。</p>
-<p>数据线也可以自己用USB-TTL模块做一根，如下图：</p>
-<img alt="数据线" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/cables.jpg" />
-<p>左边的是USB-RS232转接头与iRobot Create的数据线相连接的数据线，右边的是自己用USB-TTL模块做的数据线。自己做数据线的缺点就是得自己将3根插针——发送针，接收针，接地插入底盘上对应的TTL数据口。</p>
+<h3><a class="toc-backref" href="#id23">测试</a></h3>
+<p>Ctrl + B build工程</p>
+<p>打开terminal，输入 <tt class="docutils literal">roscore</tt> 启动ROS master</p>
+<p>Debug Configurations -&gt; C/C++ Application -&gt; Browse -&gt; &quot;.../catkin_ws/devel/lib/exbotxi_example/control&quot;</p>
+<p>源码位于：[Source directory]/exbot_xi/exbotxi_example/nodes/control.cpp</p>
+<p>可以看到启动信息，调试正常。</p>
+</div>
+</div>
+<div class="section" id="eclipse-python">
+<h2><a class="toc-backref" href="#id24">配置Eclipse (Python)</a></h2>
+<div class="section" id="pydev">
+<h3><a class="toc-backref" href="#id25">安装PyDev</a></h3>
+<p>设置代理，国内被墙无法更新。</p>
+<p>Help -&gt; Install New Software··· -&gt; Add</p>
+<p>Name: PyDev
+Location：<a class="reference external" href="http://pydev.org/updates">http://pydev.org/updates</a></p>
+<p>选择 PyDev for Eclipse -&gt; Next ... Finish 后等待安装完成，完成后会要求重启。</p>
 </div>
 <div class="section" id="id8">
-<h3><a class="toc-backref" href="#id17">安置摄像头</a></h3>
-<p>用尼龙扎带或者绳子将摄像头绑在200mm铝型材上面即可。</p>
-<p>最后的效果如图：</p>
-<img alt="TurtleBot" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/main.jpg" />
-<p>最后只需要将笔记本放在小车上面，用数据线将底盘与笔记本USB接口相连，将Xtion pro Live深度摄像头与笔记本USB接口相连即可。</p>
-<div class="note">
-<p class="first admonition-title">Note</p>
-<p class="last">笔记本的USB口最好是USB2.0口，可能现有的驱动不支持USB3.0。</p>
-</div>
-</div>
+<h3><a class="toc-backref" href="#id26">配置PyDev</a></h3>
+<p>重启后需要对PyDev进行配置。</p>
+<p>Window -&gt; Preferences -&gt; PyDev -&gt; Interpreters -&gt; Python Interpreter -&gt; New -&gt; Browse...</p>
+<p>填入路径：/usr/bin/python2.7</p>
+<p>确认。</p>
 </div>
 <div class="section" id="id9">
-<h2><a class="toc-backref" href="#id18">最后</a></h2>
-<p>关于TurtleBot的几个网站：</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="26%" />
-<col width="74%" />
-</colgroup>
-<tbody valign="top">
-<tr><td>平台官网</td>
-<td><a class="reference external" href="http://www.turtlebot.com/">http://www.turtlebot.com/</a></td>
-</tr>
-<tr><td>ROS软件包</td>
-<td><a class="reference external" href="http://wiki.ros.org/Robots/TurtleBot">http://wiki.ros.org/Robots/TurtleBot</a></td>
-</tr>
-<tr><td>ROS GitHub</td>
-<td><a class="reference external" href="https://github.com/turtlebot">https://github.com/turtlebot</a></td>
-</tr>
-</tbody>
-</table>
+<h3><a class="toc-backref" href="#id27">测试</a></h3>
+<p>修改Project名字，改为 &quot;exbot&quot; （名字不能包含 <em>&#64;</em> 等字符）。</p>
+<p>打开terminal，输入 <tt class="docutils literal">roscore</tt> 启动ROS master</p>
+<p>源码位于：[Source directory]/exbot_xi/exbotxi_example/nodes/control.py</p>
+<p>打开源码，右键 Debug As -&gt; Python Run</p>
+<p>可以看到启动信息，调试正常。</p>
+</div>
+</div>
+<div class="section" id="ros">
+<h2><a class="toc-backref" href="#id28">一些有用的ROS插件</a></h2>
+<div class="section" id="cmake-editor">
+<h3><a class="toc-backref" href="#id29">CMake Editor</a></h3>
+<p>Help -&gt; Install New Software··· -&gt; Add</p>
+<p>Name: CMake Editor
+Location：<a class="reference external" href="http://cmakeed.sourceforge.net/eclipse/">http://cmakeed.sourceforge.net/eclipse/</a></p>
+</div>
+<div class="section" id="rinzo-xml-editor">
+<h3><a class="toc-backref" href="#id30">Rinzo XML Editor</a></h3>
+<p>Help -&gt; Eclipse Marketplace... -&gt; Search &quot;Rinzo XML Editor&quot; -&gt; Install</p>
+<p>只安装 Rinzo XML Editor Core 就行了。</p>
+</div>
+<div class="section" id="yeditor">
+<h3><a class="toc-backref" href="#id31">YEditor</a></h3>
+<p>Help -&gt; Eclipse Marketplace... -&gt; Search &quot;YEdit&quot; -&gt; Install</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id32">优化工作</a></h2>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id33">增加文件关联</a></h3>
+<p>Window -&gt; Preferences -&gt; Gerneral -&gt; Editors -&gt; File Associations</p>
+<p>关联至 Rinzo XML Editor：*.launch, *.concert, *.xacro, *.urdf</p>
+<p>关联至 YEdit：*.rviz</p>
+</div>
+<div class="section" id="xml-formatting">
+<h3><a class="toc-backref" href="#id34">XML formatting</a></h3>
+<p>Window -&gt; Preferences -&gt; Rinzo XML -&gt; Formatting</p>
+</div>
+<div class="section" id="ros-formatting">
+<h3><a class="toc-backref" href="#id35">增加ROS Formatting</a></h3>
+<p>将我的 cpp format 文件 &quot;Eclipse_format_yuanboshe.xml&quot; 拷贝到Ubuntu。</p>
+<p>Window -&gt; Preferences -&gt; C/C++ -&gt; Code Style -&gt; Formatter -&gt; Import...</p>
+</div>
+<div class="section" id="id12">
+<h3><a class="toc-backref" href="#id36">增强现实效果</a></h3>
+<p>Window -&gt; Preferences -&gt; General -&gt; Editors -&gt; Text editors</p>
+<p>Check: show line numbers, insert space for tabs, show whitespace characters</p>
+<p>Window -&gt; Preferences -&gt; Rinzo XML -&gt; Formatting</p>
+<p>Indentation size: 2
+Line width: 160
+Select: Indent using spaces
+Check: show line numbers</p>
+</div>
+<div class="section" id="id13">
+<h3><a class="toc-backref" href="#id37">快捷键</a></h3>
+<p>Window -&gt; Preferences -&gt; Gerneral -&gt; Keys</p>
+<p>Remove Trailing Whitespace -&gt; ctrl+shift+D &quot;In Windows&quot;</p>
+</div>
 </div>
 
         </div>
@@ -287,7 +285,7 @@
 <div id="uyan_frame"></div>
 <script type="text/javascript">
     var uyan_config = {
-        'su': 'blog/2013-12-create_low_cost_turtlebot_in_30mins.html'
+        'su': 'blog/2014-03-ros_eclipse_for_cpp_python.html'
     };
 </script>
 <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
