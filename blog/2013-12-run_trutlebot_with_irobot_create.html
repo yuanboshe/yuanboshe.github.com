@@ -94,97 +94,10 @@
 <p class="last">环境：Ubuntu 12.04, ROS Hydro.</p>
 
             </div>
-            <div class="contents topic" id="id1">
-<p class="topic-title first">目录</p>
-<ul class="simple">
-<li><a class="reference internal" href="#id2" id="id5">准备工作</a><ul>
-<li><a class="reference internal" href="#irobot-create" id="id6">配置irobot create 底盘环境变量</a></li>
-<li><a class="reference internal" href="#pc" id="id7">赋予PC访问底盘接口权限</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id3" id="id8">运行测试</a><ul>
-<li><a class="reference internal" href="#id4" id="id9">键盘远程控制测试</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id5">准备工作</a></h2>
-<p>首先确保按照《 <a class="reference external" href="http://yuanboshe.github.io/blog/2013-12-prepare_softs_for_turtlebot.html">TurtleBot笔记本端ROS环境配置</a>》一文中的步骤配置好ROS环境，并安装好turtlebot功能包。</p>
-<p>用USB-TTL线将底盘与PC连接，设置虚拟机连接USB设备。下面的一系列操作要在首次测试前执行，以后测试不必执行。</p>
-<div class="section" id="irobot-create">
-<h3><a class="toc-backref" href="#id6">配置irobot create 底盘环境变量</a></h3>
-<p>turtlebot包默认配置是用于kobuki底盘的，直接运行会无法与irobot create底盘通讯，因此要改成irobot create底盘的配置。执行下面的命令，将在用户目录的 <em>.bashrc</em> 文件下添加命令中的脚本语句，随terminal的启动而执行：</p>
-<div class="highlight"><pre>echo &quot;export TURTLEBOT_BASE=create&quot; &gt;&gt; ~/.bashrc
-echo &quot;export TURTLEBOT_STACKS=circles&quot; &gt;&gt; ~/.bashrc
-echo &quot;export TURTLEBOT_3D_SENSOR=asus_xtion_pro&quot; &gt;&gt; ~/.bashrc
-</pre></div>
-<p>可以设置的变量有如下四个，可以根据自己的需求修改:</p>
-<pre class="literal-block">
-export TURTLEBOT_BASE=create
-export TURTLEBOT_STACKS=circles
-export TURTLEBOT_3D_SENSOR=kinect
-export TURTLEBOT_SIMULATION=false
-</pre>
-<p>重新打开terminal之后，这些变量就会生效。</p>
-</div>
-<div class="section" id="pc">
-<h3><a class="toc-backref" href="#id7">赋予PC访问底盘接口权限</a></h3>
-<p>对于DIY玩家来说，用自己的Ubuntu系统连接irobot create底盘，跑turtlebot的底盘驱动包的时候，会遇到如下Error：</p>
-<blockquote>
-[ERROR] [WallTime: 1383454018.987015] Failed to open port /dev/ttyUSB0.  Please make sure the Create cable is plugged into the computer.</blockquote>
-<p>这时PC无法与底盘通讯，问题的原因很可能是没有将自己的Ubuntu用户加入 <em>dialout</em> 用户组，解决办法如下。</p>
-<p>列出ttyUSB设备：</p>
-<div class="highlight"><pre>ls -l /dev/ttyUSB*
-</pre></div>
-<p>结果可能是这样：</p>
-<blockquote>
-crw-rw---- 1 root dialout 188, 0 Nov  2 10:31 /dev/ttyUSB0</blockquote>
-<p>如果没有 <em>ttyUSB0</em> ，重新插拔一下USB转串口线。</p>
-<p>查看自己的用户组：</p>
-<div class="highlight"><pre>groups
-</pre></div>
-<p>结果可能是这样：</p>
-<blockquote>
-viki adm cdrom sudo dip plugdev lpadmin sambashare</blockquote>
-<p>表示自己的用户不在 <em>dialout</em> 用户组内，通过下面的命令加入（我的用户名是 <em>viki</em> ，需要替换成自己的ubuntu用户名）：</p>
-<div class="highlight"><pre>sudo gpasswd -a viki dialout
-</pre></div>
-<p>重启系统后，设置才会生效。可以通过 <tt class="docutils literal">groups</tt> 命令查看是否添加成功。</p>
-<div class="warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">如果你使用的是 <strong>Ubuntu 13.04</strong> ，<em>Failed to open port /dev/ttyUSB0</em> 的Error还是会存在，表面看似乎是串口权限的问题，其实是turtlebot内部隐藏的一个bug。在Ubuntu 13.04，可能是串口相关软件做了更新，行为与之前的版本不太一样，通过调试发现，在turtlebot的 <em>create_driver</em> package的 <em>create_driver.py</em> 文件的213行，<em>self.ser.open()</em> 处会抛出一段exception，显示 <em>the port is already open</em> 。注释掉这一行，在重启机器后能够正常连接上irobot create底盘，但是当退出连接，尝试重新连接的时候，会出现 <em>Error reading from SCI port. No data.</em> 的Error。暂时还没发现比较好的解决方案，也没有做深入研究。</p>
-</div>
-</div>
-</div>
-<div class="section" id="id3">
-<h2><a class="toc-backref" href="#id8">运行测试</a></h2>
-<p>最简单的turtlebot测试就是键盘控制测试了。</p>
-<div class="section" id="id4">
-<h3><a class="toc-backref" href="#id9">键盘远程控制测试</a></h3>
-<p>启动3个terminal分别运行以下命令：</p>
-<div class="highlight"><pre>roscore
-roslaunch turtlebot_bringup minimal.launch
-roslaunch turtlebot_teleop keyboard_teleop.launch
-</pre></div>
-<p>这3个terminal分别：启动master，启动turtlebot底盘，启动键盘控制。实际上不运行 <tt class="docutils literal">roscore</tt> 也行， <em>minimal.launch</em> 里面会附带运行，但作为ROSer，还是规范点开机就执行 <tt class="docutils literal">roscore</tt> 。</p>
-<p>控制方式在启动 <em>keyboard_teleop.launch</em> 上面的terminal里面有提示:</p>
-<pre class="literal-block">
-Control Your Turtlebot!
----------------------------
-Moving around:
-   u    i    o
-   j    k    l
-   m    ,    .
-
-q/z : increase/decrease max speeds by 10%
-w/x : increase/decrease only linear speed by 10%
-e/c : increase/decrease only angular speed by 10%
-space key, k : force stop
-anything else : stop smoothly
-</pre>
-<p>例如：键盘按键 <strong>“i”</strong> ”是前进，键盘按键 <strong>“,”</strong> 是后退...</p>
-</div>
+            <div class="section" id="id1">
+<h2>您所浏览的内容被隐藏了...</h2>
+<p>您所浏览的内容都是作者花费很多金钱和精力才探索出来的，虽然作者很希望将这些内容免费贡献出来，但总有一些人喜欢拿别人免费贡献出来的东西为自己谋利，却连基本的感谢都没有，甚至号称是自己的原创。对于那些转载过本文的人，请至少标明出处，给予作者最起码的尊重！</p>
+<p>为了团队发展，也为了能有更好的条件为更多的机器人爱好者提供前沿的技术和经验，本文相关内容不再免费提供，希望大家关注ExBot <a class="reference external" href="http://blog.exbot.net">http://blog.exbot.net</a> ，所有经验将会写成教程，逐步贡献出来。</p>
 </div>
 
         </div>
@@ -244,18 +157,19 @@ anything else : stop smoothly
             <p><a href="http://yuanboshe.github.io/blog/tags.html" title="Tags">
                 <i class="icon-tags icon-large"></i>Tags
             </a></p>
-                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/kinect.html">kinect</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/opencv.html">opencv</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/exbotxi.html">exbotxi</a></span> ,
+                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
+                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/qt.html">qt</a></span> ,
                 <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/python.html">python</a></span> ,
                 <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a></span> ,
-                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/cv.html">cv</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/qt.html">qt</a></span> ,
-                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
                 <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a></span> ,
-                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
                 <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
         </li>
         <li class="block li-0">

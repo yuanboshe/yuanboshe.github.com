@@ -91,193 +91,10 @@
                 <p class="first last">玩ROS的人应该都知道TurtleBot，它是ROS官方最流行的机器人平台，很多地方都是以TurtleBot为ROS教学平台。TurtleBot包含移动机器人硬件和ROS软件包两个部分，ROS学习者没有一台自己的TurtleBot实验平台是很可惜的事情，本文介绍如何利用iRobot Create底盘打造自己的TurtleBot移动机器人平台，希望各位手头拮据的ROS爱好者也能拥有自己的ROS机器人。</p>
 
             </div>
-            <div class="contents topic" id="id1">
-<p class="topic-title first">目录</p>
-<ul class="simple">
-<li><a class="reference internal" href="#id2" id="id10">TurtleBot的硬件组成</a></li>
-<li><a class="reference internal" href="#id3" id="id11">物品清单</a></li>
-<li><a class="reference internal" href="#id4" id="id12">组装过程</a><ul>
-<li><a class="reference internal" href="#id5" id="id13">装配底盘</a></li>
-<li><a class="reference internal" href="#mm" id="id14">装170mm铝合金型材</a></li>
-<li><a class="reference internal" href="#id6" id="id15">装配架子</a></li>
-<li><a class="reference internal" href="#id7" id="id16">安装数据线</a></li>
-<li><a class="reference internal" href="#id8" id="id17">安置摄像头</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id9" id="id18">最后</a></li>
-</ul>
-</div>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id10">TurtleBot的硬件组成</a></h2>
-<img alt="TurtleBot1" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/turtlebot.jpg" />
-<p>TurtleBot是非常典型的移动机器人，其硬件结构清晰简洁：移动机器人底盘，架子，RGB-D摄像头，外加笔记本。第一代TurtleBot由iRobot Create扫地机器人底盘打造，第二代TurtleBot由Kobuki机器人底盘打造，他们最大的区别在于Kobuki底盘比iRobot Create底盘多了IMU（惯性测量）部分。自制TurtleBot，就是按照这个架构自制架子，搭建自己的移动机器人硬件平台，以及解决ROS软件控制问题。30分钟只是搭建硬件平台的时间，软件部分才是最耗时的，可以很负责任地告诉以为搞定全套TurtleBot平台只需要30分钟的人：你们上当了:)。</p>
-</div>
-<div class="section" id="id3">
-<h2><a class="toc-backref" href="#id11">物品清单</a></h2>
-<p>下面是主要物件清单：</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="38%" />
-<col width="62%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">名称</th>
-<th class="head">备注</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>iRobot Create底盘</td>
-<td>目前只能海购，国内无售</td>
-</tr>
-<tr><td>ASUS Xtion pro Live摄像头</td>
-<td>比Kinect好用太多</td>
-</tr>
-<tr><td>笔记本</td>
-<td>至少两个USB口，内存4G，能装WIN7跑虚拟机就行</td>
-</tr>
-</tbody>
-</table>
-<p>下面是框架的清单：</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="30%" />
-<col width="70%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">名称</th>
-<th class="head">备注</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>2020工业铝型材</td>
-<td>170mm*2+200mm*5+240mm*3=2060mm。
-2020表示截面为正方形的铝型材，边长20mm。
-2根170mm固定在底盘上，4根200mm用于架高，
-3根240mm为最上面的U形架，1根200mm用于安置摄像头。</td>
-</tr>
-<tr><td>2020角件</td>
-<td>12个。用于连接铝型材。</td>
-</tr>
-<tr><td>20系列M4 T型螺母</td>
-<td>24颗。M4表示螺纹型号，需配M4螺栓。</td>
-</tr>
-<tr><td>M4*10内六角螺栓</td>
-<td>24颗。M4表示螺纹型号，10表示螺纹部分长度为10mm。</td>
-</tr>
-<tr><td>M4圆形垫圈</td>
-<td>28片。</td>
-</tr>
-<tr><td>M4弹簧垫片</td>
-<td>28片。</td>
-</tr>
-<tr><td>美制内六角螺栓6#-32*1</td>
-<td>4颗。由于irobot create底盘螺纹孔为美标，与中国
-国标不同，故框架与底盘固定必须使用美制螺丝。在
-这里，6#表示螺纹直径，32表示牙距，1表示长度。
-不可配错。</td>
-</tr>
-</tbody>
-</table>
-<p>制作架子的材料如下图：</p>
-<img alt="框架材料" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/frame1.jpg" />
-<div class="note">
-<p class="first admonition-title">Note</p>
-<p class="last">2020工业铝型材中的两根170mm铝型材需要与底盘固定，故各需打两个M3.5的孔（美制#6螺栓外径尺寸相当于国标M3.5，故可以用M3.5的钻头钻孔）。一般的铝型材卖家都会提供钻孔服务，图纸如下：</p>
-</div>
-<img alt="170mm铝型材" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/170mm.jpg" />
-<p>配件清单：</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="37%" />
-<col width="63%" />
-</colgroup>
-<thead valign="bottom">
-<tr><th class="head">名称</th>
-<th class="head">备注</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr><td>镍氢AA充电电池+充电器</td>
-<td>iRobot Create底盘是不附带电池的，只有一个12
-节AA电池串联的电池盒。</td>
-</tr>
-<tr><td>USB-RS232转接头</td>
-<td>iRobot Create附带的数据线对外接口是RS232母头
-串口，而一般电脑已经没有了串口，需要USB
-转RS232模块与之相连接。</td>
-</tr>
-</tbody>
-</table>
-<p>除了上述所有组件外，还必须保证手里有相应的工具，如起子套件。</p>
-</div>
-<div class="section" id="id4">
-<h2><a class="toc-backref" href="#id12">组装过程</a></h2>
-<div class="section" id="id5">
-<h3><a class="toc-backref" href="#id13">装配底盘</a></h3>
-<p>iRboto Create底盘基本套件开封后如下：</p>
-<img alt="iRobot Create" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/create1.jpg" />
-<p>绿色的是电池盒（无电池），右上角的是配件，右下角的是数据线。按照说明书，很轻松就能装配好底盘。</p>
-<img alt="电池盒" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/power.jpg" />
-<p>将12节AA电池先充满电，用起子卸下四颗电池盒上的固定螺丝，打开电池仓即可将电池装入电池盒。</p>
-<div class="tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">官方说明书上指示，电池需要使用普通的非可充电AA电池，不要使用非官方提供的充电电池。这纯粹是官方的唬人手段，每节普通AA电池是1.5V，而镍氢AA充电电池是1.2V，虽然电压并不充足，但还是可以用的。而官方提供的可充电池组实际上也是大容量的镍氢充电电池。</p>
-</div>
-<div class="note">
-<p class="first admonition-title">Note</p>
-<p class="last">镍氢电池可以随意折腾，但如果想改装成锂电池，则比较危险，不要轻易尝试。</p>
-</div>
-</div>
-<div class="section" id="mm">
-<h3><a class="toc-backref" href="#id14">装170mm铝合金型材</a></h3>
-<img alt="iRobot Create" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/create2.jpg" />
-<p>用4颗美制内六角螺栓6#-32*1将两根170mm铝合金型材固定在iRobot Create底盘上，螺帽处最好加上弹簧垫片和普通圆形垫片。</p>
-</div>
-<div class="section" id="id6">
-<h3><a class="toc-backref" href="#id15">装配架子</a></h3>
-<p>铝合金型材的每个接头处需要使用一个角件，两颗M4*10内六角螺栓，两颗M4 T型螺母，两片弹簧垫圈和两片圆形垫片。架子的装配是很耗费时间的，可以先将四根200mm的铝合金型材固定在已经装好的两根170mm型材上，然后在装配最上面的3根240mm型材，也可以先按照下图的方式装配。</p>
-<img alt="Frame" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/frame2.jpg" />
-<p>最后装配中间固定摄像头用的200mm型材。具体效果参考最后的图片。</p>
-</div>
-<div class="section" id="id7">
-<h3><a class="toc-backref" href="#id16">安装数据线</a></h3>
-<p>将USB-RS232转接头与iRobot Create的数据线相连接，并插入iRobot Create底盘（底盘右侧有个活动的盖子，掀开即可看到数据线接口）。</p>
-<p>数据线也可以自己用USB-TTL模块做一根，如下图：</p>
-<img alt="数据线" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/cables.jpg" />
-<p>左边的是USB-RS232转接头与iRobot Create的数据线相连接的数据线，右边的是自己用USB-TTL模块做的数据线。自己做数据线的缺点就是得自己将3根插针——发送针，接收针，接地插入底盘上对应的TTL数据口。</p>
-</div>
-<div class="section" id="id8">
-<h3><a class="toc-backref" href="#id17">安置摄像头</a></h3>
-<p>用尼龙扎带或者绳子将摄像头绑在200mm铝型材上面即可。</p>
-<p>最后的效果如图：</p>
-<img alt="TurtleBot" src="http://yuanboshe.github.io/images/2013-12-25_create_low_cost_turtlebot_in_30mins/main.jpg" />
-<p>最后只需要将笔记本放在小车上面，用数据线将底盘与笔记本USB接口相连，将Xtion pro Live深度摄像头与笔记本USB接口相连即可。</p>
-<div class="note">
-<p class="first admonition-title">Note</p>
-<p class="last">笔记本的USB口最好是USB2.0口，可能现有的驱动不支持USB3.0。</p>
-</div>
-</div>
-</div>
-<div class="section" id="id9">
-<h2><a class="toc-backref" href="#id18">最后</a></h2>
-<p>关于TurtleBot的几个网站：</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="26%" />
-<col width="74%" />
-</colgroup>
-<tbody valign="top">
-<tr><td>平台官网</td>
-<td><a class="reference external" href="http://www.turtlebot.com/">http://www.turtlebot.com/</a></td>
-</tr>
-<tr><td>ROS软件包</td>
-<td><a class="reference external" href="http://wiki.ros.org/Robots/TurtleBot">http://wiki.ros.org/Robots/TurtleBot</a></td>
-</tr>
-<tr><td>ROS GitHub</td>
-<td><a class="reference external" href="https://github.com/turtlebot">https://github.com/turtlebot</a></td>
-</tr>
-</tbody>
-</table>
+            <div class="section" id="id1">
+<h2>您所浏览的内容被隐藏了...</h2>
+<p>您所浏览的内容都是作者花费很多金钱和精力才探索出来的，虽然作者很希望将这些内容免费贡献出来，但总有一些人喜欢拿别人免费贡献出来的东西为自己谋利，却连基本的感谢都没有，甚至号称是自己的原创。对于那些转载过本文的人，请至少标明出处，给予作者最起码的尊重！</p>
+<p>为了团队发展，也为了能有更好的条件为更多的机器人爱好者提供前沿的技术和经验，本文相关内容不再免费提供，希望大家关注ExBot <a class="reference external" href="http://blog.exbot.net">http://blog.exbot.net</a> ，所有经验将会写成教程，逐步贡献出来。</p>
 </div>
 
         </div>
@@ -337,18 +154,19 @@
             <p><a href="http://yuanboshe.github.io/blog/tags.html" title="Tags">
                 <i class="icon-tags icon-large"></i>Tags
             </a></p>
-                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/kinect.html">kinect</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/opencv.html">opencv</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/exbotxi.html">exbotxi</a></span> ,
+                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
+                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/qt.html">qt</a></span> ,
                 <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/python.html">python</a></span> ,
                 <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a></span> ,
-                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/cv.html">cv</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/qt.html">qt</a></span> ,
-                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
                 <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a></span> ,
-                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
                 <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
         </li>
         <li class="block li-0">

@@ -94,127 +94,10 @@
 <p class="last">环境：Ubuntu 12.04, ROS Hydro.</p>
 
             </div>
-            <div class="contents topic" id="id1">
-<p class="topic-title first">目录</p>
-<ul class="simple">
-<li><a class="reference internal" href="#id2" id="id6">准备工作</a></li>
-<li><a class="reference internal" href="#id4" id="id7">安装</a><ul>
-<li><a class="reference internal" href="#openni2" id="id8">安装openni2驱动包</a></li>
-<li><a class="reference internal" href="#fix-3dsensor-launch" id="id9">Fix 3dsensor.launch</a></li>
-<li><a class="reference internal" href="#id5" id="id10">测试</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id6">准备工作</a></h2>
-<p>确保按照《 <a class="reference external" href="http://yuanboshe.github.io/blog/2013-12-run_trutlebot_with_irobot_create.html">在iRobot Create底盘上跑Turtlebot</a>》一文中的步骤配置好irobot create的运行环境。</p>
-</div>
-<div class="section" id="id4">
-<h2><a class="toc-backref" href="#id7">安装</a></h2>
-<p>ROS里openni2驱动的封装包包含两个部分，一个是openni2_camera，另一个是openni2_launch。在ROS Groovy版本里，远程源没有openni2_launch，所以在之前的博文中使用源码编译的方法使用。而ROS Hydro的远程源两部分都有，直接远程安装即可。</p>
-<div class="section" id="openni2">
-<h3><a class="toc-backref" href="#id8">安装openni2驱动包</a></h3>
-<div class="highlight"><pre>sudo apt-get install ros-hydro-openni2-camera ros-hydro-openni2-launch
-</pre></div>
-</div>
-<div class="section" id="fix-3dsensor-launch">
-<h3><a class="toc-backref" href="#id9">Fix 3dsensor.launch</a></h3>
-<p>3dsensor.launch是turtlebot内启动深度摄像头感知环境的launch脚本，原本使用的是openni驱动，现在我们替换成了openni2，需要在这里做一些改动让该脚本使用openni2驱动。</p>
-<div class="highlight"><pre>roscd turtlebot_bringup/launch/
-sudo gedit 3dsensor.launch
-</pre></div>
-<p>通过上面的命令打开3dsensor.launch，你将看到如下内容：</p>
-<div class="highlight"><pre><span class="c">&lt;!--</span>
-<span class="c">  Turtlebot is a bit low on horsepower...</span>
-
-<span class="c">  We use openni_camera here, turn everything on by default</span>
-<span class="c">  (allows the user to conveniently see everything when</span>
-<span class="c">  launching this on its own - use with</span>
-<span class="c">  turtebot_rviz_launchers/view_robot.launch to visualise)</span>
-<span class="c">  and provide args to disable them so you can optimise the</span>
-<span class="c">  horsepower for your application.</span>
-
-<span class="c">  For an example of disabling processing modules, check</span>
-<span class="c">  any of the turtlebot_core_apps (e.g. android_make_a_map.launch</span>
-<span class="c">  only enables scan_processing for depthimage_to_laserscan and</span>
-<span class="c">  rgb_processing for the android tele-view).</span>
-<span class="c">--&gt;</span>
-<span class="nt">&lt;launch&gt;</span>
-  <span class="c">&lt;!-- &quot;camera&quot; should uniquely identify the device. All topics are pushed down</span>
-<span class="c">           into the &quot;camera&quot; namespace, and it is prepended to tf frame ids. --&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;camera&quot;</span>      <span class="na">default=</span><span class="s">&quot;camera&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;publish_tf&quot;</span>  <span class="na">default=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-
-  <span class="c">&lt;!-- Factory-calibrated depth registration --&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;depth_registration&quot;</span>              <span class="na">default=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-
-  <span class="c">&lt;!-- Processing Modules --&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rgb_processing&quot;</span>                  <span class="na">default=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;ir_processing&quot;</span>                   <span class="na">default=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;depth_processing&quot;</span>                <span class="na">default=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;depth_registered_processing&quot;</span>     <span class="na">default=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;disparity_processing&quot;</span>            <span class="na">default=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;disparity_registered_processing&quot;</span> <span class="na">default=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;scan_processing&quot;</span>                 <span class="na">default=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-
-  <span class="c">&lt;!-- Worker threads for the nodelet manager --&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;num_worker_threads&quot;</span> <span class="na">default=</span><span class="s">&quot;4&quot;</span> <span class="nt">/&gt;</span>
-
-  <span class="c">&lt;!-- Laserscan topic --&gt;</span>
-  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;scan_topic&quot;</span> <span class="na">default=</span><span class="s">&quot;scan&quot;</span><span class="nt">/&gt;</span>
-
-  <span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find openni_launch)/launch/openni.launch&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;camera&quot;</span>                          <span class="na">value=</span><span class="s">&quot;$(arg camera)&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;publish_tf&quot;</span>                      <span class="na">value=</span><span class="s">&quot;$(arg publish_tf)&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;depth_registration&quot;</span>              <span class="na">value=</span><span class="s">&quot;$(arg depth_registration)&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;num_worker_threads&quot;</span>              <span class="na">value=</span><span class="s">&quot;$(arg num_worker_threads)&quot;</span> <span class="nt">/&gt;</span>
-
-        <span class="c">&lt;!-- Processing Modules --&gt;</span>
-        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rgb_processing&quot;</span>                  <span class="na">value=</span><span class="s">&quot;$(arg rgb_processing)&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;ir_processing&quot;</span>                   <span class="na">value=</span><span class="s">&quot;$(arg ir_processing)&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;depth_processing&quot;</span>                <span class="na">value=</span><span class="s">&quot;$(arg depth_processing)&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;depth_registered_processing&quot;</span>     <span class="na">value=</span><span class="s">&quot;$(arg depth_registered_processing)&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;disparity_processing&quot;</span>            <span class="na">value=</span><span class="s">&quot;$(arg disparity_processing)&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;disparity_registered_processing&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg disparity_registered_processing)&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/include&gt;</span>
-
-   <span class="c">&lt;!--                        Laserscan</span>
-<span class="c">         This uses lazy subscribing, so will not activate until scan is requested.</span>
-<span class="c">   --&gt;</span>
-  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(arg scan_processing)&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;nodelet&quot;</span> <span class="na">type=</span><span class="s">&quot;nodelet&quot;</span> <span class="na">name=</span><span class="s">&quot;depthimage_to_laserscan&quot;</span> <span class="na">args=</span><span class="s">&quot;load depthimage_to_laserscan/DepthImageToLaserScanNodelet $(arg camera)/$(arg camera)_nodelet_manager&quot;</span><span class="nt">&gt;</span>
-          <span class="c">&lt;!-- Pixel rows to use to generate the laserscan. For each column, the scan will</span>
-<span class="c">                   return the minimum value for those pixels centered vertically in the image. --&gt;</span>
-          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;scan_height&quot;</span> <span class="na">value=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;output_frame_id&quot;</span> <span class="na">value=</span><span class="s">&quot;/$(arg camera)_depth_frame&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;range_min&quot;</span> <span class="na">value=</span><span class="s">&quot;0.45&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;image&quot;</span> <span class="na">to=</span><span class="s">&quot;$(arg camera)/depth/image_raw&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;scan&quot;</span> <span class="na">to=</span><span class="s">&quot;$(arg scan_topic)&quot;</span><span class="nt">/&gt;</span>
-
-          <span class="c">&lt;!-- Somehow topics here get prefixed by &quot;$(arg camera)&quot; when not inside an app namespace,</span>
-<span class="c">                   so in this case &quot;$(arg scan_topic)&quot; must provide an absolute topic name (issue #88).</span>
-<span class="c">                   Probably is a bug in the nodelet manager: https://github.com/ros/nodelet_core/issues/7 --&gt;</span>
-          <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;$(arg camera)/image&quot;</span> <span class="na">to=</span><span class="s">&quot;$(arg camera)/depth/image_raw&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;$(arg camera)/scan&quot;</span> <span class="na">to=</span><span class="s">&quot;$(arg scan_topic)&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/node&gt;</span>
-  <span class="nt">&lt;/group&gt;</span>
-<span class="nt">&lt;/launch&gt;</span>
-</pre></div>
-<p>找到 <tt class="docutils literal">&lt;include <span class="pre">file=&quot;$(find</span> <span class="pre">openni_launch)/launch/openni.launch&quot;&gt;</span></tt> 一行，将其替换为 <tt class="docutils literal">&lt;include <span class="pre">file=&quot;$(find</span> <span class="pre">openni2_launch)/launch/openni2.launch&quot;&gt;</span></tt> 保存即可。</p>
-</div>
-<div class="section" id="id5">
-<h3><a class="toc-backref" href="#id10">测试</a></h3>
-<p>依次启动 <strong>master</strong>, <strong>minimal.launch</strong>, <strong>3dsensor.launch</strong> 和 <strong>rviz</strong>：</p>
-<div class="highlight"><pre>roscore
-roslaunch turtlebot_bringup minimal.launch
-roslaunch turtlebot_bringup 3dsensor.launch
-roslaunch turtlebot_rviz_launchers view_robot.launch
-</pre></div>
-<p>rviz启动后，勾选“DepthCloud”和“LaserScan”，展开“DepthCloud”，选择“Color Image Topic”为“/camera/rgb/image”即可看到深度摄像头利用深度信息重建的3D点云图像，如下图：</p>
-<img alt="Xtion pro live 3dsensor" src="http://yuanboshe.github.io/images/2013-12-18_use_xtion_pro_live_in_trutlebot/3dsensor.jpg" />
-<p>场景中红色点线即为从点云中提取的模拟2D激光雷达的信息。</p>
-</div>
+            <div class="section" id="id1">
+<h2>您所浏览的内容被隐藏了...</h2>
+<p>您所浏览的内容都是作者花费很多金钱和精力才探索出来的，虽然作者很希望将这些内容免费贡献出来，但总有一些人喜欢拿别人免费贡献出来的东西为自己谋利，却连基本的感谢都没有，甚至号称是自己的原创。对于那些转载过本文的人，请至少标明出处，给予作者最起码的尊重！</p>
+<p>为了团队发展，也为了能有更好的条件为更多的机器人爱好者提供前沿的技术和经验，本文相关内容不再免费提供，希望大家关注ExBot <a class="reference external" href="http://blog.exbot.net">http://blog.exbot.net</a> ，所有经验将会写成教程，逐步贡献出来。</p>
 </div>
 
         </div>
@@ -274,18 +157,19 @@ roslaunch turtlebot_rviz_launchers view_robot.launch
             <p><a href="http://yuanboshe.github.io/blog/tags.html" title="Tags">
                 <i class="icon-tags icon-large"></i>Tags
             </a></p>
-                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/kinect.html">kinect</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/opencv.html">opencv</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/exbotxi.html">exbotxi</a></span> ,
+                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
+                <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/turtlebot.html">turtlebot</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/sphinx.html">sphinx</a></span> ,
+                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/qt.html">qt</a></span> ,
                 <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/python.html">python</a></span> ,
                 <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/xtion.html">xtion</a></span> ,
-                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
                 <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/cv.html">cv</a></span> ,
-                <span class="tag-4"><a href="http://yuanboshe.github.io/blog/tag/qt.html">qt</a></span> ,
-                <span class="tag-2"><a href="http://yuanboshe.github.io/blog/tag/pelican.html">pelican</a></span> ,
                 <span class="tag-1"><a href="http://yuanboshe.github.io/blog/tag/ros.html">ros</a></span> ,
-                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/github.html">github</a></span> ,
                 <span class="tag-3"><a href="http://yuanboshe.github.io/blog/tag/pcduino.html">pcduino</a></span> ,
         </li>
         <li class="block li-0">
