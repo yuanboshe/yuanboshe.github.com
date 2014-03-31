@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://yuanboshe.github.io/index.html</loc>
-<lastmod>2014-03-31T19:04:07-00:00</lastmod>
+<lastmod>2014-03-31T21:08:16-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.3</priority>
 </url>
@@ -19,6 +19,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://yuanboshe.github.io/blog/2014-03-install_ros_in_10mins_vm.html</loc>
+<lastmod>2014-03-31T00:00:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>http://yuanboshe.github.io/blog/2014-03-sim_exbotxi_play_in_10_mins.html</loc>
 <lastmod>2014-03-31T00:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.9</priority>
