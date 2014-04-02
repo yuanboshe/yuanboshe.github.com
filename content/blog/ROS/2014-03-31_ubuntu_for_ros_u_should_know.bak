@@ -1,0 +1,42 @@
+10分钟上手玩ROS仿真机器人
+##############################
+
+:tags: exbotxi, ros
+:summary: ROS里面玩仿真机器人是很容易的事情，如果你没
+
+	环境：ROS Hydro, Ubuntu 12.04, Eclipse for C/C++ Kepler.
+
+:status: draft
+
+.. contents:: 目录
+
+准备工作
+=========
+
+示例程序
+==========
+显示模型
+----------
+打开terminal，输入命令：
+
+.. code-block:: ubuntu
+
+	roslaunch exbotxi_rviz view_model.launch
+
+将会打开rviz，并加载查看机器人模型的配置，如下图：
+
+.. image:: {image}step1.jpg
+	:alt: view model
+
+这里加载的是ExBot XI移动机器人平台模型，在该配置里面只能简单地查看模型，无法做控制等操作。
+
+键盘控制
+----------
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+{% extends "blog.html" %}
+{% block title %}Tags{% endblock %}
+{% block description %}All tags{% endblock %}
+{% block blog_title %}All tags{% endblock %}
+{% block blog_content %}
+    {% for tag, articles in tags %}
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4><a href="{{ SITEURL }}/{{ tag.url }}"><i class="fa fa-tag fa-lg"></i>{{ tag }}</a></h4>
+            </div>
+            <ul class="list-group">
+                {% for article in articles %}
+                    <li class="list-group-item"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

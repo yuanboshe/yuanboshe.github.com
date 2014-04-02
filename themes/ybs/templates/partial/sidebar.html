@@ -1,0 +1,55 @@
+<aside>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><a href="{{ SITEURL }}/blog/categories.html" title="Categories">
+                <i class="fa fa-folder-open-o fa-lg"></i> Categories
+            </a></h3>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+                {% for cat, null in categories %}
+                    <li>
+                        <a class="ybs-black" href="{{ SITEURL }}/{{ cat.url }}" title="{{ cat }}">
+                            <i class="fa {{ 'fa-folder-open-o' if cat == category else 'fa-folder-o' }} fa-lg"></i> {{ cat }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><a href="{{ SITEURL }}/blog/tags.html" title="Tags">
+                <i class="fa fa-tags fa-lg"></i> Tags
+            </a></h3>
+        </div>
+        <div class="panel-body">
+            {% for tag in tag_cloud %}
+                <span class="fa fa-tag tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 }}</a></span> ,
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><a href="{{ SITEURL }}/blog/dates.html" title="Dates">
+                <i class="fa fa-calendar fa-lg"></i> Dates
+            </a></h3>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-external-link fa-lg"></i> Links</h3>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+                {% for name, link in LINKS %}
+                    <li><a class="ybs-black" href="{{ link }}" title="{{ name }}">
+                        <i class="fa fa-external-link fa-lg"></i> {{ name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</aside>

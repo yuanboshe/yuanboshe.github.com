@@ -1,0 +1,31 @@
+{% extends "blog.html" %}
+{% block title %}Blogs{% endblock %}
+{% block description %}Latest blog posts{% endblock %}
+{% block blog_title %}Latest blog posts{% endblock %}
+{% block blog_content %}
+    {% if articles %}
+        {% for article in (articles_page.object_list if articles_page else articles) %}
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+                </div>
+                <div class="panel-body">
+                    {% set image_main = article|image_main_path %}
+                    {% if image_main %}
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-4">
+                                <a href="{{ image_main }}" class="thumbnail">
+                                    <img src="{{ image_main }}" alt="{{ article.title }}"/>
+                                </a>
+                            </div>
+                            <div>{{ article.summary }}</div>
+                        </div>
+                    {% else %}
+                        <div>{{ article.summary }}</div>
+                    {% endif %}
+                    {% include "partial/article_info.html" %}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock blog_content %}

@@ -1,0 +1,25 @@
+{% extends "blog.html" %}
+{% block title %}Dates{% endblock %}
+{% block description %}All dates{% endblock %}
+{% block blog_title %}All dates{% endblock %}
+{% block blog_content %}
+    {% for year, date_year in dates|groupby( 'date.year' )|sort(True) %}
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4><i class="fa fa-calendar fa-lg"></i>{{ year }}年</h4>
+            </div>
+            <ul class="list-group">
+                {% for month, articles in date_year|groupby( 'date.month' ) %}
+                    <li class="list-group-item">
+                        <h5><i class="fa fa-calendar-o fa-lg"></i>{{ articles[ 0 ].date.strftime( '%m' ) }}月</h5>
+                        <ul class="list-group">
+                            {% for article in articles %}
+                                <li class="list-group-item"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

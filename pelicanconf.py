@@ -41,10 +41,7 @@ PATH = 'content'
 DEFAULT_CATEGORY ='Others'
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = True
-THEME = 'themes/zeni'
-#THEME = 'themes/bootstrap_zeni'
-#THEME = 'themes/test1'
-#THEME = 'pelican-themes/bs6'
+THEME = 'themes/ybs'
 
 #URLs
 ARTICLE_DIR = 'blog'
@@ -62,7 +59,7 @@ TAG_URL = 'blog/tag/{slug}.html'
 AUTHOR_SAVE_AS = None
 AUTHORS_SAVE_AS = None
 DIRECT_TEMPLATES = ('index', 'blog/index', 'blog/tags', 'blog/categories', 'blog/dates', '404')
-PAGINATED_DIRECT_TEMPLATES = ('index', 'blog/index')
+PAGINATED_DIRECT_TEMPLATES = ('blog/index',)
 #TEMPLATE_PAGES = {'test/home.html': 'books.html',
 #                  'pages/home.html': 'index.html'}
 
