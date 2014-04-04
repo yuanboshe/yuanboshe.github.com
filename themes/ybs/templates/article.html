@@ -6,6 +6,9 @@
     <article>
         {% include 'partial/article_info.html' %}
         <div class="post-content ybs-background-color-layer1" id="post-content">
+		    <div class="copyright">
+			{% include "partial/copyright.html" %}
+			</div>
             <div class="summary">
                 {{ article.summary }}
             </div>

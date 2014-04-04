@@ -214,6 +214,17 @@ div.summary {
     border-radius: 8px;
 }
 
+div.copyright:before {
+    content: "Copyright 2014 by yuanboshe:";
+    font-weight: bold;
+}
+
+div.copyright {
+    padding: 10px 10px 1px 10px;
+    background-color: #ffe4e4;
+    border-radius: 8px;
+}
+
 /* CODE
 ------------------------------------------------------------*/
 
