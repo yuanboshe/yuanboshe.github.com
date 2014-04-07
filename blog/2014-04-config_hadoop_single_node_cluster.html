@@ -193,6 +193,7 @@
 <li><a class="reference internal" href="#id10" id="id30">测试</a><ul>
 <li><a class="reference internal" href="#sample-example" id="id31">Sample example</a></li>
 <li><a class="reference internal" href="#wordcount-example" id="id32">WordCount example</a></li>
+<li><a class="reference internal" href="#web-interface" id="id33">web interface</a></li>
 </ul>
 </li>
 </ul>
@@ -240,7 +241,7 @@ sudo adduser hduser sudo
 <p>现在登陆hduser用户，点击Ubuntu右上角的用户下拉菜单，选择hduser登陆。</p>
 <div class="note">
 <p class="first admonition-title">Note</p>
-<p class="last">直接用 <cite>su - hduser</cite> 可以在terminal内将环境切换用户到 <em>hduser</em>，但重开terminal还是会恢复原来的用户环境，还是重新登陆为hduser比较安逸。</p>
+<p class="last">直接用 <tt class="docutils literal">su - hduser</tt> 可以在terminal内将环境切换用户到 <em>hduser</em>，但重开terminal还是会恢复原来的用户环境，还是重新登陆为hduser比较安逸。</p>
 </div>
 </div>
 <div class="section" id="ssh">
@@ -258,7 +259,7 @@ cat $HOME/.ssh/id_rsa.pub &gt;&gt; $HOME/.ssh/authorized_keys
 The authenticity of host 'localhost (127.0.0.1)' can't be established.
 ECDSA key fingerprint is 8f:c9:65:4b:96:a0:6a:7f:73:4f:a6:bb:e8:53:c4:c5.
 Are you sure you want to continue connecting (yes/no)?</blockquote>
-<p>输入 <cite>yes</cite> 回车即可。提示如下则正常：</p>
+<p>输入 <tt class="docutils literal">yes</tt> 回车即可。提示如下则正常：</p>
 <blockquote>
 <dl class="docutils">
 <dt>Welcome to Ubuntu 12.04.4 LTS (GNU/Linux 3.8.0-37-generic i686)</dt>
@@ -275,7 +276,7 @@ Are you sure you want to continue connecting (yes/no)?</blockquote>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id18">解压hadoop</a></h3>
 <p>把先前下载的 <em>hadoop-2.3.0.tar.gz</em> 拷贝到虚拟机Ubuntu的hduser用户home目录下，如果没有下载，直接在Ubuntu中打开firefox下载也行，中国用户就别依照老外的教程从外网用wget下载了，直接找国内镜像站点下载，瞬间搞定的事情。</p>
-<p>打开terminal，用 <cite>ls</cite> 命令看看hadoop压缩包在不在，不在就是没拷过来：</p>
+<p>打开terminal，用 <tt class="docutils literal">ls</tt> 命令看看hadoop压缩包在不在，不在就是没拷过来：</p>
 <div class="highlight"><pre>hduser@ubuntu:~$ ls
 Desktop    Downloads         hadoop-2.3.0.tar.gz  Pictures  Templates
 Documents  examples.desktop  Music                Public    Videos
@@ -315,7 +316,7 @@ sudo chown -R hduser:hadoop hadoop
 </div>
 <div class="note">
 <p class="first admonition-title">Note</p>
-<p class="last">修改 <em>.bashrc</em> 后，需要重新打开terminal，或者 <cite>source ~/.bashrc</cite> 才会生效。</p>
+<p class="last">修改 <em>.bashrc</em> 后，需要重新打开terminal，或者 <tt class="docutils literal">source <span class="pre">~/.bashrc</span></tt> 才会生效。</p>
 </div>
 </div>
 <div class="section" id="id6">
@@ -328,15 +329,15 @@ sudo chown -R hduser:hadoop hadoop
 <li>mapred-site.xml</li>
 <li>hdfs-site.xml</li>
 </ul>
-<p>它们被放置在 <em>/usr/local/hadoop/etc/hadoop</em> 路径下。打开terminal，执行命令 <cite>cd /usr/local/hadoop/etc/hadoop</cite> 来到对应路径。</p>
+<p>它们被放置在 <em>/usr/local/hadoop/etc/hadoop</em> 路径下。打开terminal，执行命令 <tt class="docutils literal">cd /usr/local/hadoop/etc/hadoop</tt> 来到对应路径。</p>
 <div class="section" id="hadoop-env-sh">
 <h4><a class="toc-backref" href="#id21">hadoop-env.sh</a></h4>
-<p>用 <cite>gedit hadoop-env.sh</cite> 命令修改环境脚本文件，找到 <em>export JAVA_HOME=${JAVA_HOME}</em> 一行，将 <strong>${JAVA_HOME}</strong> 改为自己的JDK的路径，这里是 <em>/usr/lib/jvm/java-8-oracle</em>。</p>
+<p>用 <tt class="docutils literal">gedit <span class="pre">hadoop-env.sh</span></tt> 命令修改环境脚本文件，找到 <em>export JAVA_HOME=${JAVA_HOME}</em> 一行，将 <strong>${JAVA_HOME}</strong> 改为自己的JDK的路径，这里是 <em>/usr/lib/jvm/java-8-oracle</em>。</p>
 <div class="note">
 <p class="first admonition-title">Note</p>
 <p class="last">一定要改，虽然之前 <em>.bashrc</em> 设置了 <em>JAVA_HOME</em> 变量，但是当远程执行脚本的时候， <em>.bashrc</em> 并不会生效。</p>
 </div>
-<p>下面测试一下，不管在哪个路径下，用 <cite>hadoop version</cite> 命令测试hadoop环境，都应该能测试成功。如果测试成功，则会显示下面的内容：</p>
+<p>下面测试一下，不管在哪个路径下，用 <tt class="docutils literal">hadoop version</tt> 命令测试hadoop环境，都应该能测试成功。如果测试成功，则会显示下面的内容：</p>
 <div class="highlight"><pre>hduser@ubuntu:/usr/local/hadoop/etc/hadoop$ hadoop version
 Hadoop 2.3.0
 Subversion http://svn.apache.org/repos/asf/hadoop/common -r 1567123
@@ -348,7 +349,7 @@ This command was run using /usr/local/hadoop/share/hadoop/common/hadoop-common-2
 </div>
 <div class="section" id="core-site-xml">
 <h4><a class="toc-backref" href="#id22">core-site.xml</a></h4>
-<p>用 <cite>gedit core-site.xml</cite> 命令打开文件，在 <em>&lt;configuration&gt;</em> 标签中间添加：</p>
+<p>用 <tt class="docutils literal">gedit <span class="pre">core-site.xml</span></tt> 命令打开文件，在 <em>&lt;configuration&gt;</em> 标签中间添加：</p>
 <div class="highlight"><pre><span class="nt">&lt;property&gt;</span>
    <span class="nt">&lt;name&gt;</span>fs.default.name<span class="nt">&lt;/name&gt;</span>
    <span class="nt">&lt;value&gt;</span>hdfs://localhost:9000<span class="nt">&lt;/value&gt;</span>
@@ -358,7 +359,7 @@ This command was run using /usr/local/hadoop/share/hadoop/common/hadoop-common-2
 </div>
 <div class="section" id="yarn-site-xml">
 <h4><a class="toc-backref" href="#id23">yarn-site.xml</a></h4>
-<p>用 <cite>gedit yarn-site.xml</cite> 命令打开文件，在 <em>&lt;configuration&gt;</em> 标签中间添加：</p>
+<p>用 <tt class="docutils literal">gedit <span class="pre">yarn-site.xml</span></tt> 命令打开文件，在 <em>&lt;configuration&gt;</em> 标签中间添加：</p>
 <div class="highlight"><pre><span class="nt">&lt;property&gt;</span>
    <span class="nt">&lt;name&gt;</span>yarn.nodemanager.aux-services<span class="nt">&lt;/name&gt;</span>
    <span class="nt">&lt;value&gt;</span>mapreduce_shuffle<span class="nt">&lt;/value&gt;</span>
@@ -371,7 +372,7 @@ This command was run using /usr/local/hadoop/share/hadoop/common/hadoop-common-2
 </div>
 <div class="section" id="mapred-site-xml">
 <h4><a class="toc-backref" href="#id24">mapred-site.xml</a></h4>
-<p>用 <cite>cp mapred-site.xml.template mapred-site.xml</cite> 命令将 <em>mapred-site.xml</em> 模板文件拷贝为 <em>mapred-site.xml</em> 文件；然后再用 <cite>gedit mapred-site.xml</cite> 命令打开文件，在 <em>&lt;configuration&gt;</em> 标签中间添加：</p>
+<p>用 <tt class="docutils literal">cp <span class="pre">mapred-site.xml.template</span> <span class="pre">mapred-site.xml</span></tt> 命令将 <em>mapred-site.xml</em> 模板文件拷贝为 <em>mapred-site.xml</em> 文件；然后再用 <tt class="docutils literal">gedit <span class="pre">mapred-site.xml</span></tt> 命令打开文件，在 <em>&lt;configuration&gt;</em> 标签中间添加：</p>
 <div class="highlight"><pre><span class="nt">&lt;property&gt;</span>
    <span class="nt">&lt;name&gt;</span>mapreduce.framework.name<span class="nt">&lt;/name&gt;</span>
    <span class="nt">&lt;value&gt;</span>yarn<span class="nt">&lt;/value&gt;</span>
@@ -380,7 +381,7 @@ This command was run using /usr/local/hadoop/share/hadoop/common/hadoop-common-2
 </div>
 <div class="section" id="hdfs-site-xml">
 <h4><a class="toc-backref" href="#id25">hdfs-site.xml</a></h4>
-<p>用 <cite>gedit hdfs-site.xml</cite> 命令打开文件，在 <em>&lt;configuration&gt;</em> 标签中间添加：</p>
+<p>用 <tt class="docutils literal">gedit <span class="pre">hdfs-site.xml</span></tt> 命令打开文件，在 <em>&lt;configuration&gt;</em> 标签中间添加：</p>
 <div class="highlight"><pre><span class="nt">&lt;property&gt;</span>
    <span class="nt">&lt;name&gt;</span>dfs.replication<span class="nt">&lt;/name&gt;</span>
    <span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
@@ -401,7 +402,7 @@ mkdir -p mydata/hdfs/datanode
 </div>
 <div class="section" id="id7">
 <h4><a class="toc-backref" href="#id26">清理</a></h4>
-<p><cite>ls</cite> 命令能看到刚才gedit编辑的文件都有个带 <em>~</em> 的副本，强迫症表示需要用 <cite>rm -rf *~</cite> 清理一下看着舒服。</p>
+<p><tt class="docutils literal">ls</tt> 命令能看到刚才gedit编辑的文件都有个带 <em>~</em> 的副本，强迫症表示需要用 <tt class="docutils literal">rm <span class="pre">-rf</span> *~</tt> 清理一下看着舒服。</p>
 </div>
 </div>
 <div class="section" id="id8">
@@ -425,7 +426,7 @@ SHUTDOWN_MSG: Shutting down NameNode at ubuntu/127.0.1.1
 <div class="highlight"><pre>start-dfs.sh
 start-yarn.sh
 </pre></div>
-<p>每条命令都会启动一些后台进程，需要稍许等待。启动完成后，输入命令 <cite>jps</cite> 查看是否正常启动，如果正常，显示如下：</p>
+<p>每条命令都会启动一些后台进程，需要稍许等待。启动完成后，输入命令 <tt class="docutils literal">jps</tt> 查看是否正常启动，如果正常，显示如下：</p>
 <div class="highlight"><pre>hduser@ubuntu:/usr/local/hadoop/etc/hadoop$ jps
 5321 NodeManager
 4474 NameNode
@@ -436,7 +437,7 @@ start-yarn.sh
 </pre></div>
 <div class="note">
 <p class="first admonition-title">Note</p>
-<p class="last">虽然用 <cite>start-all.sh</cite> 也能代替上面两个脚本，但是官方里面写了推荐不要用 <cite>start-all.sh</cite> 来启动。</p>
+<p class="last">虽然用 <tt class="docutils literal"><span class="pre">start-all.sh</span></tt> 也能代替上面两个脚本，但是官方里面写了推荐不要用 <tt class="docutils literal"><span class="pre">start-all.sh</span></tt> 来启动。</p>
 </div>
 </div>
 </div>
@@ -466,53 +467,56 @@ Starting Job
 <div class="section" id="wordcount-example">
 <h3><a class="toc-backref" href="#id32">WordCount example</a></h3>
 <p>WordCount的测试过程主要参考《 <a class="reference external" href="http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/">Running Hadoop on Ubuntu Linux (Single-Node Cluster)</a> 》，虽然命令和过程不一样，但原理都一样。</p>
-<p>用 <cite>mkdir -p ~/tmp/wordtest</cite> 命令在用户的home路径下新建 <em>~/tmp/wordtest</em> 文件夹，下载UTF-8格式的测试用数据文件放到这个文件夹下（我用的是朋友给的全英文数据文件P00-1001.txt, P00-1002.txt, P00-1003.txt）。</p>
-<p>用下面的命令，将本地文件拷贝为hadoop input文件夹：</p>
-<div class="highlight"><pre>hadoop dfs -copyFromLocal /home/hduser/tmp/wordtest/ /user/hduser/input
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">一些老版本的用户命令如 <tt class="docutils literal">hadoop fs ...</tt> 之类已经不推荐使用，由新的命令 <tt class="docutils literal">hdfs dfs ...</tt> 代替。具体用户指令可以参考官方文档 <a class="reference external" href="http://hadoop.apache.org/docs/r2.3.0/hadoop-project-dist/hadoop-common/CommandsManual.html">Hadoop Commands Reference</a> 和 <a class="reference external" href="http://hadoop.apache.org/docs/r2.3.0/hadoop-project-dist/hadoop-common/FileSystemShell.html">File System Shell</a> 。</p>
+</div>
+<p>用 <tt class="docutils literal">mkdir <span class="pre">-p</span> ~/tmp/wordtest</tt> 命令在用户的home路径下新建 <em>~/tmp/wordtest</em> 文件夹，下载UTF-8格式的测试用数据文件放到这个文件夹下（我用的是朋友给的全英文数据文件P00-1001.txt, P00-1002.txt, P00-1003.txt）。</p>
+<p>用下面的命令，将本地文件拷贝到hadoop HDFS下：</p>
+<div class="highlight"><pre>hdfs dfs -copyFromLocal /home/hduser/tmp/wordtest/ /user/hduser/input
 </pre></div>
-<p>用下面的命令运行wordcount示例：</p>
+<p>用命令 <tt class="docutils literal">hdfs dfs <span class="pre">-ls</span> input</tt> 可以看到拷贝的内容：</p>
+<div class="highlight"><pre>hduser@ubuntu:~$ hdfs dfs -ls input
+Found 4 items
+-rw-r--r--   1 hduser supergroup      35071 2014-04-06 23:21 input/P00-1001.txt
+-rw-r--r--   1 hduser supergroup      28735 2014-04-06 23:21 input/P00-1002.txt
+-rw-r--r--   1 hduser supergroup       1400 2014-04-06 23:21 input/P00-1003.txt
+drwxr-xr-x   - hduser supergroup          0 2014-04-07 21:17 input/wordtest
+</pre></div>
+<p>下面执行WordCount example任务：</p>
 <div class="highlight"><pre>hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.3.0.jar wordcount /user/hduser/input /user/hduser/output
 </pre></div>
-<p>执行命令：</p>
-<div class="highlight"><pre>hadoop dfs -ls /user/hduser
-</pre></div>
-<p>将会显示：</p>
-<div class="highlight"><pre>Found 2 items
-drwxr-xr-x   - hduser supergroup          0 2014-04-06 23:21 /user/hduser/input
-drwxr-xr-x   - hduser supergroup          0 2014-04-06 23:24 /user/hduser/output
-</pre></div>
-<p>执行命令：</p>
-<div class="highlight"><pre>hadoop dfs -ls /user/hduser/output
-</pre></div>
-<p>将会显示：</p>
-<div class="highlight"><pre>Found 2 items
+<p>该命令就是让hadoop执行指定路径的jar包，即官方的 <em>hadoop-mapreduce-examples-2.3.0.jar</em> 运行里面的wordcount程序；数据源为之前拷贝到HDFS的 <em>/user/hduser/input</em> 下的那些文件，输出结果到 <em>/user/hduser/output</em> 。</p>
+<p>运行完后，用命令 <tt class="docutils literal">hdfs dfs <span class="pre">-ls</span> /user/hduser/output</tt> 看看输出的结果：</p>
+<div class="highlight"><pre>hduser@ubuntu:~$ hdfs dfs -ls /user/hduser/output
+Found 2 items
 -rw-r--r--   1 hduser supergroup          0 2014-04-06 23:24 /user/hduser/output/_SUCCESS
 -rw-r--r--   1 hduser supergroup      35210 2014-04-06 23:24 /user/hduser/output/part-r-00000
 </pre></div>
-<p>执行命令：</p>
-<div class="highlight"><pre>hadoop dfs -cat /user/hduser/output/part-r-00000
-</pre></div>
-<p>将会显示：</p>
+<p>使用命令 <tt class="docutils literal">hdfs dfs <span class="pre">-cat</span> <span class="pre">/user/hduser/output/part-r-00000</span></tt> 可以查看文件里面的内容：</p>
 <div class="highlight"><pre>......
-orth    1
+witnessed       1
+word    8
+word,   5
+word.   2
+words   10
+words)  1
+words,  3
+work    5
+work,   2
+work-   1
+working 2
+works   1
+world   1
+world&#39;s 1
+worth   1
 would   8
-written 1
-wrong   1
-x       1
-y       1
-ye-     3
-yeah    3
-years   2
-yellow  1
-yellow- 1
-yet     1
-ye—     1
-yield   1
-you     1
-yup     1
-|orange 1
 ......
 </pre></div>
+</div>
+<div class="section" id="web-interface">
+<h3><a class="toc-backref" href="#id33">web interface</a></h3>
+<p>通过Hadoop的默认Web界面地址可以获得一些内部信息，打开fierfox，输入 <tt class="docutils literal"><span class="pre">http://localhost:50070/</span></tt> 即可。</p>
 </div>
 </div>
 
@@ -580,24 +584,24 @@ yup     1
             </a></h3>
         </div>
         <div class="panel-body">
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/opencv.html">opencv</a></span> ,
-                <span class="fa fa-tag tag-3"><a href="http://my.phirobot.com/blog/tag/pcduino.html">pcduino</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/big-data.html">big data</a></span> ,
+                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/xtion.html">xtion</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/qt.html">qt</a></span> ,
                 <span class="fa fa-tag tag-1"><a href="http://my.phirobot.com/blog/tag/ros.html">ros</a></span> ,
                 <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/cv.html">cv</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/web.html">web</a></span> ,
+                <span class="fa fa-tag tag-3"><a href="http://my.phirobot.com/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
+                <span class="fa fa-tag tag-3"><a href="http://my.phirobot.com/blog/tag/pcduino.html">pcduino</a></span> ,
                 <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/mapreduce.html">mapreduce</a></span> ,
-                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/exbotxi.html">exbotxi</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/kinect.html">kinect</a></span> ,
                 <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/github.html">github</a></span> ,
+                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/pelican.html">pelican</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/hadoop.html">hadoop</a></span> ,
+                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/exbotxi.html">exbotxi</a></span> ,
                 <span class="fa fa-tag tag-1"><a href="http://my.phirobot.com/blog/tag/turtlebot.html">turtlebot</a></span> ,
                 <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/python.html">python</a></span> ,
-                <span class="fa fa-tag tag-3"><a href="http://my.phirobot.com/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/kinect.html">kinect</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/hadoop.html">hadoop</a></span> ,
-                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/xtion.html">xtion</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/web.html">web</a></span> ,
-                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/pelican.html">pelican</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/opencv.html">opencv</a></span> ,
                 <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/sphinx.html">sphinx</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/big-data.html">big data</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/qt.html">qt</a></span> ,
         </div>
     </div>
 
