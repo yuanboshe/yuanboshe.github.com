@@ -2,11 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="&lt;p class=&#34;first&#34;&gt;可能绝大部分人都习惯用Eclipse来做开发吧，可谓ROS开发No.1的IDE。2013年的时候写过一篇配置Eclipse的文章，现在再次总结一下。&lt;/p&gt;
-&lt;p class=&#34;last&#34;&gt;环境：ROS Hydro, Ubuntu 12.04, Eclipse for C/C++ Kepler.&lt;/p&gt;
-">
+    <meta name="description" content="Tag: hadoop">
     <meta name="author" content="Yuanbo She">
-    <title>ROS开发环境之Eclipse (C/C++ &amp; python) | Yuanbo She</title>
+    <title>hadoop | Yuanbo She</title>
     <meta name="google-site-verification" content="0mXr6Pg187Q4q6NgNglcunnBiVqqS1L4yKV6loUWYkY"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,7 +42,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse-nav">
                 <!-- main nav bar -->
                 <ul class="nav navbar-nav">
-                    <li >
+                    <li class="active">
                         <a href="http://my.phirobot.com/blog/index.html">Blog </a>
                     </li>
                 </ul>
@@ -65,7 +63,7 @@
                         </li>
                         <li>
                             <a href="http://my.phirobot.com/blog/category/ros.html">
-                                <i class="fa fa-folder-open fa-lg"></i>
+                                <i class="fa fa-folder fa-lg"></i>
                                 ROS
                             </a>
                         </li>
@@ -123,13 +121,20 @@
     <div class='row'>
         <div class='col-md-9'>
             <!-- post main -->
-            <h2 class="ybs-bar-back-mid"><span>ROS开发环境之Eclipse (C/C++ &amp;amp; python)</span></h2>
-    <article>
+            <h2 class="ybs-bar-back-mid"><span>Tag: hadoop</span></h2>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h2><a href="http://my.phirobot.com/blog/2014-04-config_hadoop_single_node_cluster.html">Ubuntu Hadoop2.3.0 (Single-node) 单节点配置流程</a></h2>
+                </div>
+                <div class="panel-body">
+                        <div><p class="first">Hadoop课程的第一个小作业就是配置Hadoop并记录过程，刚好我有写博客的习惯，干脆写成博客。本文主要参考：《 <a class="reference external" href="http://javatute.com/javatute/faces/post/hadoop/2014/setting-hadoop-2.2.0-on-ubuntu-12-lts.xhtml">Setting hadoop 2.2.0 on ubuntu 12 lts</a> 》设置Hadoop单节点，做学习实验用。我有追求新东西的癖好，虽然要求配置1.x版本的Hadoop，但还是忍不住要配置最新的2.3.0。</p>
+<p class="last">环境：VMWare10.0.0, Ubuntu 12.04, Hadoop 2.3.0.</p>
+</div>
 <ul class="list-group list-inline ybs-info-list">
     <!-- date -->
     <li class="list-group-item">
         <i class="fa fa-calendar-o fa-lg"></i>
-        <abbr class="published" title="2014-03-15T00:00:00"> 2014-03-15</abbr>
+        <abbr class="published" title="2014-04-05T00:00:00"> 2014-04-05</abbr>
     </li>
 
     <!-- author -->
@@ -141,227 +146,18 @@
     <!-- category -->
     <li class="list-group-item">
         <i class="fa fa-folder-open-o fa-lg"></i>
-        <a class="ybs-black" href="http://my.phirobot.com/blog/category/ros.html">ROS</a>
+        <a class="ybs-black" href="http://my.phirobot.com/blog/category/machine-learning.html">Machine Learning</a>
     </li>
 
     <!-- tags -->
         <li class="list-group-item">
             <i class="fa fa-tag fa-lg"></i>
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/turtlebot.html">turtlebot</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/ros.html">ros</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/python.html">python</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/cpp.html">cpp</a>,
+                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/hadoop.html">hadoop</a>,
+                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/mapreduce.html">mapreduce</a>,
+                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/big-data.html">big data</a>,
         </li>
-</ul>        <div class="post-content ybs-background-color-layer1" id="post-content">
-            <div class="summary">
-                <p class="first">可能绝大部分人都习惯用Eclipse来做开发吧，可谓ROS开发No.1的IDE。2013年的时候写过一篇配置Eclipse的文章，现在再次总结一下。</p>
-<p class="last">环境：ROS Hydro, Ubuntu 12.04, Eclipse for C/C++ Kepler.</p>
-
+</ul>                </div>
             </div>
-		    <div class="copyright">
-欢迎转载或参考，但请尊重作者劳动成果，转载请注明出处，参考请引用链接！
-			</div>
-            <div class="contents topic" id="id1">
-<p class="topic-title first">目录</p>
-<ul class="simple">
-<li><a class="reference internal" href="#id2" id="id14">准备工作</a><ul>
-<li><a class="reference internal" href="#jdk" id="id15">安装JDK</a></li>
-<li><a class="reference internal" href="#eclipse-for-c-c" id="id16">安装Eclipse for C/C++</a></li>
-<li><a class="reference internal" href="#id3" id="id17">创建快捷方式</a></li>
-<li><a class="reference internal" href="#id4" id="id18">下载测试代码</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#eclipse-c-c" id="id19">配置Eclipse (C/C++)</a><ul>
-<li><a class="reference internal" href="#id5" id="id20">生成工程文件</a></li>
-<li><a class="reference internal" href="#id6" id="id21">导入工程</a></li>
-<li><a class="reference internal" href="#fix-invalid-arguments" id="id22">Fix &quot;Invalid arguments&quot; 等问题</a></li>
-<li><a class="reference internal" href="#id7" id="id23">测试</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#eclipse-python" id="id24">配置Eclipse (Python)</a><ul>
-<li><a class="reference internal" href="#pydev" id="id25">安装PyDev</a></li>
-<li><a class="reference internal" href="#id8" id="id26">配置PyDev</a></li>
-<li><a class="reference internal" href="#id9" id="id27">测试</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#ros" id="id28">一些有用的ROS插件</a><ul>
-<li><a class="reference internal" href="#cmake-editor" id="id29">CMake Editor</a></li>
-<li><a class="reference internal" href="#rinzo-xml-editor" id="id30">Rinzo XML Editor</a></li>
-<li><a class="reference internal" href="#yeditor" id="id31">YEditor</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id10" id="id32">优化工作</a><ul>
-<li><a class="reference internal" href="#id11" id="id33">增加文件关联</a></li>
-<li><a class="reference internal" href="#xml-formatting" id="id34">XML formatting</a></li>
-<li><a class="reference internal" href="#ros-formatting" id="id35">增加ROS Formatting</a></li>
-<li><a class="reference internal" href="#id12" id="id36">增强显示效果</a></li>
-<li><a class="reference internal" href="#id13" id="id37">快捷键</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id14">准备工作</a></h2>
-<div class="section" id="jdk">
-<h3><a class="toc-backref" href="#id15">安装JDK</a></h3>
-<p>安装JDK，Ubuntu系统中默认不附带常规JDK，而是OpenJDK，需要自己安装常规JDK，这里装最新的JDK8。</p>
-<div class="highlight"><pre>sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java8-installer
-</pre></div>
-</div>
-<div class="section" id="eclipse-for-c-c">
-<h3><a class="toc-backref" href="#id16">安装Eclipse for C/C++</a></h3>
-<p>从官网下载Eclipse for C/C++，（<a class="reference external" href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a> 从链接进去，选择Linux 32 bit版本）。解压后放在 <em>~/Program/</em> 文件夹下。</p>
-</div>
-<div class="section" id="id3">
-<h3><a class="toc-backref" href="#id17">创建快捷方式</a></h3>
-<p>打开terminal，输入命令：</p>
-<div class="highlight"><pre>sudo gedit /usr/share/applications/eclipse.desktop
-</pre></div>
-<p>将打开gedit编辑器，贴入下面的代码：</p>
-<div class="highlight"><pre>[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Eclipse
-Icon=/home/exbot/Programs/eclipse/icon.xpm
-Exec=bash -i -c &quot;/home/exbot/Programs/eclipse/eclipse&quot;
-Comment=Develop with pleasure!
-Categories=Development;IDE;
-Terminal=false
-</pre></div>
-<p>完成后在Dash菜单输入 <em>eclipse</em> 将会看到Eclipse图标，以后启动eclipse都从快捷方式启动。</p>
-</div>
-<div class="section" id="id4">
-<h3><a class="toc-backref" href="#id18">下载测试代码</a></h3>
-<div class="highlight"><pre>cd catkin_ws/
-git clone https://github.com/yuanboshe/exbot_xi.git
-</pre></div>
-</div>
-</div>
-<div class="section" id="eclipse-c-c">
-<h2><a class="toc-backref" href="#id19">配置Eclipse (C/C++)</a></h2>
-<div class="section" id="id5">
-<h3><a class="toc-backref" href="#id20">生成工程文件</a></h3>
-<div class="highlight"><pre>cd ~/catkin_ws
-catkin_make --force-cmake -G&quot;Eclipse CDT4 - Unix Makefiles&quot; -DCMAKE_BUILD_TYPE=Debug -DCMAKE_ECLIPSE_MAKE_ARGUMENTS=-j8
-</pre></div>
-</div>
-<div class="section" id="id6">
-<h3><a class="toc-backref" href="#id21">导入工程</a></h3>
-<p>File --&gt; Import --&gt; Existing projects into workspace</p>
-<p>&quot;Select root directory&quot; 选择 <em>~/catkin_ws/build</em> ，&quot;Finish&quot; 结束。</p>
-</div>
-<div class="section" id="fix-invalid-arguments">
-<h3><a class="toc-backref" href="#id22">Fix &quot;Invalid arguments&quot; 等问题</a></h3>
-<p>Project -&gt; Properties -&gt; C/C++ General -&gt; Preprocessor Include Paths, Macros etc. -&gt; Providers 选上 CDT GCC Built-in Compiler Settings</p>
-<p>Project -&gt; Index -&gt; Rebuild</p>
-</div>
-<div class="section" id="id7">
-<h3><a class="toc-backref" href="#id23">测试</a></h3>
-<p>Ctrl + B build工程</p>
-<p>打开terminal，输入 <tt class="docutils literal">roscore</tt> 启动ROS master</p>
-<p>Debug Configurations -&gt; C/C++ Application -&gt; Browse -&gt; &quot;.../catkin_ws/devel/lib/exbotxi_example/control&quot;</p>
-<p>源码位于：[Source directory]/exbot_xi/exbotxi_example/nodes/control.cpp</p>
-<p>可以看到启动信息，调试正常。</p>
-</div>
-</div>
-<div class="section" id="eclipse-python">
-<h2><a class="toc-backref" href="#id24">配置Eclipse (Python)</a></h2>
-<div class="section" id="pydev">
-<h3><a class="toc-backref" href="#id25">安装PyDev</a></h3>
-<p>设置代理，国内被墙无法更新。</p>
-<p>Help -&gt; Install New Software··· -&gt; Add</p>
-<p>Name: PyDev
-Location：<a class="reference external" href="http://pydev.org/updates">http://pydev.org/updates</a></p>
-<p>选择 PyDev for Eclipse -&gt; Next ... Finish 后等待安装完成，完成后会要求重启。</p>
-</div>
-<div class="section" id="id8">
-<h3><a class="toc-backref" href="#id26">配置PyDev</a></h3>
-<p>重启后需要对PyDev进行配置。</p>
-<p>Window -&gt; Preferences -&gt; PyDev -&gt; Interpreters -&gt; Python Interpreter -&gt; New -&gt; Browse...</p>
-<p>填入路径：/usr/bin/python2.7</p>
-<p>确认。</p>
-</div>
-<div class="section" id="id9">
-<h3><a class="toc-backref" href="#id27">测试</a></h3>
-<p>修改Project名字，改为 &quot;exbot&quot; （名字不能包含 <em>&#64;</em> 等字符）。</p>
-<p>打开terminal，输入 <tt class="docutils literal">roscore</tt> 启动ROS master</p>
-<p>源码位于：[Source directory]/exbot_xi/exbotxi_example/nodes/control.py</p>
-<p>打开源码，右键 Debug As -&gt; Python Run</p>
-<p>可以看到启动信息，调试正常。</p>
-</div>
-</div>
-<div class="section" id="ros">
-<h2><a class="toc-backref" href="#id28">一些有用的ROS插件</a></h2>
-<div class="section" id="cmake-editor">
-<h3><a class="toc-backref" href="#id29">CMake Editor</a></h3>
-<p>Help -&gt; Install New Software··· -&gt; Add</p>
-<p>Name: CMake Editor
-Location：<a class="reference external" href="http://cmakeed.sourceforge.net/eclipse/">http://cmakeed.sourceforge.net/eclipse/</a></p>
-</div>
-<div class="section" id="rinzo-xml-editor">
-<h3><a class="toc-backref" href="#id30">Rinzo XML Editor</a></h3>
-<p>Help -&gt; Eclipse Marketplace... -&gt; Search &quot;Rinzo XML Editor&quot; -&gt; Install</p>
-<p>只安装 Rinzo XML Editor Core 就行了。</p>
-</div>
-<div class="section" id="yeditor">
-<h3><a class="toc-backref" href="#id31">YEditor</a></h3>
-<p>Help -&gt; Eclipse Marketplace... -&gt; Search &quot;YEdit&quot; -&gt; Install</p>
-</div>
-</div>
-<div class="section" id="id10">
-<h2><a class="toc-backref" href="#id32">优化工作</a></h2>
-<div class="section" id="id11">
-<h3><a class="toc-backref" href="#id33">增加文件关联</a></h3>
-<p>Window -&gt; Preferences -&gt; Gerneral -&gt; Editors -&gt; File Associations</p>
-<p>关联至 Rinzo XML Editor：*.launch, *.concert, *.xacro, *.urdf</p>
-<p>关联至 YEdit：*.rviz</p>
-</div>
-<div class="section" id="xml-formatting">
-<h3><a class="toc-backref" href="#id34">XML formatting</a></h3>
-<p>Window -&gt; Preferences -&gt; Rinzo XML -&gt; Formatting</p>
-</div>
-<div class="section" id="ros-formatting">
-<h3><a class="toc-backref" href="#id35">增加ROS Formatting</a></h3>
-<p>将我的 cpp format 文件 &quot;Eclipse_format_yuanboshe.xml&quot; 拷贝到Ubuntu。</p>
-<p>Window -&gt; Preferences -&gt; C/C++ -&gt; Code Style -&gt; Formatter -&gt; Import...</p>
-</div>
-<div class="section" id="id12">
-<h3><a class="toc-backref" href="#id36">增强显示效果</a></h3>
-<p>Window -&gt; Preferences -&gt; General -&gt; Editors -&gt; Text editors</p>
-<p>Check: show line numbers, insert space for tabs, show whitespace characters</p>
-<p>Window -&gt; Preferences -&gt; Rinzo XML -&gt; Formatting</p>
-<p>Indentation size: 2
-Line width: 160
-Select: Indent using spaces
-Check: show line numbers</p>
-</div>
-<div class="section" id="id13">
-<h3><a class="toc-backref" href="#id37">快捷键</a></h3>
-<p>Window -&gt; Preferences -&gt; Gerneral -&gt; Keys</p>
-<p>Remove Trailing Whitespace -&gt; ctrl+shift+D &quot;In Windows&quot;</p>
-</div>
-</div>
-
-        </div>
-    </article>
-
-<!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript">
-    var uyan_config = {
-        'su': 'blog/2014-03-ros_eclipse_for_cpp_python.html'
-    };
-</script>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
-<!-- UY END -->
-
-<!-- UJian Button BEGIN -->
-<script type="text/javascript">var ujian_config = {target:1};</script>
-<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide&fade=1&uid=1803538"></script>
-<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
-<!-- UJian Button END -->
 
             <!-- pagers -->
         </div>
@@ -389,7 +185,7 @@ Check: show line numbers</p>
                     </li>
                     <li>
                         <a class="ybs-black" href="http://my.phirobot.com/blog/category/ros.html" title="ROS">
-                            <i class="fa fa-folder-open-o fa-lg"></i> ROS
+                            <i class="fa fa-folder-o fa-lg"></i> ROS
                         </a>
                     </li>
                     <li>
