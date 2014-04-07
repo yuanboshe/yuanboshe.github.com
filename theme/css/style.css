@@ -120,9 +120,8 @@ div.post-content {
 }
 
 .post-content a:target, .post-content div:target {
-position: absolute; 
-    top:100px;
-	color: #a33;
+    padding-top: 70px;
+	margin-top: -70px;
 }
 
 .post-content div {
