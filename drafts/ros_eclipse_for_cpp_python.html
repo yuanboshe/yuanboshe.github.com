@@ -70,9 +70,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="http://my.phirobot.com/blog/category/webqian-duan.html">
+                            <a href="http://my.phirobot.com/blog/category/webqian-duan-code.html">
                                 <i class="fa fa-folder fa-lg"></i>
-                                WEB前端
+                                WEB前端&Code
                             </a>
                         </li>
                 </ul>
@@ -192,10 +192,9 @@
 </li>
 <li><a class="reference internal" href="#id10" id="id32">优化工作</a><ul>
 <li><a class="reference internal" href="#id11" id="id33">增加文件关联</a></li>
-<li><a class="reference internal" href="#xml-formatting" id="id34">XML formatting</a></li>
-<li><a class="reference internal" href="#ros-formatting" id="id35">增加ROS Formatting</a></li>
-<li><a class="reference internal" href="#id12" id="id36">增强显示效果</a></li>
-<li><a class="reference internal" href="#id13" id="id37">快捷键</a></li>
+<li><a class="reference internal" href="#ros-formatting" id="id34">增加ROS Formatting</a></li>
+<li><a class="reference internal" href="#id12" id="id35">增强显示效果</a></li>
+<li><a class="reference internal" href="#id13" id="id36">快捷键</a></li>
 </ul>
 </li>
 </ul>
@@ -212,7 +211,11 @@ sudo apt-get install oracle-java8-installer
 </div>
 <div class="section" id="eclipse-for-c-c">
 <h3><a class="toc-backref" href="#id16">安装Eclipse for C/C++</a></h3>
-<p>从官网下载Eclipse for C/C++，（<a class="reference external" href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a> 从链接进去，选择Linux 32 bit版本）。解压后放在 <em>~/Program/</em> 文件夹下。</p>
+<p>从官网下载Eclipse for C/C++，（<a class="reference external" href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a> 从链接进去，选择Linux 32 bit版本），如 <em>eclipse-cpp-kepler-SR2-linux-gtk.tar.gz</em> ，放在 <em>~/Downloads/</em> 文件夹下。使用下面的命令解压“安装”：</p>
+<div class="highlight"><pre>sudo tar vxzf eclipse-cpp-kepler-SR2-linux-gtk.tar.gz -C /usr/local
+cd /usr/local
+sudo chown -R exbot:exbot eclipse
+</pre></div>
 </div>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id17">创建快捷方式</a></h3>
@@ -224,17 +227,21 @@ sudo apt-get install oracle-java8-installer
 Version=1.0
 Type=Application
 Name=Eclipse
-Icon=/home/exbot/Programs/eclipse/icon.xpm
-Exec=bash -i -c &quot;/home/exbot/Programs/eclipse/eclipse&quot;
+Icon=/usr/local/eclipse/icon.xpm
+Exec=bash -i -c &quot;/usr/local/eclipse/eclipse&quot;
 Comment=Develop with pleasure!
 Categories=Development;IDE;
 Terminal=false
 </pre></div>
 <p>完成后在Dash菜单输入 <em>eclipse</em> 将会看到Eclipse图标，以后启动eclipse都从快捷方式启动。</p>
+<div class="tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">使用 <em>gedit</em> 一般会留下一个带 <em>*.*~</em> 的备份文件，使用命令 <tt class="docutils literal">sudo rm <span class="pre">-f</span> /usr/share/applications/eclipse.desktop~</tt> 删除。</p>
+</div>
 </div>
 <div class="section" id="id4">
 <h3><a class="toc-backref" href="#id18">下载测试代码</a></h3>
-<div class="highlight"><pre>cd catkin_ws/
+<div class="highlight"><pre>cd catkin_ws/src
 git clone https://github.com/yuanboshe/exbot_xi.git
 </pre></div>
 </div>
@@ -318,17 +325,13 @@ Location：<a class="reference external" href="http://cmakeed.sourceforge.net/ec
 <p>关联至 Rinzo XML Editor：*.launch, *.concert, *.xacro, *.urdf</p>
 <p>关联至 YEdit：*.rviz</p>
 </div>
-<div class="section" id="xml-formatting">
-<h3><a class="toc-backref" href="#id34">XML formatting</a></h3>
-<p>Window -&gt; Preferences -&gt; Rinzo XML -&gt; Formatting</p>
-</div>
 <div class="section" id="ros-formatting">
-<h3><a class="toc-backref" href="#id35">增加ROS Formatting</a></h3>
+<h3><a class="toc-backref" href="#id34">增加ROS Formatting</a></h3>
 <p>将我的 cpp format 文件 &quot;Eclipse_format_yuanboshe.xml&quot; 拷贝到Ubuntu。</p>
 <p>Window -&gt; Preferences -&gt; C/C++ -&gt; Code Style -&gt; Formatter -&gt; Import...</p>
 </div>
 <div class="section" id="id12">
-<h3><a class="toc-backref" href="#id36">增强显示效果</a></h3>
+<h3><a class="toc-backref" href="#id35">增强显示效果</a></h3>
 <p>Window -&gt; Preferences -&gt; General -&gt; Editors -&gt; Text editors</p>
 <p>Check: show line numbers, insert space for tabs, show whitespace characters</p>
 <p>Window -&gt; Preferences -&gt; Rinzo XML -&gt; Formatting</p>
@@ -338,7 +341,7 @@ Select: Indent using spaces
 Check: show line numbers</p>
 </div>
 <div class="section" id="id13">
-<h3><a class="toc-backref" href="#id37">快捷键</a></h3>
+<h3><a class="toc-backref" href="#id36">快捷键</a></h3>
 <p>Window -&gt; Preferences -&gt; Gerneral -&gt; Keys</p>
 <p>Remove Trailing Whitespace -&gt; ctrl+shift+D &quot;In Windows&quot;</p>
 </div>
@@ -393,8 +396,8 @@ Check: show line numbers</p>
                         </a>
                     </li>
                     <li>
-                        <a class="ybs-black" href="http://my.phirobot.com/blog/category/webqian-duan.html" title="WEB前端">
-                            <i class="fa fa-folder-o fa-lg"></i> WEB前端
+                        <a class="ybs-black" href="http://my.phirobot.com/blog/category/webqian-duan-code.html" title="WEB前端&Code">
+                            <i class="fa fa-folder-o fa-lg"></i> WEB前端&Code
                         </a>
                     </li>
             </ul>
@@ -408,24 +411,26 @@ Check: show line numbers</p>
             </a></h3>
         </div>
         <div class="panel-body">
-                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/exbotxi.html">exbotxi</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/sphinx.html">sphinx</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/qt.html">qt</a></span> ,
-                <span class="fa fa-tag tag-3"><a href="http://my.phirobot.com/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/big-data.html">big data</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/opencv.html">opencv</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/hadoop.html">hadoop</a></span> ,
-                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/xtion.html">xtion</a></span> ,
                 <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/pelican.html">pelican</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/cv.html">cv</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/opencv.html">opencv</a></span> ,
+                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/xtion.html">xtion</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/sphinx.html">sphinx</a></span> ,
                 <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/github.html">github</a></span> ,
-                <span class="fa fa-tag tag-3"><a href="http://my.phirobot.com/blog/tag/pcduino.html">pcduino</a></span> ,
-                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/python.html">python</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/mapreduce.html">mapreduce</a></span> ,
-                <span class="fa fa-tag tag-1"><a href="http://my.phirobot.com/blog/tag/turtlebot.html">turtlebot</a></span> ,
-                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/kinect.html">kinect</a></span> ,
-                <span class="fa fa-tag tag-1"><a href="http://my.phirobot.com/blog/tag/ros.html">ros</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/big-data.html">big data</a></span> ,
                 <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/web.html">web</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/ubuntu_for_ros.html">ubuntu_for_ros</a></span> ,
+                <span class="fa fa-tag tag-1"><a href="http://my.phirobot.com/blog/tag/ros.html">ros</a></span> ,
+                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/exbotxi.html">exbotxi</a></span> ,
+                <span class="fa fa-tag tag-3"><a href="http://my.phirobot.com/blog/tag/pcduino.html">pcduino</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/hadoop.html">hadoop</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/qt.html">qt</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/kinect.html">kinect</a></span> ,
+                <span class="fa fa-tag tag-1"><a href="http://my.phirobot.com/blog/tag/turtlebot.html">turtlebot</a></span> ,
+                <span class="fa fa-tag tag-2"><a href="http://my.phirobot.com/blog/tag/python.html">python</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/cv.html">cv</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/mapreduce.html">mapreduce</a></span> ,
+                <span class="fa fa-tag tag-4"><a href="http://my.phirobot.com/blog/tag/ros-quick-start.html">ros quick start</a></span> ,
+                <span class="fa fa-tag tag-3"><a href="http://my.phirobot.com/blog/tag/restructuredtext.html">reStructuredText</a></span> ,
         </div>
     </div>
 
