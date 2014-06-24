@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Latest blog posts">
+    <meta name="description" content="Tag: ubuntu_for_ros">
     <meta name="author" content="Yuanbo She">
-    <title>Blogs | Yuanbo She</title>
+    <title>ubuntu_for_ros | Yuanbo She</title>
     <meta name="google-site-verification" content="0mXr6Pg187Q4q6NgNglcunnBiVqqS1L4yKV6loUWYkY"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,127 +121,19 @@
     <div class='row'>
         <div class='col-md-9'>
             <!-- post main -->
-            <h2 class="ybs-bar-back-mid"><span>Latest blog posts</span></h2>
+            <h2 class="ybs-bar-back-mid"><span>Tag: ubuntu_for_ros</span></h2>
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h2><a href="http://my.phirobot.com/blog/2013-10-fix_kinect_xtion_pro_with_3dsensor.html">Fix 3dsensor.launch兼容Kinect和ASUS Xtion pro Live</a></h2>
+                    <h2><a href="http://my.phirobot.com/blog/2014-06-hector_mapping_example.html">用hector mapping构建地图</a></h2>
                 </div>
                 <div class="panel-body">
-                        <div><p class="first">忘了是从哪里看来的消息，说ROS里面的openni已经不能用来驱动Kinect和Xtion pro Live摄像头了，究其原因，说是openni驱动更新出现了问题，而且官方也不再更新了。当前Ubuntu某个摄像头包已经包含了Kinect驱动，新版Xtion pro Live也不能用以前的openni驱动。那么现在的Kinect和Xtion pro Live用什么驱动呢？经试验，Kinct使用freenect驱动，Xtion pro Live使用openni2驱动。玩turtlebot免不了使用3dsensor.launch来启动深度摄像头相关的nodes但3dsensor.launch里面依旧使用的openni驱动，大部分玩家都是买的现成turtlebot，不明白为什么他们的Kinect还能用得起来而我的Kinect却无法用openni驱动起来，也许是他们没有更新openni包吧。对于我这种没买turtlebot的，只有自己fix 3dsensor.launch的摄像头驱动问题了。</p>
-<p class="last">环境：ROS Groovy + Kinect / Xtion pro Live</p>
+                        <div><p class="first last">本文介绍如何在Ubuntu for ROS中配置Hokuyo（或者是rpLidar），运行hector slam中的mapping示例代码。示例代码包含在exbot_xi开发包中，Ubuntu for ROS开发版已经包含此开发包。</p>
 </div>
 <ul class="list-group list-inline ybs-info-list">
     <!-- date -->
     <li class="list-group-item">
         <i class="fa fa-calendar-o fa-lg"></i>
-        <abbr class="published" title="2013-10-29T00:00:00"> 2013-10-29</abbr>
-    </li>
-
-    <!-- author -->
-        <li class="list-group-item">
-            <i class="fa fa-user fa-lg"></i>
-            <a class="ybs-black" href="http://my.phirobot.com/about.html">Yuanbo She</a>
-        </li>
-
-    <!-- category -->
-    <li class="list-group-item">
-        <i class="fa fa-folder-open-o fa-lg"></i>
-        <a class="ybs-black" href="http://my.phirobot.com/blog/category/ros.html">ROS</a>
-    </li>
-
-    <!-- tags -->
-        <li class="list-group-item">
-            <i class="fa fa-tag fa-lg"></i>
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/turtlebot.html">turtlebot</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/ros.html">ros</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/xtion.html">xtion</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/kinect.html">kinect</a>,
-        </li>
-</ul>                </div>
-            </div>
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h2><a href="http://my.phirobot.com/blog/2013-10-restructuretext_sphinx_resource.html">reStructuredText + Sphinx的一些学习资源</a></h2>
-                </div>
-                <div class="panel-body">
-                        <div><p class="first last">一些reStructuredText &amp; Sphinx的学习资源，备查。</p>
-</div>
-<ul class="list-group list-inline ybs-info-list">
-    <!-- date -->
-    <li class="list-group-item">
-        <i class="fa fa-calendar-o fa-lg"></i>
-        <abbr class="published" title="2013-10-15T00:00:00"> 2013-10-15</abbr>
-    </li>
-
-    <!-- author -->
-        <li class="list-group-item">
-            <i class="fa fa-user fa-lg"></i>
-            <a class="ybs-black" href="http://my.phirobot.com/about.html">Yuanbo She</a>
-        </li>
-
-    <!-- category -->
-    <li class="list-group-item">
-        <i class="fa fa-folder-open-o fa-lg"></i>
-        <a class="ybs-black" href="http://my.phirobot.com/blog/category/webqian-duan-code.html">WEB前端&Code</a>
-    </li>
-
-    <!-- tags -->
-        <li class="list-group-item">
-            <i class="fa fa-tag fa-lg"></i>
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/restructuredtext.html">reStructuredText</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/sphinx.html">sphinx</a>,
-        </li>
-</ul>                </div>
-            </div>
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h2><a href="http://my.phirobot.com/blog/2013-10-select_personal_websit_solution.html">从文档整理看个人web站点方案的选择</a></h2>
-                </div>
-                <div class="panel-body">
-                        <div><p class="first last">搞IT应用技术的人大多喜欢写博客，有搞个人web站点的需求。写博客有很多好处：一是可以帮助自己整理技术细节，遗忘后还能回过头来查阅，整理完就能安心干其他活了；二是可以分享自己的经验给他人，有成就感。干过web开发的人大多有类似的经历：用博客服务商提供的免费博客系统（博客园，CSDN）发布个人博客，用免费或者付费空间（服务器）建立个人web站点，个人站点又分为动态站点（WordPress + VPS...）和静态站点（Nanoc, Pelican + GitHub...)。从开始要写技术博客到现在两年多了，尝试过几种方案，最终决定在GitHub上生根，搭建个人静态站点，而静态站点生成工具选定为Pelican，编辑方式选定为reStructuredText。也许以后还会变，但目前来说这套方案是最符合我的需求的。</p>
-</div>
-<ul class="list-group list-inline ybs-info-list">
-    <!-- date -->
-    <li class="list-group-item">
-        <i class="fa fa-calendar-o fa-lg"></i>
-        <abbr class="published" title="2013-10-10T00:00:00"> 2013-10-10</abbr>
-    </li>
-
-    <!-- author -->
-        <li class="list-group-item">
-            <i class="fa fa-user fa-lg"></i>
-            <a class="ybs-black" href="http://my.phirobot.com/about.html">Yuanbo She</a>
-        </li>
-
-    <!-- category -->
-    <li class="list-group-item">
-        <i class="fa fa-folder-open-o fa-lg"></i>
-        <a class="ybs-black" href="http://my.phirobot.com/blog/category/webqian-duan-code.html">WEB前端&Code</a>
-    </li>
-
-    <!-- tags -->
-        <li class="list-group-item">
-            <i class="fa fa-tag fa-lg"></i>
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/pelican.html">pelican</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/github.html">github</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/restructuredtext.html">reStructuredText</a>,
-        </li>
-</ul>                </div>
-            </div>
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h2><a href="http://my.phirobot.com/blog/2013-07-install_ros_groovy_in_pcduino.html">在pcDuino内安装ROS Groovy</a></h2>
-                </div>
-                <div class="panel-body">
-                        <div><p class="first">环境：Windows7 64位。</p>
-<p class="last">在pcDuino上面安装ROS，也许很多人的第一反应是参考树莓派等其他板子机的经验，或者直接编译源码。其实大可不必，ROS大团队当然考虑到了板子机对ROS的需求，已有支持Ubuntu ARM的远程库，
-官方教程 <a class="reference external" href="http://www.ros.org/wiki/groovy/Installation/UbuntuARM">Ubuntu ARM install of ROS Groovy</a> ，pcDuino + Lubuntu系统，完美安装ROS。当然还是有点美中不足，这里把流程记录下来。</p>
-</div>
-<ul class="list-group list-inline ybs-info-list">
-    <!-- date -->
-    <li class="list-group-item">
-        <i class="fa fa-calendar-o fa-lg"></i>
-        <abbr class="published" title="2013-07-20T00:00:00"> 2013-07-20</abbr>
+        <abbr class="published" title="2014-06-13T00:00:00"> 2014-06-13</abbr>
     </li>
 
     <!-- author -->
@@ -260,59 +152,13 @@
         <li class="list-group-item">
             <i class="fa fa-tag fa-lg"></i>
                 <a class="ybs-black" href="http://my.phirobot.com/blog/tag/ros.html">ros</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/pcduino.html">pcduino</a>,
-        </li>
-</ul>                </div>
-            </div>
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h2><a href="http://my.phirobot.com/blog/2013-07-setup_pcduino_for_ros.html">PcDuino入手设置流程（for ROS）</a></h2>
-                </div>
-                <div class="panel-body">
-                        <div><p class="first">环境：Windows7 64位。</p>
-<p class="last">这里pcDuino的设置是为安装ROS，故所有流程为在microSD卡内刷Lubuntu的流程。为了在pcDuino里面装ROS，需要准备一张4G（最好大于4G）的microSD卡，pcDuino的NAND flash只有2G，装Lubuntu后只剩几百M，不够装ROS使用。</p>
-</div>
-<ul class="list-group list-inline ybs-info-list">
-    <!-- date -->
-    <li class="list-group-item">
-        <i class="fa fa-calendar-o fa-lg"></i>
-        <abbr class="published" title="2013-07-18T00:00:00"> 2013-07-18</abbr>
-    </li>
-
-    <!-- author -->
-        <li class="list-group-item">
-            <i class="fa fa-user fa-lg"></i>
-            <a class="ybs-black" href="http://my.phirobot.com/about.html">Yuanbo She</a>
-        </li>
-
-    <!-- category -->
-    <li class="list-group-item">
-        <i class="fa fa-folder-open-o fa-lg"></i>
-        <a class="ybs-black" href="http://my.phirobot.com/blog/category/ros.html">ROS</a>
-    </li>
-
-    <!-- tags -->
-        <li class="list-group-item">
-            <i class="fa fa-tag fa-lg"></i>
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/pcduino.html">pcduino</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/ros.html">ros</a>,
+                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/ubuntu_for_ros.html">ubuntu_for_ros</a>,
+                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/exbotxi.html">exbotxi</a>,
         </li>
 </ul>                </div>
             </div>
 
             <!-- pagers -->
-                <ul class="pagination">
-                        <li class="previous">
-                            <a href="http://my.phirobot.com/blog/index2.html">&larr;Previous</a>
-                        </li>
-
-                            <li class="active"><a href="http://my.phirobot.com/blog/index.html">1</a>
-                            </li>
-                            <li class="active"><a href="http://my.phirobot.com/blog/index2.html">2</a>
-                            </li>
-                            <li class="disabled"><a>3</a></li>
-                        <li class="next disabled"><a>&rarr; Next</a></li>
-                </ul>
         </div>
 
         <!-- sidebar -->
