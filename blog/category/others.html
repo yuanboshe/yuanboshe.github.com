@@ -2,12 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="&lt;p class=&#34;first&#34;&gt;环境：Windows7 64位。&lt;/p&gt;
-&lt;p class=&#34;last&#34;&gt;在pcDuino上面安装ROS，也许很多人的第一反应是参考树莓派等其他板子机的经验，或者直接编译源码。其实大可不必，ROS大团队当然考虑到了板子机对ROS的需求，已有支持Ubuntu ARM的远程库，
-官方教程 &lt;a class=&#34;reference external&#34; href=&#34;http://www.ros.org/wiki/groovy/Installation/UbuntuARM&#34;&gt;Ubuntu ARM install of ROS Groovy&lt;/a&gt; ，pcDuino + Lubuntu系统，完美安装ROS。当然还是有点美中不足，这里把流程记录下来。&lt;/p&gt;
-">
+    <meta name="description" content="Category: Others">
     <meta name="author" content="Yuanbo She">
-    <title>在pcDuino内安装ROS Groovy | Yuanbo She</title>
+    <title>Others | Yuanbo She</title>
     <meta name="google-site-verification" content="0mXr6Pg187Q4q6NgNglcunnBiVqqS1L4yKV6loUWYkY"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,13 +63,13 @@
                         </li>
                         <li>
                             <a href="http://my.phirobot.com/blog/category/others.html">
-                                <i class="fa fa-folder fa-lg"></i>
+                                <i class="fa fa-folder-open fa-lg"></i>
                                 Others
                             </a>
                         </li>
                         <li>
                             <a href="http://my.phirobot.com/blog/category/ros.html">
-                                <i class="fa fa-folder-open fa-lg"></i>
+                                <i class="fa fa-folder fa-lg"></i>
                                 ROS
                             </a>
                         </li>
@@ -130,13 +127,19 @@
     <div class='row'>
         <div class='col-md-9'>
             <!-- post main -->
-            <h2 class="ybs-bar-back-mid"><span>在pcDuino内安装ROS Groovy</span></h2>
-    <article>
+            <h2 class="ybs-bar-back-mid"><span>Category: Others</span></h2>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h2><a href="http://my.phirobot.com/blog/2014-08-my_life_and_dreams.html">我的人生，梦想，与创业</a></h2>
+                </div>
+                <div class="panel-body">
+                        <div><p class="first last">追求卓越，成功自然而来！</p>
+</div>
 <ul class="list-group list-inline ybs-info-list">
     <!-- date -->
     <li class="list-group-item">
         <i class="fa fa-calendar-o fa-lg"></i>
-        <abbr class="published" title="2013-07-20T00:00:00"> 2013-07-20</abbr>
+        <abbr class="published" title="2014-08-29T00:00:00"> 2014-08-29</abbr>
     </li>
 
     <!-- author -->
@@ -148,147 +151,17 @@
     <!-- category -->
     <li class="list-group-item">
         <i class="fa fa-folder-open-o fa-lg"></i>
-        <a class="ybs-black" href="http://my.phirobot.com/blog/category/ros.html">ROS</a>
+        <a class="ybs-black" href="http://my.phirobot.com/blog/category/others.html">Others</a>
     </li>
 
     <!-- tags -->
         <li class="list-group-item">
             <i class="fa fa-tag fa-lg"></i>
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/ros.html">ros</a>,
-                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/pcduino.html">pcduino</a>,
+                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/others.html">others</a>,
+                <a class="ybs-black" href="http://my.phirobot.com/blog/tag/ren-sheng.html">人生</a>,
         </li>
-</ul>        <div class="post-content ybs-background-color-layer1" id="post-content">
-            <div class="summary">
-                <p class="first">环境：Windows7 64位。</p>
-<p class="last">在pcDuino上面安装ROS，也许很多人的第一反应是参考树莓派等其他板子机的经验，或者直接编译源码。其实大可不必，ROS大团队当然考虑到了板子机对ROS的需求，已有支持Ubuntu ARM的远程库，
-官方教程 <a class="reference external" href="http://www.ros.org/wiki/groovy/Installation/UbuntuARM">Ubuntu ARM install of ROS Groovy</a> ，pcDuino + Lubuntu系统，完美安装ROS。当然还是有点美中不足，这里把流程记录下来。</p>
-
+</ul>                </div>
             </div>
-		    <div class="copyright">
-欢迎转载或参考，但请尊重作者劳动成果，转载请注明出处，参考请引用链接！
-			</div>
-            <div class="section" id="id1">
-<h2>安装流程</h2>
-<p>先确保按照《 <a class="reference external" href="http://my.phirobot.com/blog/2013-07-setup_pcduino_for_ros.html">PcDuino入手设置流程（for ROS）</a> 》做好准备工作。
-以pcDuino的默认用户 <tt class="docutils literal">ubuntu</tt> 身份进入Lubuntu系统。打开Terminal，然后依次执行以下流程。</p>
-<div class="section" id="id2">
-<h3>配置更新源</h3>
-<div class="highlight"><pre>sudo sh -c &#39;echo &quot;deb http://packages.ros.org/ahendrix-mirror/ubuntu precise main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#39;
-</pre></div>
-</div>
-<div class="section" id="id3">
-<h3>设置秘钥</h3>
-<div class="highlight"><pre>wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
-</pre></div>
-</div>
-<div class="section" id="id4">
-<h3>更新软件</h3>
-<div class="highlight"><pre>sudo apt-get update
-</pre></div>
-<p>这时可能会出现一个错误（20130531版Lubuntu）：</p>
-<blockquote>
-W: Conflicting distribution: <a class="reference external" href="http://www.wiimu.com">http://www.wiimu.com</a> pcduino Release (expected pcduino but got )</blockquote>
-<p>可以直接把对应源注释掉。方法是用LeafPad编辑器打开/etc/apt/sources.list：</p>
-<div class="highlight"><pre>sudo leafpad /etc/apt/sources.list
-</pre></div>
-<p>注释掉http://www.wiimu.com对应的两行如图：</p>
-<img alt="modify" src="http://my.phirobot.com/images/2013-07-20_install_ros_groovy_in_pcduino/modify.jpg" />
-<p>保存后再用 <tt class="docutils literal">sudo <span class="pre">apt-get</span> update</tt> 更新。即可顺利更新完毕。</p>
-<div class="note">
-<p class="first admonition-title">Note</p>
-<p class="last">“<a class="reference external" href="http://www.wiimu.com">http://www.wiimu.com</a>” 是执行 <tt class="docutils literal">sudo <span class="pre">board-config.sh</span></tt> 进入Board Configuration界面运行 <tt class="docutils literal">Update</tt> 给pcDuino升级用的，如果需要Update pcDuino，需要重新打开这行。</p>
-</div>
-</div>
-<div class="section" id="ros">
-<h3>安装ROS</h3>
-<p>ROS目前主要有如下3种配置：</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="24%" />
-<col width="76%" />
-</colgroup>
-<tbody valign="top">
-<tr><td>ros-groovy-ros-base</td>
-<td>Meta package for ros-base variant of ROS.</td>
-</tr>
-<tr><td>ros-groovy-ros-comm</td>
-<td>ROS communications-related packages, including
-core client libraries (roscpp, rospy) and graph
-introspection tools (rostopic, rosnode, rosservice, rosparam).</td>
-</tr>
-<tr><td>ros-groovy-ros-full</td>
-<td>Meta package for ros-full variant of ROS.</td>
-</tr>
-</tbody>
-</table>
-<p>3中配置方案，功能包依次丰富。但ros-groovy-ros-full安装时目前会出现依赖包版本问题：</p>
-<blockquote>
-The following packages have unmet dependencies:
-ros-groovy-ros-full : Depends: ros-groovy-rqt-common-plugins (= 0.2.14-0precise-20130402-0859-+0000) but it is not going to be installed
-E: Unable to correct problems, you have held broken packages.</blockquote>
-<p>ros-groovy-ros-comm 和 ros-groovy-ros-base 能够顺利装完，这里我装的是 ros-groovy-ros-comm：</p>
-<div class="highlight"><pre>sudo apt-get install ros-groovy-ros-comm
-</pre></div>
-<p>可以用 <tt class="docutils literal"><span class="pre">apt-cache</span> search <span class="pre">ros-groovy</span></tt> 命令查看还有哪些包可以装。</p>
-</div>
-<div class="section" id="rosdep">
-<h3>初始化rosdep</h3>
-<div class="highlight"><pre>sudo apt-get install python-rosdep
-sudo rosdep init
-rosdep update
-</pre></div>
-</div>
-<div class="section" id="rosterminal">
-<h3>设置ROS随Terminal启动运行</h3>
-<div class="highlight"><pre>echo &quot;source /opt/ros/groovy/setup.bash&quot; &gt;&gt; ~/.bashrc
-source ~/.bashrc
-</pre></div>
-</div>
-<div class="section" id="id5">
-<h3>测试</h3>
-<p>此时运行命令 <tt class="docutils literal">roscore</tt> 应该能看到ROS master正常运行消息：</p>
-<pre class="literal-block">
-started roslaunch server http://ubuntu:37709/
-ros_comm version 1.9.44
-
-SUMMARY
-========
-
-PARAMETERS
- * /rosdistro
- * /rosversion
-
-NODES
-
-auto-starting new master
-process[master]: started with pid [3734]
-ROS_MASTER_URI=http://ubuntu:11311/
-
-setting /run_id to 5956b562-f670-11de-8ea2-26eb04d6389b
-process[rosout-1]: started with pid [3747]
-started core service [/rosout]
-</pre>
-</div>
-</div>
-
-        </div>
-    </article>
-
-<!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript">
-    var uyan_config = {
-        'su': 'blog/2013-07-install_ros_groovy_in_pcduino.html'
-    };
-</script>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1803538"></script>
-<!-- UY END -->
-
-<!-- UJian Button BEGIN -->
-<script type="text/javascript">var ujian_config = {target:1};</script>
-<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide&fade=1&uid=1803538"></script>
-<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
-<!-- UJian Button END -->
 
             <!-- pagers -->
         </div>
@@ -316,12 +189,12 @@ started core service [/rosout]
                     </li>
                     <li>
                         <a class="ybs-black" href="http://my.phirobot.com/blog/category/others.html" title="Others">
-                            <i class="fa fa-folder-o fa-lg"></i> Others
+                            <i class="fa fa-folder-open-o fa-lg"></i> Others
                         </a>
                     </li>
                     <li>
                         <a class="ybs-black" href="http://my.phirobot.com/blog/category/ros.html" title="ROS">
-                            <i class="fa fa-folder-open-o fa-lg"></i> ROS
+                            <i class="fa fa-folder-o fa-lg"></i> ROS
                         </a>
                     </li>
                     <li>
