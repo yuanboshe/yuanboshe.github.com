@@ -119,6 +119,11 @@ div.post-content {
     padding: 10px;
 }
 
+.post-content a:target, .post-content div:target {
+    padding-top: 60px;
+	margin-top: -60px;
+}
+
 .post-content div {
     padding: 1px;
     margin: 5px auto;

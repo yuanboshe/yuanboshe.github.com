@@ -24,7 +24,14 @@ ROS开发环境之Eclipse (C/C++ & python)
 
 安装Eclipse for C/C++
 ----------------------
-从官网下载Eclipse for C/C++，（http://www.eclipse.org/downloads/ 从链接进去，选择Linux 32 bit版本）。解压后放在 *~/Program/* 文件夹下。
+从官网下载Eclipse for C/C++，（http://www.eclipse.org/downloads/ 从链接进去，选择Linux 32 bit版本），如 *eclipse-cpp-kepler-SR2-linux-gtk.tar.gz* ，放在 *~/Downloads/* 文件夹下。使用下面的命令解压“安装”：
+
+.. code-block:: ubuntu
+
+	sudo tar vxzf eclipse-cpp-kepler-SR2-linux-gtk.tar.gz -C /usr/local
+	cd /usr/local
+	sudo chown -R exbot:exbot eclipse
+
 
 创建快捷方式
 -------------
@@ -42,19 +49,21 @@ ROS开发环境之Eclipse (C/C++ & python)
 	Version=1.0
 	Type=Application
 	Name=Eclipse
-	Icon=/home/exbot/Programs/eclipse/icon.xpm
-	Exec=bash -i -c "/home/exbot/Programs/eclipse/eclipse"
+	Icon=/usr/local/eclipse/icon.xpm
+	Exec=bash -i -c "/usr/local/eclipse/eclipse"
 	Comment=Develop with pleasure!
 	Categories=Development;IDE;
 	Terminal=false
 
 完成后在Dash菜单输入 *eclipse* 将会看到Eclipse图标，以后启动eclipse都从快捷方式启动。
 
+.. tip:: 使用 *gedit* 一般会留下一个带 *\*.\*~* 的备份文件，使用命令 ``sudo rm -f /usr/share/applications/eclipse.desktop~`` 删除。
+
 下载测试代码
 -------------
 .. code-block:: ubuntu
 
-	cd catkin_ws/
+	cd catkin_ws/src
 	git clone https://github.com/yuanboshe/exbot_xi.git
 
 配置Eclipse (C/C++)
@@ -154,10 +163,6 @@ Window -> Preferences -> Gerneral -> Editors -> File Associations
 关联至 Rinzo XML Editor：\*.launch, \*.concert, \*.xacro, \*.urdf  
 
 关联至 YEdit：\*.rviz
-
-XML formatting
------------------
-Window -> Preferences -> Rinzo XML -> Formatting
 
 增加ROS Formatting
 -------------------

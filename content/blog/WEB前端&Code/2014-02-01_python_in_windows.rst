@@ -104,9 +104,10 @@ PowerShell是Windows的shell工具，提供类似UNIX系统里面的一些命令
 	pip install virtualenv
 	pip install virtualenvwrapper-powershell
 	mkdir $env:WORKON_HOME
+	cd $env:WORKON_HOME
 	import-module virtualenvwrapper
 
-前两条命令使用pip安装virtualenv和virtualenvwrapper-powershell；第3条命令新建 *WORKON_HOME* 变量指向的文件夹；最后一条命令则是在PowerShell中导入virtualenvwrapper模块。
+前两条命令使用pip安装virtualenv和virtualenvwrapper-powershell；第3条命令新建 *WORKON_HOME* 变量指向的文件夹，如果出现错误，可能是变量没有生效，重启powershell或者重启计算机；最后两条命令则是在PowerShell中导入virtualenvwrapper模块。
 
 完成上面的设置后，在PowerShell中输入命令 ``Get-Command *virtualenv*`` 就能够看到virtualenv的快捷命令了::
 

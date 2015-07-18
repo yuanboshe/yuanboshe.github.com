@@ -30,7 +30,7 @@
 	elif what == 'tag':
 		origin = Tag(value, self.settings).url
 
-找到pelican源码目录下的 *contents.py* 文件，例如我的是 *D:\Python\Envs\pelicanenv\Lib\site-packages\pelican\contents.py* 在后面添加下面的代码即可：
+找到pelican源码目录下的 *contents.py* 文件，例如我的是 *D:/Python/Envs/pelicanenv/Lib/site-packages/pelican/contents.py* 在后面添加下面的代码即可：
 
 .. code-block:: python
 

@@ -1,3 +1,0 @@
-{% extends "blog/index.html" %}
-{% block title %}Home{% endblock %}
-{% block description %}Yuanbo She's Blog{% endblock %}

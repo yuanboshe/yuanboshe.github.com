@@ -18,19 +18,19 @@ Pelican
 
 	mkvirtualenv pelicanenv --no-site-packages
 	pip install pelican
-	pip install Fabric
 
-第1条命令创建名为pelicanenv的Python虚拟环境；第2命令使用pip安装pelican，经过一长串的warnning后，应该可以顺利安装完毕；第3条命令使用pip安装Fabric。
+第1条命令创建名为pelicanenv的Python虚拟环境；第2命令使用pip安装pelican，经过一长串的warnning后，应该可以顺利安装完毕。
 
 安装依赖包
 ------------
-这里主要是安装fab命令需要的pycrypto和ecdsa。在PowerShell中输入下面的命令：
+这里主要是安装Fabric，以及fab命令需要的pycrypto和ecdsa。在PowerShell中输入下面的命令：
 
 .. note:: 保证自己当前处于前面建立的pelicanenv虚拟环境下，否则就装到默认Python环境中去了。看PowerShell的光标，如果显示诸如 *(pelicanenv)PS D:\>* 字样就表示在pelicanenv环境下，否则使用 ``workon pelicanenv`` 命令进入pelicanenv环境中。
 
 .. code-block:: ubuntu
 
 	$env:VS90COMNTOOLS=$env:VS120COMNTOOLS
+	pip install Fabric
 	pip install pycrypto
 	pip install ecdsa
 	

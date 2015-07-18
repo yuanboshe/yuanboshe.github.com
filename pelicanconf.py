@@ -60,7 +60,8 @@ AUTHOR_SAVE_AS = None
 AUTHORS_SAVE_AS = None
 DIRECT_TEMPLATES = ('index', 'blog/index', 'blog/tags', 'blog/categories', 'blog/dates', '404')
 PAGINATED_DIRECT_TEMPLATES = ('blog/index',)
-#TEMPLATE_PAGES = {'test/home.html': 'books.html',
+TEMPLATE_PAGES = {'about.html': 'about.html',
+                  'welcome.html': 'welcome/index.html'}
 #                  'pages/home.html': 'index.html'}
 
 MENUITEMS = (('Home', 'index.html'),
