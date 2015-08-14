@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class='row'>
+        <div class='col-md-9'>
+            <!-- post main -->
+            <h2 class="ybs-bar-back-mid"><span>{% block blog_title %}{% endblock %}</span></h2>
+            {% block blog_content %}{% endblock %}
+
+            <!-- pagers -->
+            {% if articles_page and articles_paginator.num_pages > 1 %}
+                <ul class="pagination">
+                    {% if articles_page.has_previous() %}
+                        {% set num = articles_page.previous_page_number() %}
+                        <li class="previous">
+                            <a href="{{ SITEURL }}/{{ page_name }}{{ num if num > 1 else '' }}.html">&larr;Previous</a>
+                        </li>
+                    {% else %}
+                        <li class="previous disabled"><a>&larr; Previous</a></li>
+                    {% endif %}
+
+                    {% for num in range( 1, 1 + articles_paginator.num_pages ) %}
+                        {% if num == articles_page.number %}
+                            <li class="disabled"><a>{{ num }}</a></li>
+                        {% else %}
+                            <li class="active"><a href="{{ SITEURL }}/{{ page_name }}{{ num  if num > 1 else '' }}.html">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if articles_page.has_next() %}
+                        <li class="next">
+                            <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html">Next &rarr;</a>
+                        </li>
+                    {% else %}
+                        <li class="next disabled"><a>&rarr; Next</a></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- sidebar -->
+        <div class='col-md-3'>
+            {% include 'partial/sidebar.html' %}
+        </div>
+    </div>
+{% endblock content %}

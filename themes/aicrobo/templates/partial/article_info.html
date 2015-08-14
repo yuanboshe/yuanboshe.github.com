@@ -1,0 +1,31 @@
+<ul class="list-group list-inline ybs-info-list">
+    <!-- date -->
+    <li class="list-group-item">
+        <i class="fa fa-calendar-o fa-lg"></i>
+        <abbr class="published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }}</abbr>
+    </li>
+
+    <!-- author -->
+    {% if article.author %}
+        <li class="list-group-item">
+            <i class="fa fa-user fa-lg"></i>
+            <a class="ybs-black" href="{{ SITEURL }}/about.html">{{ article.author }}</a>
+        </li>
+    {% endif %}
+
+    <!-- category -->
+    <li class="list-group-item">
+        <i class="fa fa-folder-open-o fa-lg"></i>
+        <a class="ybs-black" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+    </li>
+
+    <!-- tags -->
+    {% if article.tags %}
+        <li class="list-group-item">
+            <i class="fa fa-tag fa-lg"></i>
+            {% for tag in article.tags %}
+                <a class="ybs-black" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>,
+            {% endfor %}
+        </li>
+    {% endif %}
+</ul>
